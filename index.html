@@ -1,36 +1,68 @@
+<!-- Esta línea le dice al navegador que el archivo está escrito en HTML5 -->
 <!DOCTYPE html>
+
+<!-- Etiqueta principal que envuelve todo el contenido de la página. lang="en" indica el idioma -->
 <html lang="en">
+
+<!-- head: sección de configuración, aquí va info que el navegador necesita pero el usuario no ve directamente -->
 <head>
+    <!-- charset UTF-8: permite usar letras con acentos y caracteres especiales -->
     <meta charset="UTF-8">
+    <!-- viewport: hace que la página se vea bien en celulares y tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title: el texto que aparece en la pestaña del navegador -->
     <title>Inicio</title>
+    <!-- link: conecta este archivo HTML con el archivo de estilos CSS que da color y diseño a la página -->
     <link rel="stylesheet" href="assets/style/style.css">
 </head>
+
+<!-- body: todo lo que aparece visualmente en la página va aquí dentro -->
 <body>
+
+    <!-- header: zona superior de la página, normalmente tiene el menú de navegación -->
     <header>
-<nav>
-    <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="listas.html">Listas</a></li>
-        <li><a href="peliculas.html">Películas</a></li>
-        <li><a href="series.html">Series</a></li>
-        <li><a href="sobre_mi.html">Sobre mí</a></li>
-        <li><a href="tablas.html">Tablas</a></li>
-    </ul>
-</nav>
+
+        <!-- nav: contenedor del menú de navegación que conecta todas las páginas del sitio -->
+        <nav>
+            <!-- ul: lista sin orden (unordered list), aquí usada para los enlaces del menú -->
+            <ul>
+                <!-- Cada li es un elemento de la lista. El <a> es un enlace, href indica a qué página va -->
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <li><a href="tablas.html">Tablas</a></li>
+            </ul>
+        </nav>
+
     </header>
+
+    <!-- main: contenido principal de la página -->
     <main>
-        <section class="Datos"><h1>Carlos Sanchez</h1>
-    <h2>Estudiante</h2>
-    <p>Welcome a mi page de web personal</p></section>
-    <section class="imgs">
-        <img src="assets/20251230_OHR.JapanSwans_ROW0913401353_UHD_bing.jpg" width="50%" alt="Japan swans on water">
-    </section>
-        </main>
+
+        <!-- section: agrupa contenido relacionado. class="Datos" conecta esta sección con estilos del CSS -->
+        <section class="Datos">
+            <!-- h1: título principal de la página, el más grande e importante -->
+            <h1>Carlos Sanchez</h1>
+            <!-- h2: subtítulo, un nivel menos importante que h1 -->
+            <h2>Estudiante</h2>
+            <!-- p: párrafo de texto normal -->
+            <p>Welcome a mi page de web personal</p>
+        </section>
+
+        <!-- section: segunda sección, esta contiene la imagen -->
+        <section class="imgs">
+            <!-- img: muestra una imagen. src es la ruta del archivo, width el tamaño, alt es el texto alternativo si la imagen no carga -->
+            <img src="assets/20251230_OHR.JapanSwans_ROW0913401353_UHD_bing.jpg" width="50%" alt="Japan swans on water">
+        </section>
+
+    </main>
+
+    <!-- footer: pie de página, normalmente tiene información de derechos o contacto -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
-   
 
 </body>
 </html>
