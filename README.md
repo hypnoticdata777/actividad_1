@@ -2,7 +2,7 @@
 
 Personal website built with HTML, CSS, and PHP as part of a web development activity.
 
-**[View the site](https://github.com/hypnoticdata777/actividad_1)**
+**[View the site](https://hypnoticdata777.github.io/actividad_1)**
 
 ## Pages
 
@@ -19,7 +19,7 @@ Personal website built with HTML, CSS, and PHP as part of a web development acti
 
 Sitio web personal hecho con HTML, CSS y PHP como parte de una actividad de desarrollo web.
 
-**[Ver el sitio](https://github.com/hypnoticdata777/actividad_1)**
+**[Ver el sitio](https://hypnoticdata777.github.io/actividad_1)**
 
 ## Páginas
 
