@@ -1,18 +1,35 @@
+<!-- Le dice al navegador que este documento está escrito en HTML5 -->
 <!DOCTYPE html>
+
+<!-- Etiqueta raíz de la página. lang="es" indica que el contenido está en español -->
 <html lang="es">
+
+<!-- head: configuración de la página, no se muestra visualmente -->
 <head>
+    <!-- UTF-8: permite escribir tildes y caracteres especiales sin problemas -->
     <meta charset="UTF-8">
+    <!-- viewport: ajusta la página para que se vea bien en celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Conecta con el archivo CSS que le da estilo visual a toda la página -->
     <link rel="stylesheet" href="assets/style/style.css">
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Listas</title>
 </head>
+
+<!-- body: todo lo que el usuario ve en pantalla -->
 <body>
+
+    <!-- header vacío: reservado para poner contenido en el futuro si se necesita -->
     <header></header>
 
+    <!-- h1: título principal de la página -->
     <h1>Listas</h1>
 
+    <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
     <nav>
+        <!-- ul: lista sin numerar que contiene los enlaces del menú -->
         <ul>
+            <!-- Cada li es un ítem del menú. El <a href="..."> lleva a otra página al hacer clic -->
             <li><a href="index.html">Inicio</a></li>
             <li><a href="listas.html">Listas</a></li>
             <li><a href="peliculas.html">Películas</a></li>
@@ -22,13 +39,22 @@
         </ul>
     </nav>
 
+    <!-- main: área con el contenido principal de esta página -->
     <main>
+
+        <!-- ===== SECCIÓN DE LISTAS ORDENADAS ===== -->
+        <!-- section: agrupa el bloque de listas ordenadas -->
         <section>
+
+            <!-- div: caja genérica para agrupar elementos relacionados -->
             <div>
+                <!-- h2: subtítulo de sección -->
                 <h2>Listas Ordenadas</h2>
+                <!-- p: texto explicativo -->
                 <p>Las listas ordenadas muestran los elementos con un orden.</p>
 
                 <h3>Tipos</h3>
+                <!-- ol: ordered list, lista con número/letra/romano automático -->
                 <ol>
                     <li>Lista ordenada con números</li>
                     <li>Lista ordenada con letras</li>
@@ -40,6 +66,7 @@
                 <h3>Lista ordenada con números</h3>
                 <p>Las listas ordenadas con números muestran los elementos en orden numérico.</p>
                 <h4>Ejemplos:</h4>
+                <!-- ol sin atributo type usa números por defecto: 1, 2, 3... -->
                 <ol>
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
@@ -51,6 +78,7 @@
                 <h3>Lista ordenada con letras</h3>
                 <p>Las listas ordenadas con letras usan el alfabeto.</p>
                 <h4>Ejemplos:</h4>
+                <!-- type="A": cambia los números por letras mayúsculas A, B, C... -->
                 <ol type="A">
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
@@ -62,20 +90,25 @@
                 <h3>Lista ordenada con números romanos</h3>
                 <p>Las listas ordenadas con números romanos usan numeración romana.</p>
                 <h4>Ejemplos:</h4>
+                <!-- type="I": cambia los números por romanos I, II, III... -->
                 <ol type="I">
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
                     <li>Tercer ejemplo</li>
                 </ol>
             </div>
+
         </section>
 
+        <!-- ===== SECCIÓN DE LISTAS NO ORDENADAS ===== -->
         <section>
+
             <div>
                 <h2>Listas No Ordenadas</h2>
                 <p>Las listas no ordenadas muestran elementos con viñetas.</p>
 
                 <h3>Tipos</h3>
+                <!-- ul: unordered list, lista con viñetas (puntos, círculos, cuadros) -->
                 <ul>
                     <li>Lista con disc</li>
                     <li>Lista con circle</li>
@@ -87,6 +120,7 @@
                 <h3>Lista no ordenada con disc</h3>
                 <p>Las listas no ordenadas con disc muestran viñetas rellenas.</p>
                 <h4>Ejemplos:</h4>
+                <!-- style="list-style-type: disc": viñeta circular rellena (por defecto) -->
                 <ul style="list-style-type: disc;">
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
@@ -98,6 +132,7 @@
                 <h3>Lista no ordenada con circle</h3>
                 <p>Las listas no ordenadas con circle muestran viñetas circulares vacías.</p>
                 <h4>Ejemplos:</h4>
+                <!-- list-style-type: circle: círculo vacío sin relleno -->
                 <ul style="list-style-type: circle;">
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
@@ -109,15 +144,20 @@
                 <h3>Lista no ordenada con square</h3>
                 <p>Las listas no ordenadas con square muestran viñetas cuadradas.</p>
                 <h4>Ejemplos:</h4>
+                <!-- list-style-type: square: cuadrito como viñeta -->
                 <ul style="list-style-type: square;">
                     <li>Primer ejemplo</li>
                     <li>Segundo ejemplo</li>
                     <li>Tercer ejemplo</li>
                 </ul>
             </div>
+
         </section>
+
     </main>
 
+    <!-- footer: pie de página vacío, reservado para uso futuro -->
     <footer></footer>
+
 </body>
 </html>
