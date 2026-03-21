@@ -23,13 +23,29 @@
         </nav>
     </header>
     <main>
-       <form action="">
+       <form action="" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
 
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="date">Fecha</label>
+        <input type="date" name="date" id="date" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" id="mensaje" required></textarea>
+
+        <label for="opciones">Opciones</label>
+        <select name="opciones" id="opciones" required>
+            <option value="">Selecciona una opcion</option>
+            <option value="opcion 1"> Opcion 1</option>
+            <option value="opcion 2">Opcion 2</option>
+            <option value="opcion 3">Opcion 3</option>
+        </select>
         <label for="mensaje">Mensaje:</label>
         <textarea name="mensaje" id="mensaje" required></textarea>
 
