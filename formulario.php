@@ -23,7 +23,7 @@
         </nav>
     </header>
     <main>
-       <form action="" method="post">
+       <form action="php/logica.php" method="post">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required>
 
