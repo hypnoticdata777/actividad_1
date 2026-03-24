@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/style.css">
-    <stylesheet></stylesheet>
     <title>Formulario</title>
 </head>
 <body>
@@ -46,9 +45,6 @@
             <option value="opcion 2">Opcion 2</option>
             <option value="opcion 3">Opcion 3</option>
         </select>
-        <label for="mensaje">Mensaje:</label>
-        <textarea name="mensaje" id="mensaje" required></textarea>
-
         <button type="submit">Enviar</button>
        </form> 
     </main>
