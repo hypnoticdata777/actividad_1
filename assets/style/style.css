@@ -41,6 +41,11 @@ nav a {
     text-decoration: none; /* quita el subrayado de los enlaces */
     color: white;          /* color de texto blanco */
     font-weight: bold;     /* texto en negrita */
+
+    /* AJUSTE: propiedad CSS "transition" — hace que el cambio de color al pasar el mouse
+       sea gradual (0.3s) en vez de instantáneo. Esto le da un acabado más profesional.
+       Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/transition */
+    transition: color 0.3s ease;
 }
 
 /* nav: el fondo oscuro de la barra de navegación */
@@ -67,4 +72,15 @@ img {
 /* ul: estilos para todas las listas sin orden del sitio */
 ul {
     margin-left: 20px; /* empuja las listas 20px hacia la derecha para que se vean bien indentadas */
+}
+
+/* AJUSTE: footer — le damos el mismo fondo oscuro y texto blanco que el nav para lograr
+   simetría visual entre el encabezado y el pie de página. Este patrón se llama
+   "header-footer matching" y es una práctica común de diseño web.
+   Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/text-align */
+footer {
+    background-color: #222;  /* mismo fondo oscuro que el nav para consistencia visual */
+    color: #aaa;             /* texto en gris claro, menos prominente que el nav */
+    text-align: center;      /* centra el texto del pie de página */
+    font-size: 0.85em;       /* tamaño de fuente un poco más pequeño que el texto normal */
 }
