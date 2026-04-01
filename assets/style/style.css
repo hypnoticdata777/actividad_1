@@ -187,91 +187,179 @@ table tr:nth-child(even) {
    de cada tipo de lista de forma visual y amigable.
    ============================================= */
 
-/* .intro-listas: contenedor de todas las tarjetas de explicación.
-   display:grid divide el espacio en columnas que se ajustan solas según el ancho */
+/* ─────────────────────────────────────────────
+   .intro-listas: contenedor principal de todas
+   las tarjetas explicativas de listas.html.
+
+   Usa CSS Grid para crear un layout de columnas
+   que se adaptan solas al ancho de la pantalla:
+   en pantallas grandes caben 2 columnas; en
+   celulares queda en 1 columna automáticamente.
+   ───────────────────────────────────────────── */
 .intro-listas {
     display: grid;
-    /* auto-fill: crea tantas columnas como quepan; minmax: cada columna mide entre 260px y la mitad */
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;       /* espacio entre tarjetas */
-    margin: 24px 0;  /* separación vertical respecto al contenido anterior y siguiente */
+
+    /* auto-fill: crea tantas columnas como quepan en el ancho disponible.
+       minmax(320px, 1fr): cada columna mide mínimo 320px y crece para llenar el espacio.
+       Esto hace el layout responsive sin necesidad de media queries */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 28px;        /* espacio entre tarjetas, más generoso que antes para que respiren */
+    margin: 28px 0;   /* separación vertical respecto al h1 y al footer */
+    padding: 0 4px;   /* padding lateral mínimo para que en móvil no quede pegado al borde */
 }
 
-/* .intro-card: tarjeta base para cada bloque de explicación */
+/* ─────────────────────────────────────────────
+   .intro-card: tarjeta base compartida por todas
+   las tarjetas de la sección introductoria.
+
+   Cada tarjeta es un bloque visual independiente
+   con fondo blanco, esquinas redondeadas, sombra
+   y un borde lateral de color (sobreescrito por
+   las variantes .intro-card--*).
+   ───────────────────────────────────────────── */
 .intro-card {
-    background-color: white;   /* fondo blanco para que resalte sobre el gris de la página */
-    border-radius: 10px;       /* esquinas redondeadas para un look amigable */
-    padding: 20px;             /* espacio interior generoso para que no se vea apretado */
-    border-left: 5px solid #ccc; /* borde lateral de color; se sobreescribe por variante */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* sombra suave para dar sensación de tarjeta */
+    background-color: white;          /* fondo blanco para que resalte sobre el gris de la página */
+    border-radius: 12px;              /* esquinas más redondeadas que antes para look más amigable */
+    padding: 28px 32px;               /* espacio interior amplio para que el contenido respire */
+    border-left: 6px solid #ccc;      /* borde lateral grueso; el color se define en cada variante */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.09); /* sombra un poco más pronunciada para dar profundidad */
+
+    /* transition: anima suavemente el efecto de elevación al pasar el mouse por encima */
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-/* Variante de color para la tarjeta general (introducción) */
-.intro-card--general   { border-left-color: #888; }
+/* Al pasar el mouse sobre una tarjeta se eleva ligeramente para dar feedback visual */
+.intro-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.14); /* sombra más grande = efecto de "levantarse" */
+    transform: translateY(-3px);              /* sube 3px para reforzar la sensación de elevación */
+}
 
-/* Variante de color para la tarjeta de listas ordenadas: azul */
-.intro-card--ordenada  { border-left-color: #4a90d9; }
+/* ── Variantes de color del borde lateral ──────
+   Cada tarjeta tiene su propio color para
+   distinguirla visualmente de un vistazo. */
 
-/* Variante de color para la tarjeta de listas no ordenadas: verde */
+/* Tarjeta de introducción general: gris neutro */
+.intro-card--general     { border-left-color: #888; }
+
+/* Tarjeta de lista ordenada <ol>: azul */
+.intro-card--ordenada    { border-left-color: #4a90d9; }
+
+/* Tarjeta de lista no ordenada <ul>: verde */
 .intro-card--desordenada { border-left-color: #5cb85c; }
 
-/* Variante de color para la tarjeta de comparación: dorado del sitio */
+/* Tarjeta de resumen comparativo: dorado del sitio */
 .intro-card--comparacion { border-left-color: #ffcc00; }
 
-/* .intro-icono: emoji grande que actúa como ícono decorativo de cada tarjeta */
+/* ─────────────────────────────────────────────
+   .intro-icono: emoji decorativo en la parte
+   superior de cada tarjeta. Actúa como ícono
+   visual que identifica el tema de la tarjeta.
+   ───────────────────────────────────────────── */
 .intro-icono {
-    font-size: 2em;   /* más grande que el texto normal para que llame la atención */
-    display: block;   /* lo pone en su propia línea, encima del título */
-    margin-bottom: 6px; /* pequeño espacio entre el emoji y el h2 */
+    font-size: 2.4em;    /* más grande que el texto para que llame la atención */
+    display: block;      /* lo pone en su propia línea, encima del título */
+    margin-bottom: 8px;  /* espacio entre el emoji y el h2 */
 }
 
-/* Título dentro de cada tarjeta: más pequeño que h2 normal pero igual de visible */
+/* Título H2 dentro de cada tarjeta: más grande y con más espacio que antes */
 .intro-card h2 {
-    font-size: 1.1em;  /* tamaño ligeramente más grande que el texto normal */
-    margin: 0 0 8px 0; /* solo margen abajo para pegarlo al texto que sigue */
+    font-size: 1.25em;      /* título de tarjeta más grande para mayor jerarquía visual */
+    margin: 0 0 12px 0;     /* sin margen arriba; margen abajo para separar del primer párrafo */
+    color: #222;            /* texto casi negro para buen contraste sobre fondo blanco */
 }
 
-/* Pequeño código inline dentro de las tarjetas; fondo amarillo suave para resaltarlo */
+/* Subtítulos H3 dentro de una tarjeta: separan cada variante de lista */
+.intro-card h3 {
+    font-size: 1em;          /* mismo tamaño que el texto, pero diferenciado por negrita */
+    margin: 20px 0 6px 0;    /* margen arriba generoso para separar visualmente cada variante */
+    color: #444;             /* gris oscuro, un tono más suave que el h2 */
+    display: flex;           /* flex para alinear el título con el badge en la misma línea */
+    align-items: center;     /* centra verticalmente el texto y el badge */
+    gap: 8px;                /* espacio entre el texto del h3 y el badge */
+}
+
+/* ─────────────────────────────────────────────
+   .intro-badge: etiqueta pequeña que muestra el
+   atributo HTML junto al título de cada variante.
+   Ejemplo: "type='A'" al lado de "Con letras".
+   ───────────────────────────────────────────── */
+.intro-badge {
+    font-size: 0.75em;          /* más pequeño que el título para que sea un detalle secundario */
+    background-color: #f0f0f0;  /* fondo gris muy claro para distinguirlo del texto */
+    color: #555;                /* texto gris medio */
+    padding: 2px 8px;           /* espacio interior pequeño */
+    border-radius: 20px;        /* muy redondeado para que parezca una etiqueta/chip */
+    font-weight: normal;        /* sin negrita, para no competir con el título del h3 */
+}
+
+/* Código inline <code> dentro de las tarjetas:
+   fondo amarillo suave para resaltarlo del texto corrido */
 .intro-card code {
-    background-color: #fff8d6; /* amarillo muy claro, sutilmente diferente del fondo blanco */
-    padding: 1px 4px;          /* espacio interior mínimo para que no se vea apretado */
-    border-radius: 3px;        /* bordes ligeramente redondeados */
-    font-size: 0.9em;          /* un poco más pequeño para distinguirlo del texto corrido */
+    background-color: #fff8d6; /* amarillo muy claro, asociado al color dorado del sitio */
+    padding: 1px 5px;          /* espacio interior pequeño */
+    border-radius: 4px;        /* bordes redondeados */
+    font-size: 0.88em;         /* un poco más pequeño para distinguirlo del texto normal */
 }
 
-/* Título que precede al ejemplo real dentro de la tarjeta */
+/* .intro-ejemplo-titulo: texto en negrita que precede a los ejemplos de código */
 .intro-ejemplo-titulo {
-    font-weight: bold; /* negrita para que destaque como subtítulo informal */
-    margin-bottom: 2px; /* muy poco espacio antes de la lista que sigue */
+    font-weight: bold;   /* negrita para que actúe como subtítulo informal */
+    margin-bottom: 4px;  /* muy poco espacio antes de la lista que sigue */
+    color: #444;         /* gris oscuro para que no compita con el contenido */
 }
 
-/* Nota al pie de la tarjeta: texto secundario, menos prominente */
+/* .intro-separador: línea horizontal entre la explicación general y las variantes.
+   Divide visualmente "qué es" de "cómo se usa en cada variante" */
+.intro-separador {
+    border: none;                     /* quita el estilo de borde por defecto del hr */
+    border-top: 1px dashed #ddd;      /* línea punteada gris suave, discreta */
+    margin: 20px 0;                   /* espacio arriba y abajo para que respire */
+}
+
+/* .intro-nota: texto secundario al final de cada tarjeta con datos extra o tips */
 .intro-nota {
-    font-size: 0.85em; /* más pequeño que el texto principal */
-    color: #666;       /* gris medio para que sea un detalle y no compita con el contenido */
-    margin-top: 10px;  /* separa la nota del contenido anterior */
+    font-size: 0.85em;       /* más pequeño que el texto principal */
+    color: #666;             /* gris medio para que sea un detalle y no compita */
+    margin-top: 16px;        /* separa la nota del contenido anterior */
+    padding: 10px 14px;      /* espacio interior para enmarcarlo como una nota aparte */
+    background-color: #fafafa; /* fondo gris casi blanco para distinguirlo del texto corrido */
+    border-radius: 6px;      /* bordes redondeados coherentes con el resto del diseño */
+    border-left: 3px solid #ddd; /* borde izquierdo sutil para identificarlo como nota */
 }
 
-/* Tabla de comparación dentro de la tarjeta de resumen rápido */
+/* ─────────────────────────────────────────────
+   .intro-tabla-comparacion: tabla de resumen
+   dentro de la tarjeta de comparación rápida.
+   Tiene su propio estilo para diferenciarse de
+   las tablas de datos del resto del sitio.
+   ───────────────────────────────────────────── */
 .intro-tabla-comparacion {
     width: 100%;               /* ocupa todo el ancho de la tarjeta */
-    border-collapse: collapse; /* une los bordes de celdas adyacentes */
-    margin-top: 10px;          /* separa la tabla del párrafo anterior */
+    border-collapse: collapse; /* une los bordes de celdas adyacentes en uno solo */
+    margin-top: 12px;          /* separa la tabla del párrafo anterior */
     font-size: 0.9em;          /* texto ligeramente más pequeño para caber bien en la tarjeta */
 }
 
-/* Celdas de la tabla de comparación */
+/* Celdas de la tabla de comparación: borde y padding compacto */
 .intro-tabla-comparacion th,
 .intro-tabla-comparacion td {
-    border: 1px solid #ddd; /* borde suave, menos intenso que la tabla principal del sitio */
-    padding: 6px 10px;      /* espacio interior compacto para que no desborde la tarjeta */
-    text-align: left;       /* alineación izquierda, más fácil de leer */
+    border: 1px solid #ddd;  /* borde gris claro, menos intenso que la tabla principal del sitio */
+    padding: 8px 12px;       /* espacio interior cómodo para leer */
+    text-align: left;        /* texto alineado a la izquierda, más fácil de escanear */
+    vertical-align: top;     /* alinea el contenido arriba por si una celda tiene varias líneas */
 }
 
-/* Encabezado de la tabla de comparación: fondo dorado del sitio */
+/* Encabezados de la tabla de comparación: fondo dorado del sitio */
 .intro-tabla-comparacion th {
-    background-color: #ffcc00; /* color de acento del sitio, diferente al gris oscuro del resto */
+    background-color: #ffcc00; /* color de acento del sitio para diferenciarlos de los datos */
     color: #222;               /* texto oscuro para buen contraste sobre el amarillo */
+    font-weight: bold;         /* negrita para que destaquen como etiquetas de columna */
+}
+
+/* Fila alterna de la tabla de comparación: mismo patrón zebra que la tabla general */
+.intro-tabla-comparacion tr:nth-child(even) td {
+    background-color: #f9f9f9; /* fondo ligeramente gris en filas pares para facilitar la lectura */
 }
 
 /* =============================================
