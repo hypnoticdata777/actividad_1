@@ -181,6 +181,105 @@ table tr:nth-child(even) {
    usuario acaba de enviar.
    ============================================= */
 
+/* =============================================
+   ESTILOS DE INTRODUCCIÓN DE LISTAS (listas.html)
+   Las tarjetas .intro-card presentan la explicación
+   de cada tipo de lista de forma visual y amigable.
+   ============================================= */
+
+/* .intro-listas: contenedor de todas las tarjetas de explicación.
+   display:grid divide el espacio en columnas que se ajustan solas según el ancho */
+.intro-listas {
+    display: grid;
+    /* auto-fill: crea tantas columnas como quepan; minmax: cada columna mide entre 260px y la mitad */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;       /* espacio entre tarjetas */
+    margin: 24px 0;  /* separación vertical respecto al contenido anterior y siguiente */
+}
+
+/* .intro-card: tarjeta base para cada bloque de explicación */
+.intro-card {
+    background-color: white;   /* fondo blanco para que resalte sobre el gris de la página */
+    border-radius: 10px;       /* esquinas redondeadas para un look amigable */
+    padding: 20px;             /* espacio interior generoso para que no se vea apretado */
+    border-left: 5px solid #ccc; /* borde lateral de color; se sobreescribe por variante */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* sombra suave para dar sensación de tarjeta */
+}
+
+/* Variante de color para la tarjeta general (introducción) */
+.intro-card--general   { border-left-color: #888; }
+
+/* Variante de color para la tarjeta de listas ordenadas: azul */
+.intro-card--ordenada  { border-left-color: #4a90d9; }
+
+/* Variante de color para la tarjeta de listas no ordenadas: verde */
+.intro-card--desordenada { border-left-color: #5cb85c; }
+
+/* Variante de color para la tarjeta de comparación: dorado del sitio */
+.intro-card--comparacion { border-left-color: #ffcc00; }
+
+/* .intro-icono: emoji grande que actúa como ícono decorativo de cada tarjeta */
+.intro-icono {
+    font-size: 2em;   /* más grande que el texto normal para que llame la atención */
+    display: block;   /* lo pone en su propia línea, encima del título */
+    margin-bottom: 6px; /* pequeño espacio entre el emoji y el h2 */
+}
+
+/* Título dentro de cada tarjeta: más pequeño que h2 normal pero igual de visible */
+.intro-card h2 {
+    font-size: 1.1em;  /* tamaño ligeramente más grande que el texto normal */
+    margin: 0 0 8px 0; /* solo margen abajo para pegarlo al texto que sigue */
+}
+
+/* Pequeño código inline dentro de las tarjetas; fondo amarillo suave para resaltarlo */
+.intro-card code {
+    background-color: #fff8d6; /* amarillo muy claro, sutilmente diferente del fondo blanco */
+    padding: 1px 4px;          /* espacio interior mínimo para que no se vea apretado */
+    border-radius: 3px;        /* bordes ligeramente redondeados */
+    font-size: 0.9em;          /* un poco más pequeño para distinguirlo del texto corrido */
+}
+
+/* Título que precede al ejemplo real dentro de la tarjeta */
+.intro-ejemplo-titulo {
+    font-weight: bold; /* negrita para que destaque como subtítulo informal */
+    margin-bottom: 2px; /* muy poco espacio antes de la lista que sigue */
+}
+
+/* Nota al pie de la tarjeta: texto secundario, menos prominente */
+.intro-nota {
+    font-size: 0.85em; /* más pequeño que el texto principal */
+    color: #666;       /* gris medio para que sea un detalle y no compita con el contenido */
+    margin-top: 10px;  /* separa la nota del contenido anterior */
+}
+
+/* Tabla de comparación dentro de la tarjeta de resumen rápido */
+.intro-tabla-comparacion {
+    width: 100%;               /* ocupa todo el ancho de la tarjeta */
+    border-collapse: collapse; /* une los bordes de celdas adyacentes */
+    margin-top: 10px;          /* separa la tabla del párrafo anterior */
+    font-size: 0.9em;          /* texto ligeramente más pequeño para caber bien en la tarjeta */
+}
+
+/* Celdas de la tabla de comparación */
+.intro-tabla-comparacion th,
+.intro-tabla-comparacion td {
+    border: 1px solid #ddd; /* borde suave, menos intenso que la tabla principal del sitio */
+    padding: 6px 10px;      /* espacio interior compacto para que no desborde la tarjeta */
+    text-align: left;       /* alineación izquierda, más fácil de leer */
+}
+
+/* Encabezado de la tabla de comparación: fondo dorado del sitio */
+.intro-tabla-comparacion th {
+    background-color: #ffcc00; /* color de acento del sitio, diferente al gris oscuro del resto */
+    color: #222;               /* texto oscuro para buen contraste sobre el amarillo */
+}
+
+/* =============================================
+   ESTILOS DE PÁGINA DE CONFIRMACIÓN (logica.php)
+   Presentan de forma ordenada los datos que el
+   usuario acaba de enviar.
+   ============================================= */
+
 /* .confirmacion: caja centrada que muestra el resumen del formulario enviado */
 .confirmacion {
     max-width: 480px;             /* ancho máximo coherente con el del formulario */

@@ -19,31 +19,131 @@
 <!-- body: todo lo que el usuario ve en pantalla -->
 <body>
 
-    <!-- header vacío: reservado para poner contenido en el futuro si se necesita -->
-    <header></header>
+    <!-- header: zona superior con el menú de navegación.
+         El nav se coloca dentro del header para ser consistente con el resto del sitio -->
+    <header>
+        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
+        <nav>
+            <!-- ul: lista sin numerar que contiene los enlaces del menú -->
+            <ul>
+                <!-- Cada li es un ítem del menú. El <a href="..."> lleva a otra página al hacer clic -->
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <li><a href="tablas.html">Tablas</a></li>
+                <li><a href="formulario.php">Formulario</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- h1: título principal de la página -->
+    <!-- h1: título principal de la página, fuera del nav para que sea el encabezado del contenido -->
     <h1>Listas</h1>
-
-    <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
-    <nav>
-        <!-- ul: lista sin numerar que contiene los enlaces del menú -->
-        <ul>
-            <!-- Cada li es un ítem del menú. El <a href="..."> lleva a otra página al hacer clic -->
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="listas.html">Listas</a></li>
-            <li><a href="peliculas.html">Películas</a></li>
-            <li><a href="series.html">Series</a></li>
-            <li><a href="sobre_mi.html">Sobre mí</a></li>
-            <li><a href="tablas.html">Tablas</a></li>
-            <li><a href="formulario.php">Formulario</a></li>
-        </ul>
-    </nav>
 
     <!-- main: área con el contenido principal de esta página -->
     <main>
 
-        <!-- ===== SECCIÓN DE LISTAS ORDENADAS ===== -->
+        <!-- ===== SECCIÓN INTRODUCTORIA ===== -->
+        <!-- Esta sección explica de forma amigable qué son las listas HTML
+             antes de mostrar los ejemplos técnicos -->
+        <section class="intro-listas">
+
+            <!-- Tarjeta de introducción general -->
+            <div class="intro-card intro-card--general">
+                <!-- Emoji decorativo para hacer la explicación más visual y amigable -->
+                <span class="intro-icono">📋</span>
+                <h2>¿Qué es una lista en HTML?</h2>
+                <!-- Explicación casual sin tecnicismos; usa una analogía del día a día -->
+                <p>
+                    Imagina que vas al supermercado sin una lista... acabas comprando helado
+                    y olvidando la leche. Las listas existen para <strong>agrupar cosas relacionadas</strong>
+                    en orden. HTML tiene dos tipos principales: las que <em>sí importa el orden</em>
+                    y las que <em>no importa el orden</em>.
+                </p>
+            </div>
+
+            <!-- Tarjeta de listas ORDENADAS (ol) -->
+            <div class="intro-card intro-card--ordenada">
+                <span class="intro-icono">🔢</span>
+                <h2>Lista Ordenada <code>&lt;ol&gt;</code></h2>
+                <!-- Se usa cuando el orden de los pasos sí importa -->
+                <p>
+                    Úsala cuando el <strong>orden importa</strong>, como una receta o instrucciones paso a paso.
+                    El navegador pone los números (o letras, o romanos) solo.
+                </p>
+                <!-- Ejemplo concreto y cotidiano para que sea fácil de recordar -->
+                <p class="intro-ejemplo-titulo">Ejemplo real:</p>
+                <ol>
+                    <li>Prender la computadora</li>
+                    <li>Abrir el editor de código</li>
+                    <li>Escribir HTML</li>
+                    <li>Ver el resultado en el navegador</li>
+                </ol>
+                <!-- Nota técnica breve sobre el atributo type -->
+                <p class="intro-nota">
+                    Tip: el atributo <code>type="A"</code> cambia los números por letras,
+                    y <code>type="I"</code> los cambia por romanos.
+                </p>
+            </div>
+
+            <!-- Tarjeta de listas NO ORDENADAS (ul) -->
+            <div class="intro-card intro-card--desordenada">
+                <span class="intro-icono">🔵</span>
+                <h2>Lista No Ordenada <code>&lt;ul&gt;</code></h2>
+                <!-- Se usa cuando los ítems son equivalentes entre sí -->
+                <p>
+                    Úsala cuando el <strong>orden no importa</strong>, como una lista de ingredientes
+                    o las páginas de un menú de navegación. En vez de números usa viñetas (●, ○, ■).
+                </p>
+                <p class="intro-ejemplo-titulo">Ejemplo real:</p>
+                <!-- Las viñetas indican que todos los ítems tienen el mismo peso -->
+                <ul>
+                    <li>Arroz</li>
+                    <li>Frijoles</li>
+                    <li>Aguacate</li>
+                    <li>Tortillas</li>
+                </ul>
+                <!-- Nota técnica breve sobre list-style-type -->
+                <p class="intro-nota">
+                    Tip: con CSS puedes cambiar el estilo de la viñeta usando
+                    <code>list-style-type: circle</code> o <code>square</code>.
+                </p>
+            </div>
+
+            <!-- Tarjeta de comparación rápida para resumir visualmente la diferencia -->
+            <div class="intro-card intro-card--comparacion">
+                <span class="intro-icono">⚡</span>
+                <h2>Resumen rápido</h2>
+                <!-- Tabla simple de dos columnas para comparar ambos tipos -->
+                <table class="intro-tabla-comparacion">
+                    <thead>
+                        <tr>
+                            <th>¿Cuándo usarla?</th>
+                            <th>Etiqueta</th>
+                            <th>Viñeta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- tr: fila para las listas ordenadas -->
+                        <tr>
+                            <td>El orden SÍ importa (pasos, ranking)</td>
+                            <td><code>&lt;ol&gt;</code></td>
+                            <td>1, 2, 3… / A, B… / I, II…</td>
+                        </tr>
+                        <!-- tr: fila para las listas no ordenadas -->
+                        <tr>
+                            <td>El orden NO importa (colección, menú)</td>
+                            <td><code>&lt;ul&gt;</code></td>
+                            <td>● / ○ / ■</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- ===== SECCIÓN DE LISTAS ORDENADAS (ejemplos técnicos) ===== -->
         <!-- section: agrupa el bloque de listas ordenadas -->
         <section>
 
@@ -101,7 +201,7 @@
 
         </section>
 
-        <!-- ===== SECCIÓN DE LISTAS NO ORDENADAS ===== -->
+        <!-- ===== SECCIÓN DE LISTAS NO ORDENADAS (ejemplos técnicos) ===== -->
         <section>
 
             <div>
@@ -157,8 +257,10 @@
 
     </main>
 
-    <!-- footer: pie de página vacío, reservado para uso futuro -->
-    <footer></footer>
+    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+    <footer>
+        Derechos Reservados Producciones h777
+    </footer>
 
 </body>
 </html>
