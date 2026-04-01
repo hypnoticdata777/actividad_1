@@ -74,6 +74,158 @@ ul {
     margin-left: 20px; /* empuja las listas 20px hacia la derecha para que se vean bien indentadas */
 }
 
+/* =============================================
+   ESTILOS DE FORMULARIO
+   Hacen que el formulario sea más fácil de leer
+   y de usar, alineando etiquetas e inputs en
+   columna y dándoles un aspecto limpio.
+   ============================================= */
+
+/* form: centra el formulario y limita su ancho para que no quede muy estirado en pantallas grandes */
+form {
+    display: flex;          /* activa flexbox para acomodar los hijos en columna */
+    flex-direction: column; /* apila etiquetas e inputs verticalmente */
+    max-width: 480px;       /* ancho máximo para mantener el formulario legible */
+    margin: 20px auto;      /* centra el formulario horizontalmente en la página */
+    gap: 8px;               /* espacio entre cada etiqueta y su campo */
+}
+
+/* label: etiqueta de cada campo; negrita para distinguirla visualmente del valor */
+form label {
+    font-weight: bold; /* resalta la etiqueta para que el usuario sepa qué campo está llenando */
+    margin-top: 8px;   /* pequeño espacio arriba de cada etiqueta para separar grupos */
+}
+
+/* input, textarea, select: estilo unificado para todos los campos del formulario */
+form input,
+form textarea,
+form select {
+    padding: 8px 10px;                /* espacio interior para que el texto no quede pegado al borde */
+    border: 1px solid #ccc;           /* borde gris suave, visible pero no agresivo */
+    border-radius: 4px;               /* bordes ligeramente redondeados, look moderno */
+    font-size: 1em;                   /* mismo tamaño de fuente que el resto de la página */
+    transition: border-color 0.2s;    /* animación suave al enfocar el campo (focus) */
+}
+
+/* :focus: resalta con color el campo que el usuario está completando en este momento */
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;                 /* quita el borde azul/naranja del navegador por defecto */
+    border-color: #ffcc00;         /* aplica el color dorado del sitio para mantener coherencia visual */
+    box-shadow: 0 0 4px rgba(255, 204, 0, 0.5); /* sombra sutil que refuerza el foco */
+}
+
+/* textarea: altura mínima para que haya espacio suficiente para escribir mensajes */
+form textarea {
+    min-height: 100px; /* evita que el área de texto sea demasiado pequeña para escribir */
+    resize: vertical;  /* permite al usuario agrandar el textarea solo verticalmente */
+}
+
+/* button[type="submit"]: botón de envío con el color de acento del sitio */
+form button[type="submit"] {
+    margin-top: 12px;              /* separa el botón del último campo del formulario */
+    padding: 10px;                 /* espacio interior para que el botón sea fácil de tocar/clicar */
+    background-color: #ffcc00;     /* color dorado del sitio para que el botón destaque */
+    color: #222;                   /* texto oscuro sobre fondo claro, buena legibilidad */
+    border: none;                  /* quita el borde por defecto del navegador */
+    border-radius: 4px;            /* bordes redondeados, coherente con los demás inputs */
+    font-weight: bold;             /* texto en negrita para que destaque como acción principal */
+    font-size: 1em;                /* mismo tamaño de fuente que el resto */
+    cursor: pointer;               /* cursor de manita para indicar que es clickeable */
+    transition: background-color 0.2s; /* cambio de color suave al pasar el mouse */
+}
+
+/* Oscurece ligeramente el botón al pasar el mouse para dar feedback visual de interacción */
+form button[type="submit"]:hover {
+    background-color: #e6b800; /* versión más oscura del dorado al hacer hover */
+}
+
+/* =============================================
+   ESTILOS DE TABLA
+   Dan formato a las tablas HTML del sitio para
+   que sean fáciles de leer (bordes, padding,
+   alternancia de colores de fila).
+   ============================================= */
+
+/* table: quita el espacio doble entre celdas y le da un ancho razonable */
+table {
+    border-collapse: collapse; /* unifica los bordes de celdas adyacentes en uno solo */
+    width: 100%;               /* la tabla ocupa todo el ancho disponible */
+    max-width: 600px;          /* evita que quede muy ancha en pantallas grandes */
+    margin: 20px 0;            /* espacio arriba y abajo para separar la tabla del resto del contenido */
+}
+
+/* th, td: estilo de las celdas de encabezado y de datos */
+table th,
+table td {
+    border: 1px solid #ccc; /* borde gris suave que separa cada celda claramente */
+    padding: 10px 14px;     /* espacio interior para que el texto no quede apretado */
+    text-align: left;       /* alinea el texto a la izquierda, más fácil de leer en tablas */
+}
+
+/* th: encabezados de columna con fondo oscuro para distinguirlos de los datos */
+table th {
+    background-color: #222; /* fondo oscuro, coherente con el nav y el footer */
+    color: white;           /* texto blanco para contraste sobre el fondo oscuro */
+}
+
+/* Fila alternada (zebra striping): facilita seguir cada fila con la vista */
+table tr:nth-child(even) {
+    background-color: #f0f0f0; /* gris muy claro en filas pares para diferenciarlas visualmente */
+}
+
+/* =============================================
+   ESTILOS DE PÁGINA DE CONFIRMACIÓN (logica.php)
+   Presentan de forma ordenada los datos que el
+   usuario acaba de enviar.
+   ============================================= */
+
+/* .confirmacion: caja centrada que muestra el resumen del formulario enviado */
+.confirmacion {
+    max-width: 480px;             /* ancho máximo coherente con el del formulario */
+    margin: 30px auto;            /* centra la caja en la página */
+    background-color: white;      /* fondo blanco para que resalte sobre el gris de la página */
+    border: 1px solid #ccc;       /* borde sutil que delimita la caja */
+    border-radius: 6px;           /* esquinas redondeadas para un aspecto moderno */
+    padding: 24px;                /* espacio interior generoso para que no se vea apretado */
+}
+
+/* dl, dt, dd: lista de definiciones usada para mostrar pares campo-valor */
+.confirmacion dl {
+    margin: 16px 0;   /* espacio arriba y abajo de la lista de datos */
+}
+
+/* dt: nombre del campo (ej. "Nombre", "Email"); aparece en negrita */
+.confirmacion dt {
+    font-weight: bold; /* distingue la etiqueta del valor */
+    margin-top: 12px;  /* separa cada par del anterior */
+    color: #555;       /* gris medio para que la etiqueta sea menos prominente que el valor */
+}
+
+/* dd: valor del campo enviado; sin margen extra para que quede pegado a su etiqueta */
+.confirmacion dd {
+    margin: 2px 0 0 0; /* margen mínimo para que el valor quede justo debajo de su etiqueta */
+}
+
+/* .btn-volver: enlace con apariencia de botón para volver al formulario */
+.btn-volver {
+    display: inline-block;       /* permite aplicar padding como si fuera un botón */
+    margin-top: 20px;            /* separa el botón de los datos */
+    padding: 8px 16px;           /* espacio interior para que sea fácil de clicar */
+    background-color: #222;      /* fondo oscuro, coherente con el nav */
+    color: #ffcc00;              /* texto dorado, color de acento del sitio */
+    text-decoration: none;       /* quita el subrayado del enlace */
+    border-radius: 4px;          /* bordes redondeados */
+    font-weight: bold;           /* texto en negrita */
+    transition: background-color 0.2s; /* transición suave al hacer hover */
+}
+
+/* Aclara el fondo del botón al pasar el mouse para dar feedback visual */
+.btn-volver:hover {
+    background-color: #444; /* versión más clara del oscuro al hacer hover */
+}
+
 /* AJUSTE: footer — le damos el mismo fondo oscuro y texto blanco que el nav para lograr
    simetría visual entre el encabezado y el pie de página. Este patrón se llama
    "header-footer matching" y es una práctica común de diseño web.

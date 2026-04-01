@@ -1,8 +1,8 @@
 <!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>
 
-<!-- Etiqueta raíz de la página -->
-<html lang="en">
+<!-- lang="es": corregido de "en" a "es" porque el contenido está en español -->
+<html lang="es">
 
 <!-- head: configuración de la página, no visible para el usuario -->
 <head>
@@ -13,38 +13,42 @@
     <!-- Conecta con el CSS compartido que da estilo a todo el sitio -->
     <link rel="stylesheet" href="assets/style/style.css">
     <!-- Título que aparece en la pestaña del navegador -->
-    <title>Sobre mi</title>
+    <title>Sobre mí</title>
 </head>
 
 <!-- body: todo el contenido visible de la página -->
 <body>
 
-    <!-- header vacío: zona superior reservada para uso futuro -->
-    <header></header>
+    <!-- header: zona superior con el menú de navegación.
+         El nav se coloca dentro del header para seguir la misma estructura
+         que el resto de las páginas del sitio (coherencia estructural) -->
+    <header>
+        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
+        <nav>
+            <!-- ul: lista sin orden para los ítems del menú -->
+            <ul>
+                <!-- Cada li tiene un enlace <a> que lleva a otra página al hacer clic -->
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="listas.html">Listas</a></li>
+                <li><a href="peliculas.html">Películas</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <li><a href="tablas.html">Tablas</a></li>
+                <li><a href="formulario.php">Formulario</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- h1: título principal de esta página -->
-    <h1>Sobre mi</h1>
+    <!-- h1: título principal de esta página, fuera del nav para que sea el encabezado del contenido -->
+    <h1>Sobre mí</h1>
 
-    <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
-    <nav>
-        <!-- ul: lista sin orden para los ítems del menú -->
-        <ul>
-            <!-- Cada li tiene un enlace <a> que lleva a otra página al hacer clic -->
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="listas.html">Listas</a></li>
-            <li><a href="peliculas.html">Películas</a></li>
-            <li><a href="series.html">Series</a></li>
-            <li><a href="sobre_mi.html">Sobre mí</a></li>
-            <li><a href="tablas.html">Tablas</a></li>
-            <li><a href="formulario.php">Formulario</a></li>
-        </ul>
-    </nav>
-
-    <!-- main vacío: aquí irá la información personal (bio, foto, datos) en el futuro -->
+    <!-- main: aquí irá la información personal (bio, foto, datos) en el futuro -->
     <main></main>
 
-    <!-- footer vacío: pie de página reservado para uso futuro -->
-    <footer></footer>
+    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+    <footer>
+        Derechos Reservados Producciones h777
+    </footer>
 
 </body>
 </html>
