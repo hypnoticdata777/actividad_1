@@ -4,29 +4,54 @@
 <!-- Etiqueta raíz de la página. lang="es" indica que el contenido está en español -->
 <html lang="es">
 
-<!-- head: configuración de la página, no se muestra visualmente -->
+<!-- ============================================================
+     HEAD: configuración técnica de la página.
+     Todo lo que va aquí es invisible para el usuario pero
+     necesario para que el navegador muestre bien la página.
+     ============================================================ -->
 <head>
-    <!-- UTF-8: permite escribir tildes y caracteres especiales sin problemas -->
+    <!-- UTF-8: le dice al navegador qué "alfabeto" usar.
+         Sin esto, las tildes (á, é, ñ) pueden verse como símbolos raros -->
     <meta charset="UTF-8">
-    <!-- viewport: ajusta la página para que se vea bien en celulares -->
+
+    <!-- viewport: sin esta línea, los celulares muestran la página muy
+         pequeña como si fuera un escritorio. Esta línea la adapta al ancho
+         real del dispositivo y empieza con zoom normal (initial-scale=1.0) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conecta con el archivo CSS que le da estilo visual a toda la página -->
+
+    <!-- link rel="stylesheet": conecta este HTML con el archivo CSS externo.
+         href indica la ruta del archivo. Sin esto la página no tendría colores
+         ni diseño: solo texto negro sobre blanco -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Título que aparece en la pestaña del navegador -->
+
+    <!-- title: texto que aparece en la pestaña del navegador y en los
+         resultados de búsqueda de Google -->
     <title>Listas</title>
 </head>
 
-<!-- body: todo lo que el usuario ve en pantalla -->
+<!-- ============================================================
+     BODY: todo lo que el usuario ve en pantalla va aquí dentro.
+     ============================================================ -->
 <body>
 
-    <!-- header: zona superior con el menú de navegación.
-         El nav se coloca dentro del header para ser consistente con el resto del sitio -->
+    <!-- HEADER: zona superior de la página.
+         Contiene el menú de navegación para moverse entre secciones.
+         Colocamos el <nav> dentro del <header> porque semánticamente
+         el menú pertenece a la cabecera del sitio -->
     <header>
-        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
+
+        <!-- NAV: elemento semántico de navegación.
+             Le dice a los lectores de pantalla (accesibilidad) y a los
+             motores de búsqueda que este bloque es un menú de navegación -->
         <nav>
-            <!-- ul: lista sin numerar que contiene los enlaces del menú -->
+
+            <!-- UL (unordered list): lista sin orden. El menú de navegación
+                 es una lista porque es un conjunto de ítems relacionados.
+                 list-style: none en el CSS quita las viñetas por defecto -->
             <ul>
-                <!-- Cada li es un ítem del menú. El <a href="..."> lleva a otra página al hacer clic -->
+                <!-- Cada LI (list item) es un enlace del menú.
+                     El <a href="ruta"> define el destino del enlace.
+                     Al hacer clic el navegador carga esa página -->
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
@@ -35,229 +60,318 @@
                 <li><a href="tablas.html">Tablas</a></li>
                 <li><a href="formulario.php">Formulario</a></li>
             </ul>
+
         </nav>
     </header>
 
-    <!-- h1: título principal de la página, fuera del nav para que sea el encabezado del contenido -->
-    <h1>Listas</h1>
+    <!-- H1: título principal de la página.
+         Debe haber solo UNO por página. Es el título más importante
+         para SEO (posicionamiento en buscadores) y accesibilidad -->
+    <h1>Listas en HTML</h1>
 
-    <!-- main: área con el contenido principal de esta página -->
+    <!-- MAIN: contenido principal y único de la página.
+         Solo debe haber un <main> por documento.
+         Los lectores de pantalla saltan directamente aquí -->
     <main>
 
-        <!-- ===== SECCIÓN INTRODUCTORIA ===== -->
-        <!-- Esta sección explica de forma amigable qué son las listas HTML
-             antes de mostrar los ejemplos técnicos -->
+        <!-- ============================================================
+             SECCIÓN INTRODUCTORIA
+             Una sola sección con tarjetas que explican qué son las listas,
+             sus tipos, sus variantes y un resumen comparativo.
+             Reemplaza las secciones técnicas anteriores unificando
+             explicación y ejemplos en un solo bloque visual.
+             ============================================================ -->
         <section class="intro-listas">
 
-            <!-- Tarjeta de introducción general -->
+            <!-- ── TARJETA 1: ¿Qué es una lista? ──────────────────────
+                 Introducción general con analogía del día a día.
+                 El objetivo es que el lector entienda el PARA QUÉ
+                 antes de ver el CÓMO. -->
             <div class="intro-card intro-card--general">
-                <!-- Emoji decorativo para hacer la explicación más visual y amigable -->
+
+                <!-- SPAN: elemento en línea (inline) usado aquí solo para
+                     mostrar el emoji como ícono decorativo de la tarjeta.
+                     display:block en CSS lo pone en su propia línea -->
                 <span class="intro-icono">📋</span>
+
+                <!-- H2: subtítulo de sección, un nivel debajo del H1 -->
                 <h2>¿Qué es una lista en HTML?</h2>
-                <!-- Explicación casual sin tecnicismos; usa una analogía del día a día -->
+
+                <!-- Analogía cotidiana para explicar el concepto sin tecnicismos -->
                 <p>
                     Imagina que vas al supermercado sin una lista... acabas comprando helado
-                    y olvidando la leche. Las listas existen para <strong>agrupar cosas relacionadas</strong>
-                    en orden. HTML tiene dos tipos principales: las que <em>sí importa el orden</em>
-                    y las que <em>no importa el orden</em>.
+                    y olvidando la leche. Las listas en HTML sirven para
+                    <strong>agrupar elementos relacionados</strong> de forma ordenada y clara.
                 </p>
-            </div>
 
-            <!-- Tarjeta de listas ORDENADAS (ol) -->
+                <!-- Explicación de los dos grandes tipos que existen -->
+                <p>
+                    HTML tiene <strong>dos tipos principales</strong> de lista:
+                </p>
+
+                <!-- UL: lista de los dos tipos. Como no importa el orden (ambos son iguales
+                     de importantes) usamos una lista NO ordenada -->
+                <ul>
+                    <!-- Cada LI describe uno de los tipos con su etiqueta HTML -->
+                    <li><strong>Ordenada <code>&lt;ol&gt;</code></strong> — cuando el orden SÍ importa</li>
+                    <li><strong>No ordenada <code>&lt;ul&gt;</code></strong> — cuando el orden NO importa</li>
+                </ul>
+
+                <!-- Nota extra sobre listas anidadas (listas dentro de listas) -->
+                <p class="intro-nota">
+                    Dato extra: las listas se pueden anidar, es decir, poner una lista
+                    dentro de otro <code>&lt;li&gt;</code> para crear submenús o subniveles.
+                </p>
+
+            </div><!-- fin tarjeta general -->
+
+
+            <!-- ── TARJETA 2: Lista Ordenada <ol> ─────────────────────
+                 Explica qué es, cuándo usarla y muestra los 3 tipos
+                 de numeración: números, letras y romanos. -->
             <div class="intro-card intro-card--ordenada">
+
                 <span class="intro-icono">🔢</span>
                 <h2>Lista Ordenada <code>&lt;ol&gt;</code></h2>
-                <!-- Se usa cuando el orden de los pasos sí importa -->
+
+                <!-- Cuándo usar OL: casos de uso reales -->
                 <p>
-                    Úsala cuando el <strong>orden importa</strong>, como una receta o instrucciones paso a paso.
-                    El navegador pone los números (o letras, o romanos) solo.
+                    Usa <code>&lt;ol&gt;</code> cuando el <strong>orden importa</strong>:
+                    instrucciones paso a paso, rankings, recetas. El navegador pone
+                    la numeración automáticamente, tú solo pones los <code>&lt;li&gt;</code>.
                 </p>
-                <!-- Ejemplo concreto y cotidiano para que sea fácil de recordar -->
-                <p class="intro-ejemplo-titulo">Ejemplo real:</p>
+
+                <!-- Ejemplo cotidiano para que sea memorable -->
+                <p class="intro-ejemplo-titulo">Ejemplo real — pasos para programar:</p>
+
+                <!-- OL sin atributo type: usa números por defecto (1, 2, 3...) -->
                 <ol>
+                    <!-- LI: cada paso de la lista. El número lo pone el navegador solo -->
                     <li>Prender la computadora</li>
                     <li>Abrir el editor de código</li>
                     <li>Escribir HTML</li>
                     <li>Ver el resultado en el navegador</li>
                 </ol>
-                <!-- Nota técnica breve sobre el atributo type -->
-                <p class="intro-nota">
-                    Tip: el atributo <code>type="A"</code> cambia los números por letras,
-                    y <code>type="I"</code> los cambia por romanos.
-                </p>
-            </div>
 
-            <!-- Tarjeta de listas NO ORDENADAS (ul) -->
+                <!-- Separador visual antes de mostrar las variantes de numeración -->
+                <hr class="intro-separador">
+
+                <!-- ── VARIANTE 1: Numeración con números (por defecto) -->
+                <h3>Con números <span class="intro-badge">type por defecto</span></h3>
+                <p>
+                    Si no escribes ningún atributo <code>type</code>, la lista usa
+                    números automáticamente: 1, 2, 3…
+                    Es el tipo más común para instrucciones o pasos.
+                </p>
+
+                <!-- OL sin type: la numeración por defecto es 1, 2, 3... -->
+                <ol>
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ol>
+
+                <!-- ── VARIANTE 2: Numeración con letras mayúsculas -->
+                <h3>Con letras <span class="intro-badge">type="A"</span></h3>
+                <p>
+                    El atributo <code>type="A"</code> cambia los números por letras
+                    mayúsculas: A, B, C… Útil para exámenes, opciones de respuesta
+                    o secciones de un documento formal.
+                </p>
+
+                <!-- type="A": cada LI se numera con una letra del alfabeto en mayúscula -->
+                <ol type="A">
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ol>
+
+                <!-- ── VARIANTE 3: Numeración con números romanos -->
+                <h3>Con romanos <span class="intro-badge">type="I"</span></h3>
+                <p>
+                    El atributo <code>type="I"</code> usa numeración romana en mayúscula:
+                    I, II, III… Se ve elegante en índices, capítulos o documentos
+                    con estilo clásico.
+                </p>
+
+                <!-- type="I": numera con romanos en mayúscula (I, II, III, IV...) -->
+                <ol type="I">
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ol>
+
+                <!-- Resumen de todos los valores posibles del atributo type -->
+                <p class="intro-nota">
+                    Otros valores de <code>type</code>: <code>"a"</code> (letras minúsculas),
+                    <code>"i"</code> (romanos en minúscula). También existe el atributo
+                    <code>start="5"</code> para empezar la numeración desde otro número.
+                </p>
+
+            </div><!-- fin tarjeta ol -->
+
+
+            <!-- ── TARJETA 3: Lista No Ordenada <ul> ──────────────────
+                 Explica qué es, cuándo usarla y muestra los 3 tipos
+                 de viñeta: disc, circle y square. -->
             <div class="intro-card intro-card--desordenada">
+
                 <span class="intro-icono">🔵</span>
                 <h2>Lista No Ordenada <code>&lt;ul&gt;</code></h2>
-                <!-- Se usa cuando los ítems son equivalentes entre sí -->
+
+                <!-- Cuándo usar UL: casos de uso reales -->
                 <p>
-                    Úsala cuando el <strong>orden no importa</strong>, como una lista de ingredientes
-                    o las páginas de un menú de navegación. En vez de números usa viñetas (●, ○, ■).
+                    Usa <code>&lt;ul&gt;</code> cuando el <strong>orden no importa</strong>:
+                    listas de ingredientes, características de un producto, menús de
+                    navegación. En vez de números usa viñetas (●, ○, ■).
                 </p>
-                <p class="intro-ejemplo-titulo">Ejemplo real:</p>
-                <!-- Las viñetas indican que todos los ítems tienen el mismo peso -->
+
+                <!-- Ejemplo cotidiano: lista de compras sin orden específico -->
+                <p class="intro-ejemplo-titulo">Ejemplo real — lista del súper:</p>
+
+                <!-- UL básico: las viñetas son disc por defecto -->
                 <ul>
+                    <!-- LI: cada ítem de la lista. El orden no importa aquí -->
                     <li>Arroz</li>
                     <li>Frijoles</li>
                     <li>Aguacate</li>
                     <li>Tortillas</li>
                 </ul>
-                <!-- Nota técnica breve sobre list-style-type -->
-                <p class="intro-nota">
-                    Tip: con CSS puedes cambiar el estilo de la viñeta usando
-                    <code>list-style-type: circle</code> o <code>square</code>.
-                </p>
-            </div>
 
-            <!-- Tarjeta de comparación rápida para resumir visualmente la diferencia -->
+                <hr class="intro-separador">
+
+                <!-- ── VARIANTE 1: Viñeta disc (rellena, por defecto) -->
+                <h3>Con disc <span class="intro-badge">por defecto</span></h3>
+                <p>
+                    <code>list-style-type: disc</code> muestra un círculo relleno ●.
+                    Es el valor por defecto si no escribes nada. Se aplica con CSS
+                    o con el atributo HTML <code>style</code> directo en la etiqueta.
+                </p>
+
+                <!-- style="list-style-type: disc" aplica la viñeta directo en HTML.
+                     En proyectos reales se prefiere hacerlo desde el CSS externo -->
+                <ul style="list-style-type: disc;">
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ul>
+
+                <!-- ── VARIANTE 2: Viñeta circle (círculo vacío) -->
+                <h3>Con circle <span class="intro-badge">list-style-type: circle</span></h3>
+                <p>
+                    <code>list-style-type: circle</code> muestra un círculo vacío ○.
+                    Se usa mucho en sublistas (listas anidadas dentro de otra lista)
+                    para distinguir el nivel de profundidad visualmente.
+                </p>
+
+                <!-- circle: círculo sin relleno; útil para diferenciar subítems -->
+                <ul style="list-style-type: circle;">
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ul>
+
+                <!-- ── VARIANTE 3: Viñeta square (cuadrado) -->
+                <h3>Con square <span class="intro-badge">list-style-type: square</span></h3>
+                <p>
+                    <code>list-style-type: square</code> muestra un cuadrado ■.
+                    Da un aspecto más moderno y menos redondeado. Ideal para listas
+                    en diseños con estética geométrica o minimalista.
+                </p>
+
+                <!-- square: cuadrito como viñeta en lugar de círculo -->
+                <ul style="list-style-type: square;">
+                    <li>Primer elemento</li>
+                    <li>Segundo elemento</li>
+                    <li>Tercer elemento</li>
+                </ul>
+
+                <p class="intro-nota">
+                    Con CSS moderno también puedes usar emojis o imágenes como viñeta
+                    con la propiedad <code>list-style-image</code>, o quitarlas por
+                    completo con <code>list-style: none</code> (como en el menú de
+                    navegación de este mismo sitio).
+                </p>
+
+            </div><!-- fin tarjeta ul -->
+
+
+            <!-- ── TARJETA 4: Resumen comparativo ─────────────────────
+                 Tabla de una sola vista que permite comparar los dos
+                 tipos de lista y todos sus subtipos de un vistazo. -->
             <div class="intro-card intro-card--comparacion">
+
                 <span class="intro-icono">⚡</span>
                 <h2>Resumen rápido</h2>
-                <!-- Tabla simple de dos columnas para comparar ambos tipos -->
+
+                <p>Todo lo que necesitas recordar sobre listas HTML en una sola tabla:</p>
+
+                <!-- TABLE: usamos una tabla porque estamos comparando datos en columnas.
+                     border-collapse en CSS une los bordes de celdas adyacentes en uno solo -->
                 <table class="intro-tabla-comparacion">
+
+                    <!-- THEAD: agrupa la fila de encabezados de la tabla.
+                         Los navegadores y lectores de pantalla la tratan diferente al cuerpo -->
                     <thead>
+                        <!-- TR: fila de la tabla (table row) -->
                         <tr>
-                            <th>¿Cuándo usarla?</th>
+                            <!-- TH: celda de encabezado (table header). En negrita por defecto -->
                             <th>Etiqueta</th>
+                            <th>¿Cuándo usarla?</th>
+                            <th>Variantes</th>
                             <th>Viñeta</th>
                         </tr>
                     </thead>
+
+                    <!-- TBODY: agrupa las filas de datos de la tabla -->
                     <tbody>
-                        <!-- tr: fila para las listas ordenadas -->
+
+                        <!-- Fila para <ol>: lista ordenada con sus 3 variantes -->
                         <tr>
-                            <td>El orden SÍ importa (pasos, ranking)</td>
+                            <!-- TD: celda de dato normal (table data) -->
                             <td><code>&lt;ol&gt;</code></td>
+                            <td>El orden SÍ importa</td>
+                            <!-- Las 3 variantes de numeración de ol en una sola celda -->
+                            <td>
+                                <code>type</code> sin definir → números<br>
+                                <code>type="A"</code> → letras<br>
+                                <code>type="I"</code> → romanos
+                            </td>
                             <td>1, 2, 3… / A, B… / I, II…</td>
                         </tr>
-                        <!-- tr: fila para las listas no ordenadas -->
+
+                        <!-- Fila para <ul>: lista no ordenada con sus 3 variantes -->
                         <tr>
-                            <td>El orden NO importa (colección, menú)</td>
                             <td><code>&lt;ul&gt;</code></td>
+                            <td>El orden NO importa</td>
+                            <!-- Las 3 variantes de viñeta de ul en una sola celda -->
+                            <td>
+                                <code>disc</code> → círculo relleno<br>
+                                <code>circle</code> → círculo vacío<br>
+                                <code>square</code> → cuadrado
+                            </td>
                             <td>● / ○ / ■</td>
                         </tr>
+
                     </tbody>
                 </table>
-            </div>
 
-        </section>
+                <!-- LI que se usa en ambos tipos: aclaración importante -->
+                <p class="intro-nota">
+                    Ambos tipos usan <code>&lt;li&gt;</code> (list item) para cada ítem.
+                    La diferencia está solo en la etiqueta contenedora: <code>&lt;ol&gt;</code>
+                    o <code>&lt;ul&gt;</code>.
+                </p>
 
-        <!-- ===== SECCIÓN DE LISTAS ORDENADAS (ejemplos técnicos) ===== -->
-        <!-- section: agrupa el bloque de listas ordenadas -->
-        <section>
+            </div><!-- fin tarjeta resumen -->
 
-            <!-- div: caja genérica para agrupar elementos relacionados -->
-            <div>
-                <!-- h2: subtítulo de sección -->
-                <h2>Listas Ordenadas</h2>
-                <!-- p: texto explicativo -->
-                <p>Las listas ordenadas muestran los elementos con un orden.</p>
-
-                <h3>Tipos</h3>
-                <!-- ol: ordered list, lista con número/letra/romano automático -->
-                <ol>
-                    <li>Lista ordenada con números</li>
-                    <li>Lista ordenada con letras</li>
-                    <li>Lista ordenada con números romanos</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con números</h3>
-                <p>Las listas ordenadas con números muestran los elementos en orden numérico.</p>
-                <h4>Ejemplos:</h4>
-                <!-- ol sin atributo type usa números por defecto: 1, 2, 3... -->
-                <ol>
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con letras</h3>
-                <p>Las listas ordenadas con letras usan el alfabeto.</p>
-                <h4>Ejemplos:</h4>
-                <!-- type="A": cambia los números por letras mayúsculas A, B, C... -->
-                <ol type="A">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con números romanos</h3>
-                <p>Las listas ordenadas con números romanos usan numeración romana.</p>
-                <h4>Ejemplos:</h4>
-                <!-- type="I": cambia los números por romanos I, II, III... -->
-                <ol type="I">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
-        </section>
-
-        <!-- ===== SECCIÓN DE LISTAS NO ORDENADAS (ejemplos técnicos) ===== -->
-        <section>
-
-            <div>
-                <h2>Listas No Ordenadas</h2>
-                <p>Las listas no ordenadas muestran elementos con viñetas.</p>
-
-                <h3>Tipos</h3>
-                <!-- ul: unordered list, lista con viñetas (puntos, círculos, cuadros) -->
-                <ul>
-                    <li>Lista con disc</li>
-                    <li>Lista con circle</li>
-                    <li>Lista con square</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con disc</h3>
-                <p>Las listas no ordenadas con disc muestran viñetas rellenas.</p>
-                <h4>Ejemplos:</h4>
-                <!-- style="list-style-type: disc": viñeta circular rellena (por defecto) -->
-                <ul style="list-style-type: disc;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con circle</h3>
-                <p>Las listas no ordenadas con circle muestran viñetas circulares vacías.</p>
-                <h4>Ejemplos:</h4>
-                <!-- list-style-type: circle: círculo vacío sin relleno -->
-                <ul style="list-style-type: circle;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con square</h3>
-                <p>Las listas no ordenadas con square muestran viñetas cuadradas.</p>
-                <h4>Ejemplos:</h4>
-                <!-- list-style-type: square: cuadrito como viñeta -->
-                <ul style="list-style-type: square;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
-        </section>
+        </section><!-- fin .intro-listas -->
 
     </main>
 
-    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+    <!-- FOOTER: pie de página.
+         Tiene el mismo fondo oscuro que el nav para "enmarcar" el contenido
+         visualmente entre el encabezado y el pie -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
