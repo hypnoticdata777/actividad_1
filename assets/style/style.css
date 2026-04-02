@@ -42,26 +42,21 @@ nav a {
     color: white;          /* color de texto blanco */
     font-weight: bold;     /* texto en negrita */
 
-    /* AJUSTE: propiedad CSS "transition" — hace que el cambio de color al pasar el mouse
-       sea gradual (0.3s) en vez de instantáneo. Esto le da un acabado más profesional.
+    /* transition: hace que el cambio de color al pasar el mouse sea gradual (0.3s)
+       en vez de instantáneo, dando un acabado más profesional.
        Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/transition */
     transition: color 0.3s ease;
 }
 
-/* nav: el fondo oscuro de la barra de navegación */
+/* nav: el fondo oscuro de la barra de navegación con sombra hacia abajo */
 nav {
-    background-color: #222; /* color de fondo casi negro */
+    background-color: #222;                 /* color de fondo casi negro */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* sombra sutil hacia abajo para darle profundidad */
 }
 
 /* nav a:hover: cambia el color del enlace cuando el mouse pasa por encima */
 nav a:hover {
     color: #ffcc00; /* color amarillo al pasar el mouse, efecto visual de resaltado */
-}
-
-/* nav (segunda regla): agrega sombra debajo de la barra de navegación */
-nav {
-    background-color: #222;                  /* mismo fondo oscuro (repetido) */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);  /* sombra sutil hacia abajo para darle profundidad */
 }
 
 /* img: estilos para todas las imágenes del sitio */
@@ -72,6 +67,16 @@ img {
 /* ul: estilos para todas las listas sin orden del sitio */
 ul {
     margin-left: 20px; /* empuja las listas 20px hacia la derecha para que se vean bien indentadas */
+}
+
+/* footer: mismo fondo oscuro y texto blanco que el nav para lograr simetría visual
+   entre el encabezado y el pie de página (patrón "header-footer matching").
+   Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/text-align */
+footer {
+    background-color: #222;  /* mismo fondo oscuro que el nav para consistencia visual */
+    color: #aaa;             /* texto en gris claro, menos prominente que el nav */
+    text-align: center;      /* centra el texto del pie de página */
+    font-size: 0.85em;       /* tamaño de fuente un poco más pequeño que el texto normal */
 }
 
 /* =============================================
@@ -100,19 +105,19 @@ form label {
 form input,
 form textarea,
 form select {
-    padding: 8px 10px;                /* espacio interior para que el texto no quede pegado al borde */
-    border: 1px solid #ccc;           /* borde gris suave, visible pero no agresivo */
-    border-radius: 4px;               /* bordes ligeramente redondeados, look moderno */
-    font-size: 1em;                   /* mismo tamaño de fuente que el resto de la página */
-    transition: border-color 0.2s;    /* animación suave al enfocar el campo (focus) */
+    padding: 8px 10px;             /* espacio interior para que el texto no quede pegado al borde */
+    border: 1px solid #ccc;        /* borde gris suave, visible pero no agresivo */
+    border-radius: 4px;            /* bordes ligeramente redondeados, look moderno */
+    font-size: 1em;                /* mismo tamaño de fuente que el resto de la página */
+    transition: border-color 0.2s; /* animación suave al enfocar el campo (focus) */
 }
 
 /* :focus: resalta con color el campo que el usuario está completando en este momento */
 form input:focus,
 form textarea:focus,
 form select:focus {
-    outline: none;                 /* quita el borde azul/naranja del navegador por defecto */
-    border-color: #ffcc00;         /* aplica el color dorado del sitio para mantener coherencia visual */
+    outline: none;                           /* quita el borde azul/naranja del navegador por defecto */
+    border-color: #ffcc00;                   /* aplica el color dorado del sitio para mantener coherencia visual */
     box-shadow: 0 0 4px rgba(255, 204, 0, 0.5); /* sombra sutil que refuerza el foco */
 }
 
@@ -178,209 +183,22 @@ table tr:nth-child(even) {
 /* =============================================
    ESTILOS DE PÁGINA DE CONFIRMACIÓN (logica.php)
    Presentan de forma ordenada los datos que el
-   usuario acaba de enviar.
-   ============================================= */
-
-/* =============================================
-   ESTILOS DE INTRODUCCIÓN DE LISTAS (listas.html)
-   Las tarjetas .intro-card presentan la explicación
-   de cada tipo de lista de forma visual y amigable.
-   ============================================= */
-
-/* ─────────────────────────────────────────────
-   .intro-listas: contenedor principal de todas
-   las tarjetas explicativas de listas.html.
-
-   Usa CSS Grid para crear un layout de columnas
-   que se adaptan solas al ancho de la pantalla:
-   en pantallas grandes caben 2 columnas; en
-   celulares queda en 1 columna automáticamente.
-   ───────────────────────────────────────────── */
-.intro-listas {
-    display: grid;
-
-    /* auto-fill: crea tantas columnas como quepan en el ancho disponible.
-       minmax(320px, 1fr): cada columna mide mínimo 320px y crece para llenar el espacio.
-       Esto hace el layout responsive sin necesidad de media queries */
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-
-    gap: 28px;        /* espacio entre tarjetas, más generoso que antes para que respiren */
-    margin: 28px 0;   /* separación vertical respecto al h1 y al footer */
-    padding: 0 4px;   /* padding lateral mínimo para que en móvil no quede pegado al borde */
-}
-
-/* ─────────────────────────────────────────────
-   .intro-card: tarjeta base compartida por todas
-   las tarjetas de la sección introductoria.
-
-   Cada tarjeta es un bloque visual independiente
-   con fondo blanco, esquinas redondeadas, sombra
-   y un borde lateral de color (sobreescrito por
-   las variantes .intro-card--*).
-   ───────────────────────────────────────────── */
-.intro-card {
-    background-color: white;          /* fondo blanco para que resalte sobre el gris de la página */
-    border-radius: 12px;              /* esquinas más redondeadas que antes para look más amigable */
-    padding: 28px 32px;               /* espacio interior amplio para que el contenido respire */
-    border-left: 6px solid #ccc;      /* borde lateral grueso; el color se define en cada variante */
-    box-shadow: 0 3px 10px rgba(0,0,0,0.09); /* sombra un poco más pronunciada para dar profundidad */
-
-    /* transition: anima suavemente el efecto de elevación al pasar el mouse por encima */
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-/* Al pasar el mouse sobre una tarjeta se eleva ligeramente para dar feedback visual */
-.intro-card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.14); /* sombra más grande = efecto de "levantarse" */
-    transform: translateY(-3px);              /* sube 3px para reforzar la sensación de elevación */
-}
-
-/* ── Variantes de color del borde lateral ──────
-   Cada tarjeta tiene su propio color para
-   distinguirla visualmente de un vistazo. */
-
-/* Tarjeta de introducción general: gris neutro */
-.intro-card--general     { border-left-color: #888; }
-
-/* Tarjeta de lista ordenada <ol>: azul */
-.intro-card--ordenada    { border-left-color: #4a90d9; }
-
-/* Tarjeta de lista no ordenada <ul>: verde */
-.intro-card--desordenada { border-left-color: #5cb85c; }
-
-/* Tarjeta de resumen comparativo: dorado del sitio */
-.intro-card--comparacion { border-left-color: #ffcc00; }
-
-/* ─────────────────────────────────────────────
-   .intro-icono: emoji decorativo en la parte
-   superior de cada tarjeta. Actúa como ícono
-   visual que identifica el tema de la tarjeta.
-   ───────────────────────────────────────────── */
-.intro-icono {
-    font-size: 2.4em;    /* más grande que el texto para que llame la atención */
-    display: block;      /* lo pone en su propia línea, encima del título */
-    margin-bottom: 8px;  /* espacio entre el emoji y el h2 */
-}
-
-/* Título H2 dentro de cada tarjeta: más grande y con más espacio que antes */
-.intro-card h2 {
-    font-size: 1.25em;      /* título de tarjeta más grande para mayor jerarquía visual */
-    margin: 0 0 12px 0;     /* sin margen arriba; margen abajo para separar del primer párrafo */
-    color: #222;            /* texto casi negro para buen contraste sobre fondo blanco */
-}
-
-/* Subtítulos H3 dentro de una tarjeta: separan cada variante de lista */
-.intro-card h3 {
-    font-size: 1em;          /* mismo tamaño que el texto, pero diferenciado por negrita */
-    margin: 20px 0 6px 0;    /* margen arriba generoso para separar visualmente cada variante */
-    color: #444;             /* gris oscuro, un tono más suave que el h2 */
-    display: flex;           /* flex para alinear el título con el badge en la misma línea */
-    align-items: center;     /* centra verticalmente el texto y el badge */
-    gap: 8px;                /* espacio entre el texto del h3 y el badge */
-}
-
-/* ─────────────────────────────────────────────
-   .intro-badge: etiqueta pequeña que muestra el
-   atributo HTML junto al título de cada variante.
-   Ejemplo: "type='A'" al lado de "Con letras".
-   ───────────────────────────────────────────── */
-.intro-badge {
-    font-size: 0.75em;          /* más pequeño que el título para que sea un detalle secundario */
-    background-color: #f0f0f0;  /* fondo gris muy claro para distinguirlo del texto */
-    color: #555;                /* texto gris medio */
-    padding: 2px 8px;           /* espacio interior pequeño */
-    border-radius: 20px;        /* muy redondeado para que parezca una etiqueta/chip */
-    font-weight: normal;        /* sin negrita, para no competir con el título del h3 */
-}
-
-/* Código inline <code> dentro de las tarjetas:
-   fondo amarillo suave para resaltarlo del texto corrido */
-.intro-card code {
-    background-color: #fff8d6; /* amarillo muy claro, asociado al color dorado del sitio */
-    padding: 1px 5px;          /* espacio interior pequeño */
-    border-radius: 4px;        /* bordes redondeados */
-    font-size: 0.88em;         /* un poco más pequeño para distinguirlo del texto normal */
-}
-
-/* .intro-ejemplo-titulo: texto en negrita que precede a los ejemplos de código */
-.intro-ejemplo-titulo {
-    font-weight: bold;   /* negrita para que actúe como subtítulo informal */
-    margin-bottom: 4px;  /* muy poco espacio antes de la lista que sigue */
-    color: #444;         /* gris oscuro para que no compita con el contenido */
-}
-
-/* .intro-separador: línea horizontal entre la explicación general y las variantes.
-   Divide visualmente "qué es" de "cómo se usa en cada variante" */
-.intro-separador {
-    border: none;                     /* quita el estilo de borde por defecto del hr */
-    border-top: 1px dashed #ddd;      /* línea punteada gris suave, discreta */
-    margin: 20px 0;                   /* espacio arriba y abajo para que respire */
-}
-
-/* .intro-nota: texto secundario al final de cada tarjeta con datos extra o tips */
-.intro-nota {
-    font-size: 0.85em;       /* más pequeño que el texto principal */
-    color: #666;             /* gris medio para que sea un detalle y no compita */
-    margin-top: 16px;        /* separa la nota del contenido anterior */
-    padding: 10px 14px;      /* espacio interior para enmarcarlo como una nota aparte */
-    background-color: #fafafa; /* fondo gris casi blanco para distinguirlo del texto corrido */
-    border-radius: 6px;      /* bordes redondeados coherentes con el resto del diseño */
-    border-left: 3px solid #ddd; /* borde izquierdo sutil para identificarlo como nota */
-}
-
-/* ─────────────────────────────────────────────
-   .intro-tabla-comparacion: tabla de resumen
-   dentro de la tarjeta de comparación rápida.
-   Tiene su propio estilo para diferenciarse de
-   las tablas de datos del resto del sitio.
-   ───────────────────────────────────────────── */
-.intro-tabla-comparacion {
-    width: 100%;               /* ocupa todo el ancho de la tarjeta */
-    border-collapse: collapse; /* une los bordes de celdas adyacentes en uno solo */
-    margin-top: 12px;          /* separa la tabla del párrafo anterior */
-    font-size: 0.9em;          /* texto ligeramente más pequeño para caber bien en la tarjeta */
-}
-
-/* Celdas de la tabla de comparación: borde y padding compacto */
-.intro-tabla-comparacion th,
-.intro-tabla-comparacion td {
-    border: 1px solid #ddd;  /* borde gris claro, menos intenso que la tabla principal del sitio */
-    padding: 8px 12px;       /* espacio interior cómodo para leer */
-    text-align: left;        /* texto alineado a la izquierda, más fácil de escanear */
-    vertical-align: top;     /* alinea el contenido arriba por si una celda tiene varias líneas */
-}
-
-/* Encabezados de la tabla de comparación: fondo dorado del sitio */
-.intro-tabla-comparacion th {
-    background-color: #ffcc00; /* color de acento del sitio para diferenciarlos de los datos */
-    color: #222;               /* texto oscuro para buen contraste sobre el amarillo */
-    font-weight: bold;         /* negrita para que destaquen como etiquetas de columna */
-}
-
-/* Fila alterna de la tabla de comparación: mismo patrón zebra que la tabla general */
-.intro-tabla-comparacion tr:nth-child(even) td {
-    background-color: #f9f9f9; /* fondo ligeramente gris en filas pares para facilitar la lectura */
-}
-
-/* =============================================
-   ESTILOS DE PÁGINA DE CONFIRMACIÓN (logica.php)
-   Presentan de forma ordenada los datos que el
-   usuario acaba de enviar.
+   usuario acaba de enviar tras llenar el formulario.
    ============================================= */
 
 /* .confirmacion: caja centrada que muestra el resumen del formulario enviado */
 .confirmacion {
-    max-width: 480px;             /* ancho máximo coherente con el del formulario */
-    margin: 30px auto;            /* centra la caja en la página */
-    background-color: white;      /* fondo blanco para que resalte sobre el gris de la página */
-    border: 1px solid #ccc;       /* borde sutil que delimita la caja */
-    border-radius: 6px;           /* esquinas redondeadas para un aspecto moderno */
-    padding: 24px;                /* espacio interior generoso para que no se vea apretado */
+    max-width: 480px;        /* ancho máximo coherente con el del formulario */
+    margin: 30px auto;       /* centra la caja en la página */
+    background-color: white; /* fondo blanco para que resalte sobre el gris de la página */
+    border: 1px solid #ccc;  /* borde sutil que delimita la caja */
+    border-radius: 6px;      /* esquinas redondeadas para un aspecto moderno */
+    padding: 24px;           /* espacio interior generoso para que no se vea apretado */
 }
 
-/* dl, dt, dd: lista de definiciones usada para mostrar pares campo-valor */
+/* dl: lista de definiciones usada para mostrar pares etiqueta-valor */
 .confirmacion dl {
-    margin: 16px 0;   /* espacio arriba y abajo de la lista de datos */
+    margin: 16px 0; /* espacio arriba y abajo de la lista de datos */
 }
 
 /* dt: nombre del campo (ej. "Nombre", "Email"); aparece en negrita */
@@ -397,29 +215,18 @@ table tr:nth-child(even) {
 
 /* .btn-volver: enlace con apariencia de botón para volver al formulario */
 .btn-volver {
-    display: inline-block;       /* permite aplicar padding como si fuera un botón */
-    margin-top: 20px;            /* separa el botón de los datos */
-    padding: 8px 16px;           /* espacio interior para que sea fácil de clicar */
-    background-color: #222;      /* fondo oscuro, coherente con el nav */
-    color: #ffcc00;              /* texto dorado, color de acento del sitio */
-    text-decoration: none;       /* quita el subrayado del enlace */
-    border-radius: 4px;          /* bordes redondeados */
-    font-weight: bold;           /* texto en negrita */
+    display: inline-block;        /* permite aplicar padding como si fuera un botón */
+    margin-top: 20px;             /* separa el botón de los datos */
+    padding: 8px 16px;            /* espacio interior para que sea fácil de clicar */
+    background-color: #222;       /* fondo oscuro, coherente con el nav */
+    color: #ffcc00;               /* texto dorado, color de acento del sitio */
+    text-decoration: none;        /* quita el subrayado del enlace */
+    border-radius: 4px;           /* bordes redondeados */
+    font-weight: bold;            /* texto en negrita */
     transition: background-color 0.2s; /* transición suave al hacer hover */
 }
 
 /* Aclara el fondo del botón al pasar el mouse para dar feedback visual */
 .btn-volver:hover {
     background-color: #444; /* versión más clara del oscuro al hacer hover */
-}
-
-/* AJUSTE: footer — le damos el mismo fondo oscuro y texto blanco que el nav para lograr
-   simetría visual entre el encabezado y el pie de página. Este patrón se llama
-   "header-footer matching" y es una práctica común de diseño web.
-   Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/text-align */
-footer {
-    background-color: #222;  /* mismo fondo oscuro que el nav para consistencia visual */
-    color: #aaa;             /* texto en gris claro, menos prominente que el nav */
-    text-align: center;      /* centra el texto del pie de página */
-    font-size: 0.85em;       /* tamaño de fuente un poco más pequeño que el texto normal */
 }
