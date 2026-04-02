@@ -5,12 +5,26 @@
    HTML mediante la etiqueta <link>.
    ============================================= */
 
-/* .Datos: estilo para la sección con class="Datos" en index.html */
-.Datos {
+/* .datos: estilo para la sección con class="datos" en index.html */
+.datos {
     background-color: rgb(233, 188, 43); /* color de fondo amarillo dorado */
     padding: 10px;  /* espacio interior entre el contenido y el borde de la caja */
     margin: 10px;   /* espacio exterior entre esta caja y los elementos de alrededor */
     cursor: pointer; /* el cursor cambia a manita cuando el usuario pasa por encima */
+}
+.peliculas {
+    padding: 40px 60px; /* space inside the section */
+    margin-top: 20px;   /* space from elements above */
+    font-size: 18px;
+}
+.peliculas li {
+    margin-bottom: 20px; /* space between each movie */
+    line-height: 1.6;    /* makes text easier to read */
+}
+.peliculas li strong {
+    font-size: 20px;
+    display: block;     /* puts title on its own line */
+    margin-bottom: 5px; /* small gap before description */
 }
 
 /* body: estilos base para toda la página */
@@ -61,8 +75,9 @@ nav a:hover {
 
 /* img: estilos para todas las imágenes del sitio */
 img {
-    border-radius: 10px; /* redondea las esquinas de las imágenes con un radio de 8px */
+    border-radius: 15px; /* redondea las esquinas de las imágenes con un radio de 15px */
 }
+
 
 /* ul: estilos para todas las listas sin orden del sitio */
 ul {

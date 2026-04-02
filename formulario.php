@@ -19,11 +19,8 @@
 <!-- body: todo lo que aparece visualmente en la página va aquí dentro -->
 <body>
 
-    <!-- header: zona superior con el título y el menú de navegación -->
+    <!-- header: zona superior con el menú de navegación -->
     <header>
-        <!-- h1: título principal de esta sección -->
-        <h1>Formulario</h1>
-
         <!-- nav: menú de navegación para moverse entre todas las páginas del sitio -->
         <nav>
             <!-- ul: lista sin orden usada como menú de enlace -->
@@ -41,6 +38,9 @@
 
     <!-- main: contenido principal de la página -->
     <main>
+
+        <!-- h1: título principal de esta página -->
+        <h1>Formulario</h1>
 
         <!-- form: contenedor del formulario. action indica a qué archivo PHP enviar los datos.
              method="post" envía los datos de forma segura, sin exponerlos en la URL -->
