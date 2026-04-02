@@ -15,7 +15,7 @@
 
 /* body: estilos base para toda la página */
 body {
-    font-family: Arial, sans-serif; /* fuente principal del texto en todo el sitio */
+    font-family: "Georgia", serif; /* fuente principal del texto en todo el sitio */
     background-color: #f5f5f5;      /* color de fondo gris clarito para toda la página */
     margin: 0;   /* quita el margen que los navegadores agregan por defecto */
     padding: 0;  /* quita el relleno que los navegadores agregan por defecto */
@@ -66,7 +66,7 @@ nav {
 
 /* img: estilos para todas las imágenes del sitio */
 img {
-    border-radius: 8px; /* redondea las esquinas de las imágenes con un radio de 8px */
+    border-radius: 10px; /* redondea las esquinas de las imágenes con un radio de 8px */
 }
 
 /* ul: estilos para todas las listas sin orden del sitio */
