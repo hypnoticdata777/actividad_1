@@ -14,11 +14,15 @@
 }
 .peliculas {
     padding: 40px 60px; /* space inside the section */
-    margin-top: 20px;   /* space from elements above */
+    margin-top: 30px;   /* space from elements above */
     font-size: 18px;
 }
+.peliculas ol {
+    display: flex;        /* enables flexbox on the list */
+    flex-direction: column; /* stacks items vertically */
+    gap: 40px;            /* space between each movie */
+}
 .peliculas li {
-    margin-bottom: 20px; /* space between each movie */
     line-height: 1.6;    /* makes text easier to read */
 }
 .peliculas li strong {
