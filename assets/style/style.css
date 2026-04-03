@@ -43,6 +43,24 @@ body {
     padding: 0;  /* quita el relleno que los navegadores agregan por defecto */
 }
 
+/* body.sobre-mi: aplica un fondo de imagen exclusivamente a la página "Sobre mí".
+   Al combinar el selector body con la clase .sobre-mi, este bloque solo afecta
+   a esa página y no al resto del sitio, manteniendo los estilos aislados.
+
+   background-image:      carga la imagen desde la carpeta assets/ (un nivel arriba del CSS)
+   background-size:cover  escala la imagen para cubrir toda la pantalla sin dejar huecos,
+                          recortando lo que sobra si es necesario
+   background-position:   centra la imagen tanto horizontal como verticalmente
+   background-repeat:     evita que la imagen se repita en mosaico cuando es más pequeña que la pantalla
+   background-attachment: fija la imagen al viewport para que no se desplace al hacer scroll (efecto parallax) */
+body.sobre-mi {
+    background-image: url('../thedigitalartist-computer-8070002_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 /* header, nav, main, footer: les da espacio interior a las secciones principales */
 header, nav, main, footer {
     padding: 20px; /* espacio de 20px entre el borde y el contenido interno */
