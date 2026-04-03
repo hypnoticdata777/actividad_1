@@ -30,6 +30,10 @@
     display: block;     /* puts title on its own line */
     margin-bottom: 5px; /* small gap before description */
 }
+p {
+  background-color: red;
+  background: url("images/bg.gif") no-repeat left top;
+}
 
 /* body: estilos base para toda la página */
 body {
