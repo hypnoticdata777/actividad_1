@@ -12,6 +12,16 @@
     margin: 10px;   /* espacio exterior entre esta caja y los elementos de alrededor */
     cursor: pointer; /* el cursor cambia a manita cuando el usuario pasa por encima */
 }
+}
+
+/* ─── Decorative Background Layer ───────────────────────────────────────── */
+/* .bg is the fixed full-screen backdrop that sits behind all page content */
+.bg{
+  position: fixed;                      /* Stays in place while the user scrolls */
+  inset: 0;                             /* Shorthand for top/right/bottom/left: 0 — fills the viewport */
+  z-index: -2;                          /* Sits behind everything else (negative stacking order) */
+  overflow: hidden;                     /* Clips any child elements that extend beyond the viewport */
+}
 .peliculas {
     padding: 40px 60px; /* space inside the section */
     margin-top: 30px;   /* space from elements above */
