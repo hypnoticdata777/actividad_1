@@ -1,37 +1,31 @@
 <!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>
 
-<!-- lang="es": corregido de "en" a "es" porque el contenido está en español -->
+<!-- lang="es": el contenido está en español -->
 <html lang="es">
 
-<!-- head: configuración de la página, no visible para el usuario -->
+<!-- head: configuración de la página -->
 <head>
     <!-- UTF-8: permite usar acentos y caracteres especiales -->
     <meta charset="UTF-8">
+
     <!-- viewport: adapta la página a cualquier tamaño de pantalla -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conecta con el CSS compartido que da estilo a todo el sitio -->
+
+    <!-- CSS general del sitio -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Título que aparece en la pestaña del navegador -->
+
+    <!-- Título de la pestaña -->
     <title>Sobre mí</title>
 </head>
 
-<!-- body: todo el contenido visible de la página.
-     La clase "sobre-mi" se añade aquí para que el CSS pueda aplicar
-     estilos exclusivos a esta página (como el fondo de imagen) sin
-     afectar al resto del sitio, ya que la regla body.sobre-mi en
-     style.css solo activa cuando el body tiene exactamente esa clase. -->
+<!-- body con clase exclusiva para estilos personalizados -->
 <body class="sobre-mi">
 
-    <!-- header: zona superior con el menú de navegación.
-         El nav se coloca dentro del header para seguir la misma estructura
-         que el resto de las páginas del sitio (coherencia estructural) -->
+    <!-- header con navegación -->
     <header>
-        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
         <nav>
-            <!-- ul: lista sin orden para los ítems del menú -->
             <ul>
-                <!-- Cada li tiene un enlace <a> que lleva a otra página al hacer clic -->
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
@@ -43,15 +37,52 @@
         </nav>
     </header>
 
-    <!-- main: aquí irá la información personal (bio, foto, datos) en el futuro -->
+    <!-- main: contenido principal -->
     <main>
 
-        <!-- h1: título principal de esta página -->
+        <!-- Título principal -->
         <h1>Sobre mí</h1>
+
+        <!-- Sección de contenido personal -->
+        <section class="contenido-sobre-mi">
+
+            <p>
+                Hola, mi nombre es <strong>Carlos Sanchez Gonzalez</strong>. Tengo 33 años y actualmente estudio 
+                Ingeniería en Sistemas Computacionales.
+            </p>
+
+            <p>
+                Trabajo como Manager de Operaciones en la industria de gestión inmobiliaria, donde me enfoco en 
+                optimizar procesos, liderar equipos y asegurar que las operaciones funcionen de manera eficiente.
+            </p>
+
+            <p>
+                Nací en Fresno, California, Estados Unidos. Es una región donde el clima suele ser cálido la mayor 
+                parte del año, lo cual forma parte de mis raíces.
+            </p>
+
+            <p>
+                Me apasiona crear software y páginas web, ya que me permiten expresarme, construir soluciones y 
+                poner a prueba mis conocimientos. Disfruto desarrollar sistemas que no solo funcionan, sino que 
+                también me ayudan a organizar y mejorar las operaciones en mi entorno profesional.
+            </p>
+
+            <p>
+                También tengo un gran interés por la historia de la humanidad. Me gusta leer libros, historias y 
+                relatos que me permitan entender mejor el mundo, las personas y las decisiones que han dado forma 
+                a nuestra realidad.
+            </p>
+
+            <p>
+                Me considero un <strong>vaquero tecnológico</strong>: alguien que combina disciplina, carácter y visión 
+                con herramientas modernas para construir, resolver problemas y avanzar constantemente.
+            </p>
+
+        </section>
 
     </main>
 
-    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+    <!-- footer -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
