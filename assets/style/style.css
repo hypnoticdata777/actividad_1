@@ -12,7 +12,6 @@
     margin: 10px;   /* espacio exterior entre esta caja y los elementos de alrededor */
     cursor: pointer; /* el cursor cambia a manita cuando el usuario pasa por encima */
 }
-}
 
 /* ─── Decorative Background Layer ───────────────────────────────────────── */
 /* .bg is the fixed full-screen backdrop that sits behind all page content */
@@ -40,11 +39,6 @@
     display: block;     /* puts title on its own line */
     margin-bottom: 5px; /* small gap before description */
 }
-p {
-  background-color: red;
-  background: url("images/bg.gif") no-repeat left top;
-}
-
 /* body: estilos base para toda la página */
 body {
     font-family: "Georgia", serif; /* fuente principal del texto en todo el sitio */
@@ -280,4 +274,104 @@ table tr:nth-child(even) {
 /* Aclara el fondo del botón al pasar el mouse para dar feedback visual */
 .btn-volver:hover {
     background-color: #444; /* versión más clara del oscuro al hacer hover */
+}
+
+/* =============================================
+   DISEÑO RESPONSIVO — MEDIA QUERIES
+   -----------------------------------------------
+   Una "media query" es una condición que el
+   navegador evalúa: si la pantalla cumple la
+   condición, aplica los estilos del bloque;
+   si no, los ignora completamente.
+
+   Esto permite tener UN solo archivo CSS que
+   funciona bien en celular, tablet y escritorio,
+   sin necesidad de páginas separadas.
+   ============================================= */
+
+/* --------------------------------------------------
+   CELULAR — pantallas de hasta 600px de ancho
+   (teléfonos en modo vertical y algunos horizontales)
+   -------------------------------------------------- */
+@media (max-width: 600px) {
+
+    /* MENÚ DE NAVEGACIÓN EN CELULAR
+       En una pantalla angosta los 7 enlaces no caben
+       en una sola fila horizontal; los apilamos en
+       columna para que cada uno ocupe su propio renglón
+       y sea fácil de tocar con el dedo. */
+    nav ul {
+        flex-direction: column; /* cambia la fila horizontal por una columna vertical */
+        align-items: center;    /* centra cada enlace horizontalmente */
+        gap: 10px;              /* menos espacio entre ítems porque ahora van en vertical */
+        padding: 10px 5px;      /* reduce el relleno lateral para no desperdiciar espacio */
+    }
+
+    /* IMÁGENES EN CELULAR
+       Un ancho fijo (como el 50% del HTML) puede quedar
+       muy pequeño en celulares. Con estas reglas la imagen
+       ocupa todo el ancho disponible y nunca se desborda. */
+    img {
+        width: 100% !important; /* sobreescribe el width="50%" que está en el HTML */
+        max-width: 100%;        /* evita que se salga del contenedor si algo la estira */
+        height: auto;           /* mantiene la proporción original (no se deforma) */
+        border-radius: 8px;     /* redondea un poco menos para pantallas pequeñas */
+    }
+
+    /* CONTENIDO PRINCIPAL EN CELULAR
+       Reduce el relleno del <main> para aprovechar
+       mejor el ancho reducido de la pantalla. */
+    main {
+        padding: 10px; /* menos espacio interior que los 20px del escritorio */
+    }
+
+    /* SECCIÓN DE PELÍCULAS EN CELULAR
+       El relleno original de 40px arriba y 60px a los lados
+       es demasiado generoso para una pantalla estrecha;
+       lo reducimos para que el texto ocupe más espacio útil. */
+    .peliculas {
+        padding: 20px 15px; /* reducido vs. los 40px/60px originales */
+        font-size: 16px;    /* texto ligeramente más pequeño para caber mejor */
+    }
+
+    /* TABLA EN CELULAR
+       Permite que la tabla haga scroll horizontal si es más
+       ancha que la pantalla, en lugar de romperse el diseño. */
+    table {
+        display: block;     /* convierte la tabla en bloque para poder hacerle overflow */
+        overflow-x: auto;   /* agrega barra de scroll horizontal si la tabla es muy ancha */
+    }
+}
+
+/* --------------------------------------------------
+   TABLET — pantallas entre 601px y 900px de ancho
+   (tablets en vertical y teléfonos grandes en horizontal)
+   -------------------------------------------------- */
+@media (min-width: 601px) and (max-width: 900px) {
+
+    /* MENÚ EN TABLET
+       Hay más espacio que en celular, pero puede que 7 ítems
+       no quepan cómodamente. Con flex-wrap los ítems que no
+       caben en la primera fila pasan automáticamente a una
+       segunda fila, sin romperse ni solaparse. */
+    nav ul {
+        flex-wrap: wrap; /* permite que los ítems salten a una segunda fila si es necesario */
+        gap: 15px;       /* espacio moderado, más que en celular pero menos que en escritorio */
+    }
+
+    /* IMÁGENES EN TABLET
+       Igual que en celular, evitamos que se desborden,
+       pero no les forzamos el 100% para que el layout
+       respire un poco más. */
+    img {
+        max-width: 100%; /* nunca se sale del contenedor */
+        height: auto;    /* mantiene la proporción original */
+    }
+
+    /* SECCIÓN DE PELÍCULAS EN TABLET
+       Relleno intermedio: más que en celular, menos que
+       en escritorio, proporcional al tamaño de pantalla. */
+    .peliculas {
+        padding: 30px 30px; /* intermedio entre los 20px de celular y los 60px de escritorio */
+    }
 }
