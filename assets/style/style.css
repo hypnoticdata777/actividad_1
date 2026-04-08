@@ -5,6 +5,32 @@
    HTML mediante la etiqueta <link>.
    ============================================= */
 
+/* =============================================
+   VARIABLES DE COLOR (CSS Custom Properties)
+   Centraliza toda la paleta del sitio aquí.
+   Para cambiar un color en todo el sitio,
+   solo cambia el valor en este bloque.
+   ============================================= */
+:root {
+    --color-black:        #111111;
+    --color-dark:         #222222;
+    --color-dark-mid:     #333333;
+    --color-red:          #C0392B;
+    --color-red-hover:    #A93226;
+    --color-blue:         #1A6EBF;
+    --color-blue-light:   #2980B9;
+    --color-blue-glow:    rgba(26, 110, 191, 0.12);
+    --color-green:        #27AE60;
+    --color-green-dark:   #1E8449;
+    --color-gold:         #F0C040;
+    --color-gold-dark:    #D4A800;
+    --color-gold-glow:    rgba(240, 192, 64, 0.12);
+    --color-yellow:       #FFF9C4;
+    --color-silver:       #B0BEC5;
+    --color-grey-light:   #F0F0F0;
+    --color-grey-mid:     #CCCCCC;
+    --color-white:        #FFFFFF;
+}
 /* .datos: estilo para la sección con class="datos" en index.html */
 .datos {
     background-color: rgb(233, 188, 43); /* color de fondo amarillo dorado */
