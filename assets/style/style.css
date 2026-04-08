@@ -31,6 +31,34 @@
     --color-grey-mid:     #CCCCCC;
     --color-white:        #FFFFFF;
 }
+/* ─── Decorative Background Layer ───────────────────────────────────────── */
+/* .bg is the fixed full-screen backdrop that sits behind all page content */
+.bg {
+    position: fixed;     /* Stays in place while the user scrolls */
+    inset: 0;            /* Fills the entire viewport */
+    z-index: -2;         /* Sits behind everything else */
+    overflow: hidden;    /* Clips children that extend beyond the viewport */
+}
+
+/* =============================================
+   ESTILOS BASE
+   ============================================= */
+
+/* body: estilos base para toda la página */
+body {
+    font-family: "Georgia", serif;
+    background: linear-gradient(135deg, var(--color-grey-light) 0%, #e4e4e4 100%);
+    color: var(--color-dark);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased; /* texto más suave en pantallas retina */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
 /* .datos: estilo para la sección con class="datos" en index.html */
 .datos {
     background-color: rgb(233, 188, 43); /* color de fondo amarillo dorado */
