@@ -31,6 +31,8 @@
     --color-grey-mid:     #CCCCCC;
     --color-white:        #FFFFFF;
 }
+
+
 /* ─── Decorative Background Layer ───────────────────────────────────────── */
 /* .bg is the fixed full-screen backdrop that sits behind all page content */
 .bg {
@@ -57,60 +59,14 @@ body {
 
 
 
-
-
-/* .datos: estilo para la sección con class="datos" en index.html */
-.datos {
-    background-color: rgb(233, 188, 43); /* color de fondo amarillo dorado */
-    padding: 10px;  /* espacio interior entre el contenido y el borde de la caja */
-    margin: 10px;   /* espacio exterior entre esta caja y los elementos de alrededor */
-    cursor: pointer; /* el cursor cambia a manita cuando el usuario pasa por encima */
-}
-
-/* ─── Decorative Background Layer ───────────────────────────────────────── */
-/* .bg is the fixed full-screen backdrop that sits behind all page content */
-.bg{
-  position: fixed;                      /* Stays in place while the user scrolls */
-  inset: 0;                             /* Shorthand for top/right/bottom/left: 0 — fills the viewport */
-  z-index: -2;                          /* Sits behind everything else (negative stacking order) */
-  overflow: hidden;                     /* Clips any child elements that extend beyond the viewport */
-}
-.peliculas {
-    padding: 40px 60px; /* space inside the section */
-    margin-top: 30px;   /* space from elements above */
-    font-size: 18px;
-}
-.peliculas ol {
-    display: flex;        /* enables flexbox on the list */
-    flex-direction: column; /* stacks items vertically */
-    gap: 40px;            /* space between each movie */
-}
-.peliculas li {
-    line-height: 1.6;    /* makes text easier to read */
-}
-.peliculas li strong {
-    font-size: 20px;
-    display: block;     /* puts title on its own line */
-    margin-bottom: 5px; /* small gap before description */
-}
-/* body: estilos base para toda la página */
-body {
-    font-family: "Georgia", serif; /* fuente principal del texto en todo el sitio */
-    background-color: #f5f5f5;      /* color de fondo gris clarito para toda la página */
-    margin: 0;   /* quita el margen que los navegadores agregan por defecto */
-    padding: 0;  /* quita el relleno que los navegadores agregan por defecto */
-}
-
 /* body.sobre-mi: aplica un fondo de imagen exclusivamente a la página "Sobre mí".
    Al combinar el selector body con la clase .sobre-mi, este bloque solo afecta
    a esa página y no al resto del sitio, manteniendo los estilos aislados.
 
-   background-image:      carga la imagen desde la carpeta assets/ (un nivel arriba del CSS)
-   background-size:cover  escala la imagen para cubrir toda la pantalla sin dejar huecos,
-                          recortando lo que sobra si es necesario
-   background-position:   centra la imagen tanto horizontal como verticalmente
-   background-repeat:     evita que la imagen se repita en mosaico cuando es más pequeña que la pantalla
-   background-attachment: fija la imagen al viewport para que no se desplace al hacer scroll (efecto parallax) */
+   background-size: cover   escala la imagen para cubrir toda la pantalla sin dejar huecos
+   background-position:     centra la imagen horizontal y verticalmente
+   background-repeat:       evita que la imagen se repita en mosaico
+   background-attachment:   fija la imagen al viewport (efecto parallax) */
 body.sobre-mi {
     background-image: url('../thedigitalartist-computer-8070002_1280.jpg');
     background-size: cover;
@@ -119,215 +75,340 @@ body.sobre-mi {
     background-attachment: fixed;
 }
 
-/* header, nav, main, footer: les da espacio interior a las secciones principales */
-header, nav, main, footer {
-    padding: 20px; /* espacio de 20px entre el borde y el contenido interno */
+/* =============================================
+   HEADER
+   ============================================= */
+
+header {
+    background: linear-gradient(90deg, var(--color-black) 0%, var(--color-dark) 60%, var(--color-blue) 100%);
+    color: var(--color-white);
+    padding: 28px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--color-gold);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
 
-/* nav ul: la lista de enlaces del menú de navegación */
-nav ul {
-    list-style: none;        /* quita los puntos/viñetas de la lista */
-    display: flex;           /* acomoda los ítems en fila horizontal */
-    justify-content: center; /* centra los ítems horizontalmente */
-    gap: 25px;               /* espacio de 25px entre cada ítem del menú */
-    padding: 10px;           /* espacio interior del contenedor de la lista */
-    margin: 0;               /* quita el margen por defecto */
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    letter-spacing: 2px;
+    color: var(--color-gold);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* nav a: estilo de los enlaces dentro del menú */
-nav a {
-    text-decoration: none; /* quita el subrayado de los enlaces */
-    color: white;          /* color de texto blanco */
-    font-weight: bold;     /* texto en negrita */
-
-    /* transition: hace que el cambio de color al pasar el mouse sea gradual (0.3s)
-       en vez de instantáneo, dando un acabado más profesional.
-       Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/transition */
-    transition: color 0.3s ease;
-}
-
-/* nav: el fondo oscuro de la barra de navegación con sombra hacia abajo */
-nav {
-    background-color: #222;                 /* color de fondo casi negro */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* sombra sutil hacia abajo para darle profundidad */
-}
-
-/* nav a:hover: cambia el color del enlace cuando el mouse pasa por encima */
-nav a:hover {
-    color: #ffcc00; /* color amarillo al pasar el mouse, efecto visual de resaltado */
-}
-
-/* img: estilos para todas las imágenes del sitio */
-img {
-    border-radius: 15px; /* redondea las esquinas de las imágenes con un radio de 15px */
-}
-
-
-/* ul: estilos para todas las listas sin orden del sitio */
-ul {
-    margin-left: 20px; /* empuja las listas 20px hacia la derecha para que se vean bien indentadas */
-}
-
-/* footer: mismo fondo oscuro y texto blanco que el nav para lograr simetría visual
-   entre el encabezado y el pie de página (patrón "header-footer matching").
-   Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/text-align */
-footer {
-    background-color: #222;  /* mismo fondo oscuro que el nav para consistencia visual */
-    color: #aaa;             /* texto en gris claro, menos prominente que el nav */
-    text-align: center;      /* centra el texto del pie de página */
-    font-size: 0.85em;       /* tamaño de fuente un poco más pequeño que el texto normal */
+header p {
+    color: var(--color-silver);
+    margin: 6px 0 0 0;
+    font-size: 0.95em;
 }
 
 /* =============================================
-   ESTILOS DE FORMULARIO
-   Hacen que el formulario sea más fácil de leer
-   y de usar, alineando etiquetas e inputs en
-   columna y dándoles un aspecto limpio.
+   NAVEGACIÓN
    ============================================= */
 
-/* form: centra el formulario y limita su ancho para que no quede muy estirado en pantallas grandes */
+/* nav: barra de navegación con fondo negro y línea roja inferior */
+nav {
+    background-color: var(--color-black);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid var(--color-red); /* línea roja de acento debajo del nav */
+}
+
+/* nav ul: lista de enlaces del menú */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+/* nav a: estilo base de los enlaces del menú */
+nav a {
+    text-decoration: none;
+    color: var(--color-silver);
+    font-weight: bold;
+    padding: 7px 14px;
+    border-radius: 4px;
+
+    /* transición suave de color y fondo al hacer hover
+       Fuente: MDN Web Docs — https://developer.mozilla.org/es/docs/Web/CSS/transition */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* nav a:hover: resalta el enlace al pasar el mouse */
+nav a:hover {
+    color: var(--color-gold);
+    background-color: var(--color-gold-glow); /* resplandor dorado sutil */
+}
+
+/* nav a.active: marca visualmente la página actual.
+   Agregar class="active" al <a> correspondiente en cada página HTML. */
+nav a.active {
+    color: var(--color-gold);
+    border-bottom: 2px solid var(--color-gold);
+}
+
+/* =============================================
+   MAIN Y FOOTER
+   ============================================= */
+
+/* main: área de contenido principal */
+main {
+    padding: 20px;
+}
+
+/* footer: pie de página con línea azul superior, simétrico al header dorado */
+footer {
+    background-color: var(--color-black);
+    color: var(--color-silver);
+    text-align: center;
+    font-size: 0.85em;
+    padding: 20px;
+    border-top: 3px solid var(--color-blue); /* línea azul de acento arriba del footer */
+    margin-top: 40px;
+}
+
+/* =============================================
+   IMÁGENES
+   ============================================= */
+
+/* img: estilo base para todas las imágenes del sitio */
+img {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18); /* sombra suave para profundidad */
+}
+
+/* =============================================
+   LISTAS
+   ============================================= */
+
+/* ul: indentación base para todas las listas no ordenadas */
+ul {
+    margin-left: 20px;
+}
+
+/* =============================================
+   SECCIÓN .datos
+   ============================================= */
+
+/* .datos: tarjeta de información con franja roja izquierda para llamar la atención */
+.datos {
+    background-color: var(--color-yellow);
+    border-left: 5px solid var(--color-red); /* franja roja izquierda = atención */
+    padding: 12px 14px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* .datos:hover: realce al pasar el mouse */
+.datos:hover {
+    background-color: var(--color-gold);
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.18);
+}
+
+/* =============================================
+   SECCIÓN .peliculas
+   ============================================= */
+
+.peliculas {
+    padding: 40px 60px;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.peliculas ol {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.peliculas li {
+    line-height: 1.6;
+    border-left: 4px solid var(--color-blue); /* línea azul lateral para cada película */
+    padding-left: 14px;
+}
+
+.peliculas li strong {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-blue); /* título de cada película en azul */
+}
+
+/* =============================================
+   FORMULARIO
+   ============================================= */
+
+/* form: centra el formulario y limita su ancho */
 form {
-    display: flex;          /* activa flexbox para acomodar los hijos en columna */
-    flex-direction: column; /* apila etiquetas e inputs verticalmente */
-    max-width: 480px;       /* ancho máximo para mantener el formulario legible */
-    margin: 20px auto;      /* centra el formulario horizontalmente en la página */
-    gap: 8px;               /* espacio entre cada etiqueta y su campo */
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    margin: 20px auto;
+    gap: 8px;
 }
 
-/* label: etiqueta de cada campo; negrita para distinguirla visualmente del valor */
+/* label: etiqueta de cada campo */
 form label {
-    font-weight: bold; /* resalta la etiqueta para que el usuario sepa qué campo está llenando */
-    margin-top: 8px;   /* pequeño espacio arriba de cada etiqueta para separar grupos */
+    font-weight: bold;
+    margin-top: 8px;
+    color: var(--color-dark-mid);
 }
 
-/* input, textarea, select: estilo unificado para todos los campos del formulario */
+/* input, textarea, select: estilo unificado para todos los campos */
 form input,
 form textarea,
 form select {
-    padding: 8px 10px;             /* espacio interior para que el texto no quede pegado al borde */
-    border: 1px solid #ccc;        /* borde gris suave, visible pero no agresivo */
-    border-radius: 4px;            /* bordes ligeramente redondeados, look moderno */
-    font-size: 1em;                /* mismo tamaño de fuente que el resto de la página */
-    transition: border-color 0.2s; /* animación suave al enfocar el campo (focus) */
+    padding: 9px 12px;
+    border: 1px solid var(--color-grey-mid);
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: var(--color-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* :focus: resalta con color el campo que el usuario está completando en este momento */
+/* :focus: resalta el campo activo con el color dorado del sitio */
 form input:focus,
 form textarea:focus,
 form select:focus {
-    outline: none;                           /* quita el borde azul/naranja del navegador por defecto */
-    border-color: #ffcc00;                   /* aplica el color dorado del sitio para mantener coherencia visual */
-    box-shadow: 0 0 4px rgba(255, 204, 0, 0.5); /* sombra sutil que refuerza el foco */
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 5px rgba(240, 192, 64, 0.5);
 }
 
-/* textarea: altura mínima para que haya espacio suficiente para escribir mensajes */
+/* textarea: altura mínima para escribir mensajes cómodamente */
 form textarea {
-    min-height: 100px; /* evita que el área de texto sea demasiado pequeña para escribir */
-    resize: vertical;  /* permite al usuario agrandar el textarea solo verticalmente */
+    min-height: 100px;
+    resize: vertical;
 }
 
-/* button[type="submit"]: botón de envío con el color de acento del sitio */
+/* button[type="submit"]: botón de envío en verde con efecto de elevación al hover */
 form button[type="submit"] {
-    margin-top: 12px;              /* separa el botón del último campo del formulario */
-    padding: 10px;                 /* espacio interior para que el botón sea fácil de tocar/clicar */
-    background-color: #ffcc00;     /* color dorado del sitio para que el botón destaque */
-    color: #222;                   /* texto oscuro sobre fondo claro, buena legibilidad */
-    border: none;                  /* quita el borde por defecto del navegador */
-    border-radius: 4px;            /* bordes redondeados, coherente con los demás inputs */
-    font-weight: bold;             /* texto en negrita para que destaque como acción principal */
-    font-size: 1em;                /* mismo tamaño de fuente que el resto */
-    cursor: pointer;               /* cursor de manita para indicar que es clickeable */
-    transition: background-color 0.2s; /* cambio de color suave al pasar el mouse */
+    margin-top: 14px;
+    padding: 11px;
+    background: linear-gradient(90deg, var(--color-green) 0%, var(--color-green-dark) 100%);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.25s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 6px rgba(39, 174, 96, 0.35);
 }
 
-/* Oscurece ligeramente el botón al pasar el mouse para dar feedback visual de interacción */
+/* Invierte el gradiente y eleva el botón al pasar el mouse */
 form button[type="submit"]:hover {
-    background-color: #e6b800; /* versión más oscura del dorado al hacer hover */
+    background: linear-gradient(90deg, var(--color-green-dark) 0%, var(--color-green) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.45);
+}
+
+/* Baja el botón al hacer clic, simulando presión física */
+form button[type="submit"]:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 4px rgba(39, 174, 96, 0.3);
 }
 
 /* =============================================
-   ESTILOS DE TABLA
-   Dan formato a las tablas HTML del sitio para
-   que sean fáciles de leer (bordes, padding,
-   alternancia de colores de fila).
+   TABLA
    ============================================= */
 
-/* table: quita el espacio doble entre celdas y le da un ancho razonable */
+/* table: elimina doble borde y ocupa el ancho disponible */
 table {
-    border-collapse: collapse; /* unifica los bordes de celdas adyacentes en uno solo */
-    width: 100%;               /* la tabla ocupa todo el ancho disponible */
-    max-width: 600px;          /* evita que quede muy ancha en pantallas grandes */
-    margin: 20px 0;            /* espacio arriba y abajo para separar la tabla del resto del contenido */
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    border-radius: 6px;
+    overflow: hidden; /* permite que border-radius se aplique a la tabla completa */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* th, td: estilo de las celdas de encabezado y de datos */
+/* th, td: celdas con borde y padding cómodo */
 table th,
 table td {
-    border: 1px solid #ccc; /* borde gris suave que separa cada celda claramente */
-    padding: 10px 14px;     /* espacio interior para que el texto no quede apretado */
-    text-align: left;       /* alinea el texto a la izquierda, más fácil de leer en tablas */
+    border: 1px solid var(--color-grey-mid);
+    padding: 11px 14px;
+    text-align: left;
 }
 
-/* th: encabezados de columna con fondo oscuro para distinguirlos de los datos */
+/* th: encabezados con gradiente azul-oscuro para destacar las columnas */
 table th {
-    background-color: #222; /* fondo oscuro, coherente con el nav y el footer */
-    color: white;           /* texto blanco para contraste sobre el fondo oscuro */
+    background: linear-gradient(90deg, var(--color-dark) 0%, var(--color-blue) 100%);
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-size: 0.88em;
+    letter-spacing: 0.6px;
 }
 
-/* Fila alternada (zebra striping): facilita seguir cada fila con la vista */
+/* Zebra striping: raya amarilla suave en filas pares para facilitar la lectura */
 table tr:nth-child(even) {
-    background-color: #f0f0f0; /* gris muy claro en filas pares para diferenciarlas visualmente */
+    background-color: var(--color-yellow);
+}
+
+/* Resaltado azul translúcido al pasar el mouse por una fila */
+table tr:hover {
+    background-color: var(--color-blue-glow);
+    transition: background-color 0.2s ease;
 }
 
 /* =============================================
-   ESTILOS DE PÁGINA DE CONFIRMACIÓN (logica.php)
-   Presentan de forma ordenada los datos que el
-   usuario acaba de enviar tras llenar el formulario.
+   PÁGINA DE CONFIRMACIÓN (.confirmacion)
    ============================================= */
 
-/* .confirmacion: caja centrada que muestra el resumen del formulario enviado */
+/* .confirmacion: caja con franja azul izquierda que presenta los datos enviados */
 .confirmacion {
-    max-width: 480px;        /* ancho máximo coherente con el del formulario */
-    margin: 30px auto;       /* centra la caja en la página */
-    background-color: white; /* fondo blanco para que resalte sobre el gris de la página */
-    border: 1px solid #ccc;  /* borde sutil que delimita la caja */
-    border-radius: 6px;      /* esquinas redondeadas para un aspecto moderno */
-    padding: 24px;           /* espacio interior generoso para que no se vea apretado */
+    max-width: 480px;
+    margin: 30px auto;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-mid);
+    border-left: 5px solid var(--color-blue); /* franja azul izquierda como identidad visual */
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* dl: lista de definiciones usada para mostrar pares etiqueta-valor */
+/* dl: lista de definiciones para pares etiqueta-valor */
 .confirmacion dl {
-    margin: 16px 0; /* espacio arriba y abajo de la lista de datos */
+    margin: 16px 0;
 }
 
-/* dt: nombre del campo (ej. "Nombre", "Email"); aparece en negrita */
+/* dt: nombre del campo en azul para diferenciarlo del valor */
 .confirmacion dt {
-    font-weight: bold; /* distingue la etiqueta del valor */
-    margin-top: 12px;  /* separa cada par del anterior */
-    color: #555;       /* gris medio para que la etiqueta sea menos prominente que el valor */
+    font-weight: bold;
+    margin-top: 12px;
+    color: var(--color-blue);
 }
 
-/* dd: valor del campo enviado; sin margen extra para que quede pegado a su etiqueta */
+/* dd: valor del campo pegado justo debajo de su etiqueta */
 .confirmacion dd {
-    margin: 2px 0 0 0; /* margen mínimo para que el valor quede justo debajo de su etiqueta */
+    margin: 2px 0 0 0;
+    color: var(--color-dark);
 }
 
-/* .btn-volver: enlace con apariencia de botón para volver al formulario */
+/* .btn-volver: botón de regreso al formulario */
 .btn-volver {
-    display: inline-block;        /* permite aplicar padding como si fuera un botón */
-    margin-top: 20px;             /* separa el botón de los datos */
-    padding: 8px 16px;            /* espacio interior para que sea fácil de clicar */
-    background-color: #222;       /* fondo oscuro, coherente con el nav */
-    color: #ffcc00;               /* texto dorado, color de acento del sitio */
-    text-decoration: none;        /* quita el subrayado del enlace */
-    border-radius: 4px;           /* bordes redondeados */
-    font-weight: bold;            /* texto en negrita */
-    transition: background-color 0.2s; /* transición suave al hacer hover */
+    display: inline-block;
+    margin-top: 20px;
+    padding: 9px 18px;
+    background-color: var(--color-dark);
+    color: var(--color-gold);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* Aclara el fondo del botón al pasar el mouse para dar feedback visual */
+/* Aclara el fondo del botón al pasar el mouse */
 .btn-volver:hover {
-    background-color: #444; /* versión más clara del oscuro al hacer hover */
+    background-color: var(--color-dark-mid);
+    transform: translateY(-1px);
 }
 
 /* =============================================
@@ -349,51 +430,70 @@ table tr:nth-child(even) {
    -------------------------------------------------- */
 @media (max-width: 600px) {
 
+    /* HEADER EN CELULAR
+       Reduce tamaño de fuente del título para que quepa bien */
+    header h1 {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+
     /* MENÚ DE NAVEGACIÓN EN CELULAR
-       En una pantalla angosta los 7 enlaces no caben
-       en una sola fila horizontal; los apilamos en
-       columna para que cada uno ocupe su propio renglón
-       y sea fácil de tocar con el dedo. */
+       Los ítems se apilan en columna para que sean fáciles de tocar */
     nav ul {
-        flex-direction: column; /* cambia la fila horizontal por una columna vertical */
-        align-items: center;    /* centra cada enlace horizontalmente */
-        gap: 10px;              /* menos espacio entre ítems porque ahora van en vertical */
-        padding: 10px 5px;      /* reduce el relleno lateral para no desperdiciar espacio */
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 5px;
+    }
+
+    /* Los enlaces del menú ocupan más ancho para ser más fáciles de tocar */
+    nav a {
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
     }
 
     /* IMÁGENES EN CELULAR
-       Un ancho fijo (como el 50% del HTML) puede quedar
-       muy pequeño en celulares. Con estas reglas la imagen
-       ocupa todo el ancho disponible y nunca se desborda. */
+       Ocupa todo el ancho disponible sin desbordarse */
     img {
-        width: 100% !important; /* sobreescribe el width="50%" que está en el HTML */
-        max-width: 100%;        /* evita que se salga del contenedor si algo la estira */
-        height: auto;           /* mantiene la proporción original (no se deforma) */
-        border-radius: 8px;     /* redondea un poco menos para pantallas pequeñas */
+        width: 100% !important;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
     }
 
     /* CONTENIDO PRINCIPAL EN CELULAR
-       Reduce el relleno del <main> para aprovechar
-       mejor el ancho reducido de la pantalla. */
+       Reduce el relleno para aprovechar mejor el espacio */
     main {
-        padding: 10px; /* menos espacio interior que los 20px del escritorio */
+        padding: 10px;
     }
 
     /* SECCIÓN DE PELÍCULAS EN CELULAR
-       El relleno original de 40px arriba y 60px a los lados
-       es demasiado generoso para una pantalla estrecha;
-       lo reducimos para que el texto ocupe más espacio útil. */
+       Reduce padding y fuente para pantallas pequeñas */
     .peliculas {
-        padding: 20px 15px; /* reducido vs. los 40px/60px originales */
-        font-size: 16px;    /* texto ligeramente más pequeño para caber mejor */
+        padding: 20px 15px;
+        font-size: 16px;
     }
 
     /* TABLA EN CELULAR
-       Permite que la tabla haga scroll horizontal si es más
-       ancha que la pantalla, en lugar de romperse el diseño. */
+       Scroll horizontal si la tabla es más ancha que la pantalla */
     table {
-        display: block;     /* convierte la tabla en bloque para poder hacerle overflow */
-        overflow-x: auto;   /* agrega barra de scroll horizontal si la tabla es muy ancha */
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* FORMULARIO EN CELULAR
+       Usa todo el ancho disponible */
+    form {
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    /* CONFIRMACION EN CELULAR */
+    .confirmacion {
+        max-width: 100%;
+        margin: 15px;
+        padding: 16px;
     }
 }
 
@@ -404,28 +504,28 @@ table tr:nth-child(even) {
 @media (min-width: 601px) and (max-width: 900px) {
 
     /* MENÚ EN TABLET
-       Hay más espacio que en celular, pero puede que 7 ítems
-       no quepan cómodamente. Con flex-wrap los ítems que no
-       caben en la primera fila pasan automáticamente a una
-       segunda fila, sin romperse ni solaparse. */
+       flex-wrap permite que los ítems salten a una segunda
+       fila si no caben todos en una sola */
     nav ul {
-        flex-wrap: wrap; /* permite que los ítems salten a una segunda fila si es necesario */
-        gap: 15px;       /* espacio moderado, más que en celular pero menos que en escritorio */
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     /* IMÁGENES EN TABLET
-       Igual que en celular, evitamos que se desborden,
-       pero no les forzamos el 100% para que el layout
-       respire un poco más. */
+       Nunca se salen del contenedor, mantienen proporción */
     img {
-        max-width: 100%; /* nunca se sale del contenedor */
-        height: auto;    /* mantiene la proporción original */
+        max-width: 100%;
+        height: auto;
     }
 
     /* SECCIÓN DE PELÍCULAS EN TABLET
-       Relleno intermedio: más que en celular, menos que
-       en escritorio, proporcional al tamaño de pantalla. */
+       Padding intermedio entre celular y escritorio */
     .peliculas {
-        padding: 30px 30px; /* intermedio entre los 20px de celular y los 60px de escritorio */
+        padding: 30px 30px;
+    }
+
+    /* FORMULARIO EN TABLET */
+    form {
+        max-width: 90%;
     }
 }
