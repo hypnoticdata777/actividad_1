@@ -1,31 +1,16 @@
-<!-- Le dice al navegador que este documento está escrito en HTML5 -->
 <!DOCTYPE html>
-
-<!-- Etiqueta raíz de la página. lang="es" indica que el contenido está en español -->
 <html lang="es">
-
-<!-- head: configuración de la página, no se muestra visualmente -->
 <head>
-    <!-- UTF-8: permite escribir tildes y caracteres especiales sin problemas -->
     <meta charset="UTF-8">
-    <!-- viewport: ajusta la página para que se vea bien en celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conecta con el archivo CSS que le da estilo visual a toda la página -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Título que aparece en la pestaña del navegador -->
     <title>Listas</title>
 </head>
-
-<!-- body: todo lo que el usuario ve en pantalla -->
 <body>
 
-    <!-- header: zona superior con el menú de navegación -->
     <header>
-        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
         <nav>
-            <!-- ul: lista sin numerar que contiene los enlaces del menú -->
             <ul>
-                <!-- Cada li es un ítem del menú. El <a href="..."> lleva a otra página al hacer clic -->
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
@@ -37,154 +22,191 @@
         </nav>
     </header>
 
-    <!-- main: área con el contenido principal de esta página -->
     <main>
-
-        <!-- h1: título principal de la página -->
         <h1>Listas</h1>
 
-        <!-- ===== ¿QUÉ SON LAS LISTAS EN HTML? =====
-             Breve explicación de dónde vienen las listas y para qué sirven,
-             antes de ver los ejemplos de cada tipo. -->
-        <div>
+        <section>
             <h2>¿Qué son las listas en HTML?</h2>
-
-            <!-- Las listas existen en HTML desde la versión 2.0 (1995).
-                 Nacieron para representar en la web lo mismo que una lista escrita a mano:
-                 un grupo de elementos relacionados, fáciles de leer de un vistazo. -->
             <p>
-                Las listas en HTML existen desde las primeras versiones del lenguaje (1995).
-                Sirven para agrupar elementos relacionados de forma clara, igual que una lista
-                escrita en papel. Se usan en todas partes: menús de navegación, pasos de una
-                receta, resultados de búsqueda, características de un producto.
+                Las listas en HTML sirven para organizar información de forma clara y ordenada.
+                En vez de aventar un bloque gigante de texto que nadie quiere leer, HTML permite
+                separar elementos relacionados para que todo sea más fácil de entender.
             </p>
 
-            <!-- HTML ofrece dos etiquetas principales según si el orden importa:
-                 <ol> para cuando importa, <ul> para cuando no importa.
-                 Ambas usan <li> para cada elemento de la lista. -->
             <p>
-                HTML ofrece dos tipos: <strong>&lt;ol&gt;</strong> (ordered list) cuando el
-                orden sí importa, y <strong>&lt;ul&gt;</strong> (unordered list) cuando el
-                orden no importa. Los dos usan <strong>&lt;li&gt;</strong> para cada elemento.
+                Básicamente, existen dos tipos principales: las listas ordenadas
+                <strong>&lt;ol&gt;</strong>, que se usan cuando el orden importa, y las listas no
+                ordenadas <strong>&lt;ul&gt;</strong>, que se usan cuando el orden no importa tanto.
+                En ambos casos, cada elemento se escribe con <strong>&lt;li&gt;</strong>.
             </p>
-        </div>
 
-        <!-- ===== SECCIÓN DE LISTAS ORDENADAS ===== -->
-        <!-- section: agrupa el bloque de listas ordenadas -->
-        <section>
-
-            <!-- div: caja genérica para agrupar elementos relacionados -->
-            <div>
-                <!-- h2: subtítulo de sección -->
-                <h2>Listas Ordenadas</h2>
-                <!-- p: texto explicativo -->
-                <p>Las listas ordenadas muestran los elementos con un orden.</p>
-
-                <h3>Tipos</h3>
-                <!-- ol: ordered list, lista con número/letra/romano automático -->
-                <ol>
-                    <li>Lista ordenada con números</li>
-                    <li>Lista ordenada con letras</li>
-                    <li>Lista ordenada con números romanos</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con números</h3>
-                <p>Las listas ordenadas con números muestran los elementos en orden numérico.</p>
-                <h4>Ejemplos:</h4>
-                <!-- ol sin atributo type usa números por defecto: 1, 2, 3... -->
-                <ol>
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con letras</h3>
-                <p>Las listas ordenadas con letras usan el alfabeto.</p>
-                <h4>Ejemplos:</h4>
-                <!-- type="A": cambia los números por letras mayúsculas A, B, C... -->
-                <ol type="A">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
-            <div>
-                <h3>Lista ordenada con números romanos</h3>
-                <p>Las listas ordenadas con números romanos usan numeración romana.</p>
-                <h4>Ejemplos:</h4>
-                <!-- type="I": cambia los números por romanos I, II, III... -->
-                <ol type="I">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ol>
-            </div>
-
+            <p>
+                En otras palabras: si quieres que algo se vea limpio, lógico y entendible, usas listas.
+                Porque seamos honestos, el cerebro humano coopera más cuando ve puntos y números
+                que cuando ve un párrafo del tamaño de un contrato bancario.
+            </p>
         </section>
 
-        <!-- ===== SECCIÓN DE LISTAS NO ORDENADAS ===== -->
         <section>
-
-            <div>
-                <h2>Listas No Ordenadas</h2>
-                <p>Las listas no ordenadas muestran elementos con viñetas.</p>
-
-                <h3>Tipos</h3>
-                <!-- ul: unordered list, lista con viñetas (puntos, círculos, cuadros) -->
-                <ul>
-                    <li>Lista con disc</li>
-                    <li>Lista con circle</li>
-                    <li>Lista con square</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con disc</h3>
-                <p>Las listas no ordenadas con disc muestran viñetas rellenas.</p>
-                <h4>Ejemplos:</h4>
-                <!-- style="list-style-type: disc": viñeta circular rellena (por defecto) -->
-                <ul style="list-style-type: disc;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con circle</h3>
-                <p>Las listas no ordenadas con circle muestran viñetas circulares vacías.</p>
-                <h4>Ejemplos:</h4>
-                <!-- list-style-type: circle: círculo vacío sin relleno -->
-                <ul style="list-style-type: circle;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo elemento</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Lista no ordenada con square</h3>
-                <p>Las listas no ordenadas con square muestran viñetas cuadradas.</p>
-                <h4>Ejemplos:</h4>
-                <!-- list-style-type: square: cuadrito como viñeta -->
-                <ul style="list-style-type: square;">
-                    <li>Primer ejemplo</li>
-                    <li>Segundo ejemplo</li>
-                    <li>Tercer ejemplo</li>
-                </ul>
-            </div>
-
+            <h2>¿Por qué las listas son útiles?</h2>
+            <ul>
+                <li>Hacen la información más fácil de leer.</li>
+                <li>Permiten organizar ideas sin hacer un desastre visual.</li>
+                <li>Ayudan a mostrar pasos, opciones o categorías.</li>
+                <li>Se usan en menús, recetas, instrucciones, compras y hasta tareas pendientes.</li>
+            </ul>
         </section>
 
+        <section>
+            <h2>Listas ordenadas</h2>
+            <p>
+                Las listas ordenadas se usan cuando el orden sí importa. Por ejemplo:
+                una receta, una serie de pasos o instrucciones para hacer algo.
+                Si cambias el orden, probablemente arruinas el resultado.
+            </p>
+
+            <h3>Ejemplo 1: Cómo preparar un café</h3>
+            <ol>
+                <li>Hervir agua.</li>
+                <li>Agregar café a la taza o cafetera.</li>
+                <li>Servir el agua caliente.</li>
+                <li>Mezclar bien.</li>
+                <li>Disfrutar el café y sentirte más vivo.</li>
+            </ol>
+
+            <h3>Ejemplo 2: Tipos de listas ordenadas</h3>
+            <p>Las listas ordenadas pueden mostrarse con distintos estilos.</p>
+
+            <h4>Con números</h4>
+            <ol>
+                <li>Primer paso</li>
+                <li>Segundo paso</li>
+                <li>Tercer paso</li>
+            </ol>
+
+            <h4>Con letras</h4>
+            <ol type="A">
+                <li>Opción A</li>
+                <li>Opción B</li>
+                <li>Opción C</li>
+            </ol>
+
+            <h4>Con números romanos</h4>
+            <ol type="I">
+                <li>Introducción</li>
+                <li>Desarrollo</li>
+                <li>Conclusión</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Listas no ordenadas</h2>
+            <p>
+                Las listas no ordenadas se usan cuando lo importante es mostrar varios elementos,
+                pero sin necesidad de seguir un orden específico.
+                Aquí no importa si una cosa va primero o después: todas pertenecen al mismo grupo.
+            </p>
+
+            <h3>Ejemplo 1: Cosas que llevo a la escuela o al trabajo</h3>
+            <ul>
+                <li>Mochila</li>
+                <li>Cuaderno</li>
+                <li>Laptop</li>
+                <li>Cargador</li>
+                <li>Audífonos</li>
+            </ul>
+
+            <h3>Ejemplo 2: Tipos de viñetas</h3>
+
+            <h4>Disc</h4>
+            <ul style="list-style-type: disc;">
+                <li>Elemento uno</li>
+                <li>Elemento dos</li>
+                <li>Elemento tres</li>
+            </ul>
+
+            <h4>Circle</h4>
+            <ul style="list-style-type: circle;">
+                <li>Elemento uno</li>
+                <li>Elemento dos</li>
+                <li>Elemento tres</li>
+            </ul>
+
+            <h4>Square</h4>
+            <ul style="list-style-type: square;">
+                <li>Elemento uno</li>
+                <li>Elemento dos</li>
+                <li>Elemento tres</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ejemplo más completo: lista anidada</h2>
+            <p>
+                También existen listas dentro de listas. Esto sirve para organizar categorías y
+                subcategorías. Es como decir: “aquí está el tema principal, y aquí lo que contiene”.
+            </p>
+
+            <ul>
+                <li>Tecnología
+                    <ul>
+                        <li>Laptops</li>
+                        <li>Celulares</li>
+                        <li>Audífonos</li>
+                    </ul>
+                </li>
+                <li>Entretenimiento
+                    <ul>
+                        <li>Películas</li>
+                        <li>Series</li>
+                        <li>Videojuegos</li>
+                    </ul>
+                </li>
+                <li>Estudio
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Una analogía sencilla</h2>
+            <p>
+                Pensar en listas es como organizar un cuarto.
+                Una lista ordenada sería como seguir pasos exactos para armar un escritorio:
+                primero una pieza, luego otra, luego los tornillos.
+                En cambio, una lista no ordenada sería como ver las cosas que tienes en el cuarto:
+                silla, lámpara, libros, mochila. Están relacionadas, pero no necesitan un orden exacto.
+            </p>
+
+            <p>
+                Así funciona HTML. No solo muestra contenido: también lo acomoda de forma lógica
+                para que la persona que entra a la página no sienta que está peleando con ella.
+            </p>
+        </section>
+
+        <section>
+            <h2>Conclusión</h2>
+            <p>
+                Las listas en HTML son una herramienta sencilla, pero muy útil. Ayudan a organizar
+                información, hacerla más legible y darle estructura a una página web.
+                Ya sea para mostrar pasos, agrupar elementos o crear subcategorías, las listas
+                permiten que el contenido se vea mucho más claro y profesional.
+            </p>
+
+            <p>
+                Y sí, al final no es magia. Es simplemente entender algo básico pero importante:
+                cuando la información está bien acomodada, todo funciona mejor.
+            </p>
+        </section>
     </main>
 
-    <!-- footer: pie de página vacío, reservado para uso futuro -->
-    <footer></footer>
+    <footer>
+        <p>Proyecto HTML - Página de Listas personalizada</p>
+    </footer>
 
 </body>
 </html>
