@@ -1,67 +1,137 @@
-<!-- Esta línea le dice al navegador que el archivo está escrito en HTML5 -->
 <!DOCTYPE html>
+<!-- ================================================================
+     PÁGINA: Inicio | index.html
+     ================================================================
+     Qué ve el usuario:
+     La página principal del sitio. Muestra el nombre del autor,
+     su rol como estudiante, un mensaje de bienvenida y una foto
+     de paisaje de Japón.
 
-<!-- Etiqueta principal que envuelve todo el contenido de la página.
-     lang="es": corregido a español porque el contenido del sitio está en ese idioma -->
+     Estructura:
+       <header>  → barra de navegación superior (fondo negro, línea dorada inferior)
+       <main>    → tarjeta de presentación personal + fotografía
+       <footer>  → franja oscura con los derechos del sitio
+     ================================================================ -->
 <html lang="es">
+<!-- lang="es": le indica al navegador, lectores de pantalla y motores
+     de búsqueda que el contenido está en español.
+     Mejora la accesibilidad y el posicionamiento SEO. -->
 
-<!-- head: sección de configuración, aquí va info que el navegador necesita pero el usuario no ve directamente -->
 <head>
-    <!-- charset UTF-8: permite usar letras con acentos y caracteres especiales -->
     <meta charset="UTF-8">
-    <!-- viewport: hace que la página se vea bien en celulares y tablets -->
+    <!-- HEAD: sección de configuración. No produce contenido visible.
+         Solo le da instrucciones al navegador antes de renderizar la página. -->
+    <!-- charset UTF-8: permite usar acentos (á, é, í, ó, ú), la ñ y otros
+         caracteres especiales sin que aparezcan como símbolos rotos.
+         Debe ser lo primero dentro de <head> para que el navegador lo lea
+         antes de procesar cualquier otro contenido. -->
+
+    <!-- viewport: sin esta línea la página se vería diminuta en celular.
+         width=device-width → el ancho se adapta al tamaño de la pantalla.
+         initial-scale=1.0  → la página no aparece con zoom aplicado. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- title: el texto que aparece en la pestaña del navegador -->
-    <title>Inicio</title>
-    <!-- link: conecta este archivo HTML con el archivo de estilos CSS que da color y diseño a la página -->
+
+    <!-- link rel="stylesheet": conecta este HTML con el archivo CSS.
+         El CSS vive en assets/style/style.css y controla todos los
+         colores, fuentes, espaciados y diseño visual del sitio entero. -->
     <link rel="stylesheet" href="assets/style/style.css">
+
+    <!-- title: texto que aparece en la pestaña del navegador. -->
+    <title>Inicio</title>
 </head>
 
-<!-- body: todo lo que aparece visualmente en la página va aquí dentro -->
 <body>
+    <!-- BODY: todo lo que está aquí dentro es lo que el usuario ve en pantalla. -->
 
-    <!-- header: zona superior de la página, normalmente tiene el menú de navegación -->
+    <!-- ── HEADER ──────────────────────────────────────────────────────
+         Contenedor de la barra de navegación superior.
+         El CSS le aplica fondo negro con gradiente hacia azul y una
+         línea dorada en la parte inferior.
+         Este bloque es idéntico en todas las páginas del sitio.
+         ─────────────────────────────────────────────────────────────── -->
     <header>
 
-        <!-- nav: contenedor del menú de navegación que conecta todas las páginas del sitio -->
+        <!-- nav: elemento semántico que le dice al navegador que esto es
+             un menú de navegación. El CSS lo convierte en una fila
+             horizontal de enlaces centrados con fondo negro. -->
         <nav>
-            <!-- ul: lista sin orden (unordered list), aquí usada para los enlaces del menú -->
+
+            <!-- ul: lista sin orden (unordered list). El CSS elimina las
+                 viñetas y usa display:flex para mostrar los ítems en fila,
+                 centrados y con espacio uniforme entre ellos. -->
             <ul>
-                <!-- Cada li es un elemento de la lista. El <a> es un enlace, href indica a qué página va -->
+                <!-- Cada <li> contiene un enlace <a>.
+                     href="..."       → la página a la que lleva el enlace al hacer clic.
+                     class="active"   → marca el enlace de la página actual.
+                     El CSS subraya en dorado el enlace activo para que el
+                     usuario sepa en qué página está. -->
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
                 <li><a href="tablas.html">Tablas</a></li>
+                <!-- formulario.php usa la extensión .php en lugar de .html porque
+                     tiene lógica de servidor en PHP que procesa los datos del formulario. -->
                 <li><a href="formulario.php">Formulario</a></li>
             </ul>
-        </nav>
 
+        </nav>
     </header>
 
-    <!-- main: contenido principal de la página -->
+    <!-- ── MAIN ────────────────────────────────────────────────────────
+         Contenido principal y único de esta página.
+         El <main> cambia en cada página; el header y el footer se repiten.
+
+         Lo que ve el usuario aquí:
+           1. Una tarjeta amarilla con el nombre y rol del autor
+              que cambia a dorado al pasar el mouse (hover).
+           2. Una fotografía de paisaje de Japón.
+         ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- section: agrupa contenido relacionado. class="Datos" conecta esta sección con estilos del CSS -->
+        <!-- section.datos: tarjeta de información personal.
+             class="datos" activa el estilo en style.css que le aplica:
+               - fondo amarillo claro
+               - borde izquierdo rojo (franja de atención)
+               - sombra suave
+               - efecto hover que cambia el fondo a dorado -->
         <section class="datos">
-            <!-- h1: título principal de la página, el más grande e importante -->
+
+            <!-- h1: título principal de la página. El más grande e importante.
+                 Solo debe haber un <h1> por página (buena práctica de SEO y accesibilidad). -->
             <h1>Carlos Sanchez Gonzalez</h1>
-            <!-- h2: subtítulo, un nivel menos importante que h1 -->
+
+            <!-- h2: subtítulo, un nivel menor que h1 en la jerarquía visual. -->
             <h2>Estudiante</h2>
-            <!-- p: párrafo de texto normal -->
+
+            <!-- p: párrafo de texto regular. -->
             <p>Bienvenidos a mi página</p>
+
         </section>
 
-        <!-- section: segunda sección, esta contiene la imagen -->
+        <!-- section.imgs: sección dedicada a la imagen de portada.
+             Separada de los datos personales para poder aplicarle
+             estilos independientes en el futuro si se necesita. -->
         <section class="imgs">
-            <!-- img: muestra una imagen. src es la ruta del archivo, width el tamaño, alt es el texto alternativo si la imagen no carga -->
+
+            <!-- img: inserta una imagen en la página.
+                 src="..."   → ruta al archivo de imagen dentro del proyecto.
+                 width="50%" → la imagen ocupa la mitad del ancho de su contenedor.
+                 alt="..."   → texto alternativo que aparece si la imagen no carga
+                               y que leen los lectores de pantalla (accesibilidad).
+                 El CSS del sitio le agrega bordes redondeados y una sombra suave. -->
             <img src="assets/20251230_OHR.JapanSwans_ROW0913401353_UHD_bing.jpg" width="50%" alt="Japan swans on water">
+
         </section>
 
     </main>
 
-    <!-- footer: pie de página, normalmente tiene información de derechos o contacto -->
+    <!-- ── FOOTER ──────────────────────────────────────────────────────
+         Pie de página. El CSS le aplica fondo negro y una línea azul
+         superior, simétrica a la línea dorada del header.
+         El texto de derechos es idéntico en todas las páginas del sitio.
+         ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>

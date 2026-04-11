@@ -1,35 +1,55 @@
-<!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>
+<!-- ================================================================
+     PÁGINA: Películas | peliculas.html
+     ================================================================
+     Qué ve el usuario:
+     Una lista de tres películas favoritas del autor, cada una con
+     su título en negrita azul, seguido de una descripción personal
+     que explica por qué le gusta. El CSS las separa con espacio
+     generoso y una línea azul a la izquierda de cada ítem.
 
-<!-- lang="es": corregido de "en" a "es" porque el contenido está en español -->
+     Estructura:
+       <header>  → barra de navegación superior
+       <main>    → sección con presentación y lista ordenada de películas
+       <footer>  → pie de página con derechos
+     ================================================================ -->
 <html lang="es">
+<!-- lang="es": indica al navegador y motores de búsqueda que el
+     contenido está en español. Mejora accesibilidad y SEO. -->
 
-<!-- head: configuración invisible para el usuario -->
 <head>
-    <!-- UTF-8: soporte para acentos y caracteres especiales -->
     <meta charset="UTF-8">
-    <!-- viewport: la página se adapta al tamaño de la pantalla del dispositivo -->
+    <!-- charset UTF-8: debe ser lo primero en <head>. Permite usar
+         acentos, ñ y caracteres especiales sin que aparezcan rotos. -->
+
+    <!-- viewport: adapta la página al tamaño de la pantalla del dispositivo.
+         Sin esto, en celular la página se vería pequeñísima. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conecta con el archivo de estilos CSS compartido por todo el sitio -->
+
+    <!-- link: conecta este HTML con el CSS compartido de todo el sitio.
+         style.css controla colores, fuentes, espaciados y diseño visual. -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Título de la pestaña del navegador -->
+
+    <!-- title: texto que aparece en la pestaña del navegador. -->
     <title>Películas</title>
 </head>
 
-<!-- body: lo que el usuario ve en pantalla -->
 <body>
 
-    <!-- header: zona superior con el menú de navegación.
-         El nav se coloca dentro del header para seguir la misma estructura
-         que el resto de las páginas del sitio (coherencia estructural) -->
+    <!-- ── HEADER ──────────────────────────────────────────────────────
+         Barra de navegación superior, idéntica en todas las páginas.
+         El CSS la pinta de negro con gradiente azul y línea dorada inferior.
+         "Películas" lleva class="active" → el CSS lo subraya en dorado
+         para indicar visualmente que esta es la página actual.
+         ─────────────────────────────────────────────────────────────── -->
     <header>
-        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
         <nav>
-            <!-- ul: lista sin orden para los ítems del menú -->
+            <!-- ul: lista de ítems del menú. El CSS elimina las viñetas
+                 y los muestra en fila horizontal con display:flex. -->
             <ul>
-                <!-- Cada li tiene un enlace <a> que lleva a otra página al hacer clic -->
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
+                <!-- class="active" → el CSS subraya este enlace en dorado -->
                 <li><a href="peliculas.html" class="active">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
@@ -38,48 +58,71 @@
             </ul>
         </nav>
     </header>
-    <!-- main: contenido principal de la página -->
+
+    <!-- ── MAIN ────────────────────────────────────────────────────────
+         Contenido principal de esta página.
+         El <main> cambia en cada página; el header y el footer se repiten.
+
+         Lo que ve el usuario aquí:
+           Una sección con fondo blanco, texto grande y tres películas
+           favoritas separadas por espacio. Cada película muestra su
+           título en azul y negrita, seguido de una descripción personal.
+         ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <section class='peliculas'>
+        <!-- section.peliculas: contenedor principal del contenido.
+             class="peliculas" activa el estilo en style.css que aplica:
+               - padding generoso para dar aire al contenido
+               - font-size más grande para facilitar la lectura
+               - display:flex en la lista para separar cada película con espacio
+               - línea azul a la izquierda de cada <li> como acento visual -->
+        <section class="peliculas">
 
-        <!-- h1: título principal de esta página -->
-        <h1>Películas</h1>
-        <!-- p: párrafo que indica que este espacio es para las películas favoritas -->
-        <p>Peliculas favoritas</p>
-        <div>
-                <!-- p: descripción de gustos cinematográficos -->
-                <p>Disfruto de películas que tengan algún mensaje, variedad de personajes y múltiples narrativas.
-                    También las sátiras divertidas con giros en la historia.</p>
+            <!-- h1: título principal de la página, el más grande.
+                 Solo hay un <h1> por página (buena práctica de SEO y accesibilidad). -->
+            <h1>Películas</h1>
 
-                <!-- ol: ordered list, lista con número/letra/romano automático -->
-                <ol>
+            <!-- p: subtítulo descriptivo debajo del h1. -->
+            <p>Peliculas favoritas</p>
 
-  <li>
-    <strong>Duelo de Titanes (Remember the Titans):</strong> Es una película deportiva ambientada en 1971 que cuenta la historia real del entrenador Herman Boone y la integración racial de un equipo de fútbol americano en una escuela de Virginia.
-    Me gusta porque muestra cómo el liderazgo, la disciplina y el trabajo en equipo pueden superar prejuicios y conflictos sociales.
-    Es una historia que deja claro que el respeto se construye con acciones, no con palabras.
-  </li>
+            <!-- ol: lista ordenada de películas.
+                 El CSS convierte esta lista en una columna vertical con
+                 espacio (gap) entre cada ítem, en lugar de los números por defecto. -->
+            <ol>
 
-  <li>
-    <strong>Talladega Nights: The Ballad of Ricky Bobby:</strong> Es una comedia sobre un piloto de NASCAR que vive bajo la filosofía de “si no eres primero, eres último”.
-    Me gusta porque, aunque es muy divertida, también muestra cómo el ego puede destruirte cuando no has sido realmente puesto a prueba.
-    Es una historia de caída y reconstrucción, donde el personaje aprende a reinventarse y dejar atrás una mentalidad superficial.
-  </li>
+                <!-- Cada <li> es una película.
+                     El CSS le aplica una línea azul a la izquierda (border-left)
+                     y padding para separar el texto de esa línea.
+                     <strong> pone el título en negrita; el CSS lo colorea de azul
+                     y lo muestra como bloque separado encima de la descripción. -->
+                <li>
+                    <strong>Duelo de Titanes (Remember the Titans):</strong> Es una película deportiva ambientada en 1971 que cuenta la historia real del entrenador Herman Boone y la integración racial de un equipo de fútbol americano en una escuela de Virginia.
+                    Me gusta porque muestra cómo el liderazgo, la disciplina y el trabajo en equipo pueden superar prejuicios y conflictos sociales.
+                    Es una historia que deja claro que el respeto se construye con acciones, no con palabras.
+                </li>
 
-  <li>
-    <strong>The Matrix:</strong> Es una película de ciencia ficción que cuestiona la realidad, el control y los límites de la mente humana.
-    Me gusta porque combina acción con ideas profundas, inspiradas en conceptos filosóficos como la alegoría de la cueva de Platón, las dudas de Descartes sobre la realidad y la idea de una simulación.
-    Básicamente, te hace preguntarte: ¿qué tan real es lo que estás viviendo?
-  </li>
+                <li>
+                    <strong>Talladega Nights: The Ballad of Ricky Bobby:</strong> Es una comedia sobre un piloto de NASCAR que vive bajo la filosofía de "si no eres primero, eres último".
+                    Me gusta porque, aunque es muy divertida, también muestra cómo el ego puede destruirte cuando no has sido realmente puesto a prueba.
+                    Es una historia de caída y reconstrucción, donde el personaje aprende a reinventarse y dejar atrás una mentalidad superficial.
+                </li>
 
-</ol>
-            </div>
+                <li>
+                    <strong>The Matrix:</strong> Es una película de ciencia ficción que cuestiona la realidad, el control y los límites de la mente humana.
+                    Me gusta porque combina acción con ideas profundas, inspiradas en conceptos filosóficos como la alegoría de la cueva de Platón, las dudas de Descartes sobre la realidad y la idea de una simulación.
+                    Básicamente, te hace preguntarte: ¿qué tan real es lo que estás viviendo?
+                </li>
+
+            </ol>
+
         </section>
 
     </main>
 
-    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+    <!-- ── FOOTER ──────────────────────────────────────────────────────
+         Pie de página idéntico en todas las páginas del sitio.
+         El CSS le aplica fondo negro y línea azul superior.
+         ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>

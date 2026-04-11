@@ -59,21 +59,6 @@ body {
 
 
 
-/* body.sobre-mi: aplica un fondo de imagen exclusivamente a la página "Sobre mí".
-   Al combinar el selector body con la clase .sobre-mi, este bloque solo afecta
-   a esa página y no al resto del sitio, manteniendo los estilos aislados.
-
-   background-size: cover   escala la imagen para cubrir toda la pantalla sin dejar huecos
-   background-position:     centra la imagen horizontal y verticalmente
-   background-repeat:       evita que la imagen se repita en mosaico
-   background-attachment:   fija la imagen al viewport (efecto parallax) */
-body.sobre-mi {
-    background-image: url('../thedigitalartist-computer-8070002_1280.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
 /* =============================================
    HEADER
@@ -187,6 +172,13 @@ img {
 ul {
     margin-left: 20px;
 }
+
+/* Clases de demostración usadas en listas.html para mostrar
+   visualmente los tres estilos de viñeta disponibles en HTML.
+   Se definen aquí para no usar estilos inline en el HTML. */
+.viñeta-disc   { list-style-type: disc;   } /* viñeta círculo sólido  ● */
+.viñeta-circle { list-style-type: circle; } /* viñeta círculo hueco   ○ */
+.viñeta-square { list-style-type: square; } /* viñeta cuadrado sólido ■ */
 
 /* =============================================
    SECCIÓN .datos
