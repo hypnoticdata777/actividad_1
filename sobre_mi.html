@@ -1,68 +1,57 @@
 <!-- =========================================================================
-     DOCUMENTO HTML - PÁGINA "SOBRE MÍ"
+     DOCUMENTO HTML - PÁGINA DE SERIES
      =========================================================================
 
-     ¿Qué es esta página?
-     Es una página informativa/personal dentro del sitio web.
+     Descripción:
+     Este archivo representa una página web estática que muestra una lista
+     ordenada de series, organizadas cronológicamente por año.
 
-
-     Tipo de página:
-     → Página estática (no cambia dinámicamente)
-     → Enfocada en contenido (texto)
+     Objetivos de la página:
+     - Demostrar el uso de listas ordenadas (<ol>)
+     - Aplicar etiquetas semánticas de HTML (header, nav, main, footer)
+     - Mantener consistencia estructural con el resto del sitio
      ========================================================================= -->
 
 
-<!-- Indica al navegador que usamos HTML5 -->
+<!-- Define el tipo de documento como HTML5 -->
 <!DOCTYPE html>
 
 <!-- =========================================================================
-     ETIQUETA RAÍZ
+     ELEMENTO RAÍZ
      =========================================================================
 
      lang="es":
-     Define que el idioma principal del contenido es español.
-
-     Beneficios:
-     - Mejora accesibilidad
-     - Mejora SEO
-     - Ayuda a lectores de pantalla
+     Indica que el idioma del contenido es español.
+     Mejora accesibilidad, SEO y compatibilidad con lectores de pantalla.
      ========================================================================= -->
 <html lang="es">
 
 
 <!-- =========================================================================
-     HEAD (CONFIGURACIÓN INTERNA)
+     HEAD (CONFIGURACIÓN DEL DOCUMENTO)
      =========================================================================
 
-     Contiene:
-     - configuración técnica
-     - metadatos
-     - enlaces a recursos (CSS)
-     - título de la página
-
-     No es visible directamente para el usuario.
+     Contiene metadatos y enlaces a recursos externos.
+     No es visible directamente en la página.
      ========================================================================= -->
 <head>
 
     <!-- Define codificación de caracteres -->
     <meta charset="UTF-8">
-    <!-- Permite:
-         á, é, í, ó, ú, ñ, símbolos y emojis -->
+    <!-- Permite mostrar correctamente caracteres especiales como:
+         á, é, í, ó, ú, ñ -->
 
-    <!-- Hace la página responsive -->
+    <!-- Configuración responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Permite que la página se adapte a celular, tablet y desktop -->
+    <!-- Hace que la página se adapte a dispositivos móviles -->
 
-    <!-- Conexión con el CSS global -->
+    <!-- Enlace al archivo CSS global -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Este archivo controla:
-         - colores
-         - tipografías
-         - márgenes
-         - diseño general del sitio -->
+    <!-- Este archivo define estilos como:
+         colores, fuentes, márgenes, diseño general -->
 
-    <!-- Título que aparece en la pestaña del navegador -->
-    <title>Sobre mí</title>
+    <!-- Título de la pestaña del navegador -->
+    <title>Series</title>
 
 </head>
 
@@ -71,58 +60,35 @@
      BODY (CONTENIDO VISIBLE)
      =========================================================================
 
-     class="sobre-mi":
-     Se asigna una clase específica al body para aplicar estilos exclusivos
-     solo a esta página.
-
-     ¿Por qué es importante?
-     Permite que esta página tenga un diseño diferente sin afectar a las demás.
+     Contiene todos los elementos que el usuario ve en pantalla.
      ========================================================================= -->
-<body class="sobre-mi">
+<body>
 
 
     <!-- =====================================================================
-         HEADER (ENCABEZADO GLOBAL)
+         HEADER (ENCABEZADO)
          =====================================================================
 
-         Se mantiene igual en todas las páginas del sitio para:
-         - consistencia visual
-         - navegación uniforme
-         - mejor experiencia de usuario
+         Sección superior de la página.
+         Incluye el menú de navegación común a todo el sitio.
          ===================================================================== -->
     <header>
 
-        <!-- ===============================================================
-             NAV (NAVEGACIÓN PRINCIPAL)
-             ===============================================================
-
-             Permite moverse entre páginas del sitio.
-
-             Importante:
-             Este menú es reutilizable → aparece en todas las páginas.
-             =============================================================== -->
+        <!-- Navegación principal -->
         <nav>
 
-            <!-- Lista de navegación -->
+            <!-- Lista de enlaces -->
             <ul>
 
-                <!-- Cada elemento es un enlace a otra sección del sitio -->
+                <!-- Cada elemento representa un enlace a otra página -->
 
                 <li><a href="index.html">Inicio</a></li>
-
                 <li><a href="listas.html">Listas</a></li>
-
                 <li><a href="peliculas.html">Películas</a></li>
-
                 <li><a href="series.html">Series</a></li>
-
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
-                <!-- Página actual -->
-
                 <li><a href="tablas.html">Tablas</a></li>
-
                 <li><a href="formulario.php">Formulario</a></li>
-                <!-- Página con backend -->
 
             </ul>
         </nav>
@@ -133,72 +99,118 @@
          MAIN (CONTENIDO PRINCIPAL)
          =====================================================================
 
-         Aquí vive el contenido único de esta página.
-         A diferencia del header/footer, este cambia en cada sección.
+         Contiene el contenido específico de esta página.
          ===================================================================== -->
     <main>
 
-        <!-- Título principal de la página -->
-        <h1>Sobre mí</h1>
-
+        <!-- Título principal -->
+        <h1>Series Favoritas (Ordenadas por Año)</h1>
 
         <!-- ===============================================================
-             SECCIÓN DE CONTENIDO PERSONAL
+             LISTA ORDENADA
              ===============================================================
 
-             class="contenido-sobre-mi":
-             Permite aplicar estilos específicos desde CSS.
+             <ol> (ordered list):
+             Representa una lista con orden numérico automático.
 
-             Ejemplo:
-             - ancho del texto
-             - alineación
-             - tipografía
+             En este caso:
+             Las series están organizadas cronológicamente.
              =============================================================== -->
-        <section class="contenido-sobre-mi">
+        <ol>
 
-            <!-- ===========================================================
-                 PÁRRAFOS DE PRESENTACIÓN
-                 =========================================================== -->
+            <!-- Cada <li> representa un elemento de la lista -->
+             <!-- <strong> resalta el nombre de la serie y le da importancia semántica.
+         Además de verse en negrita, indica que este texto es clave dentro del contenido -->
 
-            <p>
-                Hola, mi nombre es <strong>Carlos Sanchez Gonzalez</strong>. Tengo 33 años y actualmente estudio 
-                Ingeniería en Sistemas Computacionales.
-            </p>
-            <!-- <strong> resalta visualmente el nombre (importancia semántica) -->
+            <li>
+                <strong>Reading Rainbow (1983)</strong> – Programa educativo que fomenta la lectura en niños.
+            </li>
 
+            <li>
+                <strong>Matlock (1986)</strong> – Abogado inteligente que resuelve casos complejos.
+            </li>
 
-            <p>
-                Trabajo como Manager de Operaciones en la industria de gestión inmobiliaria, donde me enfoco en 
-                optimizar procesos, liderar equipos y asegurar que las operaciones funcionen de manera eficiente.
-            </p>
+            <li>
+                <strong>The Simpsons (1989)</strong> – Serie animada con crítica social.
+            </li>
 
+            <li>
+                <strong>Family Matters (1989)</strong> – Comedia familiar centrada en la familia Winslow.
+            </li>
 
-            <p>
-                Nací en Fresno, California, Estados Unidos. Es una región donde el clima suele ser cálido la mayor 
-                parte del año, lo cual forma parte de mis raíces.
-            </p>
+            <li>
+                <strong>Fresh Prince of Bel-Air (1990)</strong> – Serie sobre adaptación social y familia.
+            </li>
 
+            <li>
+                <strong>X-Men (1992)</strong> – Historia de mutantes enfrentando discriminación.
+            </li>
 
-            <p>
-                Me apasiona crear software y páginas web, ya que me permiten expresarme, construir soluciones y 
-                poner a prueba mis conocimientos. Disfruto desarrollar sistemas que no solo funcionan, sino que 
-                también me ayudan a organizar y mejorar las operaciones en mi entorno profesional.
-            </p>
+            <li>
+                <strong>The Magic School Bus (1994)</strong> – Serie educativa sobre ciencia.
+            </li>
 
+            <li>
+                <strong>Arthur (1996)</strong> – Vida cotidiana con enseñanzas sociales.
+            </li>
 
-            <p>
-                También tengo un gran interés por la historia de la humanidad. Me gusta leer libros, historias y 
-                relatos que me permitan entender mejor el mundo, las personas y las decisiones que han dado forma 
-                a nuestra realidad.
-            </p>
+            <li>
+                <strong>Pokémon (1997)</strong> – Aventuras de entrenadores y criaturas.
+            </li>
 
+            <li>
+                <strong>Recess (1997)</strong> – Dinámicas sociales en el recreo escolar.
+            </li>
 
-            <p>
-                Me considero un <strong>vaquero tecnológico</strong>: alguien que combina disciplina, carácter y visión 
-                con herramientas modernas para construir, resolver problemas y avanzar constantemente.
-            </p>
+            <li>
+                <strong>Dragon Tales (1999)</strong> – Mundo fantástico con enfoque infantil.
+            </li>
 
-        </section>
+            <li>
+                <strong>Ed, Edd y Eddy (1999)</strong> – Comedia sobre planes absurdos.
+            </li>
+
+            <li>
+                <strong>Digimon (1999)</strong> – Mundo digital y evolución de criaturas.
+            </li>
+
+            <li>
+                <strong>Between the Lions (2000)</strong> – Serie educativa de lectura.
+            </li>
+
+            <li>
+                <strong>Yu-Gi-Oh! (2000)</strong> – Estrategia y duelos de cartas.
+            </li>
+
+            <li>
+                <strong>The Grim Adventures of Billy & Mandy (2001)</strong> – Humor oscuro y fantasía.
+            </li>
+
+            <li>
+                <strong>Lost (2004)</strong> – Misterio y supervivencia en una isla.
+            </li>
+
+            <li>
+                <strong>Breaking Bad (2008)</strong> – Transformación moral de un personaje.
+            </li>
+
+            <li>
+                <strong>The Walking Dead (2010)</strong> – Supervivencia en un mundo postapocalíptico.
+            </li>
+
+            <li>
+                <strong>Game of Thrones (2011)</strong> – Conflictos políticos y poder.
+            </li>
+
+            <li>
+                <strong>Vikings (2013)</strong> – Exploración y conquista.
+            </li>
+
+            <li>
+                <strong>Better Call Saul (2015)</strong> – Desarrollo de personaje previo a otra serie.
+            </li>
+
+        </ol>
 
     </main>
 
@@ -207,12 +219,8 @@
          FOOTER (PIE DE PÁGINA)
          =====================================================================
 
-         Elemento consistente en todo el sitio.
-
-         Sirve para:
-         - branding
-         - derechos de autor
-         - cierre visual
+         Elemento consistente en todas las páginas del sitio.
+         Contiene información de derechos o identificación del sitio.
          ===================================================================== -->
     <footer>
         Derechos Reservados Producciones h777
