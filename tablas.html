@@ -1,81 +1,220 @@
-<!-- Le dice al navegador que este documento está en HTML5 -->
+<!-- =========================================================================
+     DOCUMENTO HTML - PÁGINA DE TABLAS
+     =========================================================================
+
+     ¿Qué es este archivo?
+     Es una página web construida con HTML que muestra una tabla simple.
+     Forma parte de un sitio más grande con navegación entre múltiples páginas.
+
+     ¿Qué enseña esta página?
+     - Estructura básica de un documento HTML
+     - Uso de etiquetas semánticas (header, nav, main, footer)
+     - Creación de tablas (table, thead, tbody, tr, th, td)
+     - Conexión con CSS externo
+
+     Flujo general de la página:
+     Navegador carga HTML → HTML carga CSS → se renderiza el contenido visual
+     ========================================================================= -->
+
+
+<!-- Le dice al navegador que este documento usa HTML5 -->
 <!DOCTYPE html>
 
-<!-- lang="es": corregido de "en" a "es" porque el contenido está en español -->
+<!-- =========================================================================
+     ETIQUETA RAÍZ HTML
+     =========================================================================
+
+     lang="es":
+     Indica que el idioma principal del contenido es español.
+
+     ¿Por qué importa?
+     - Mejora accesibilidad (lectores de pantalla)
+     - Mejora SEO (Google entiende mejor el contenido)
+     - Ayuda a herramientas de traducción
+     ========================================================================= -->
 <html lang="es">
 
-<!-- head: configuración de la página, no visible para el usuario -->
+
+<!-- =========================================================================
+     HEAD (CONFIGURACIÓN INTERNA DE LA PÁGINA)
+     =========================================================================
+
+     Esta sección NO es visible para el usuario.
+     Contiene configuraciones, metadatos y enlaces a recursos externos.
+     ========================================================================= -->
 <head>
-    <!-- UTF-8: permite usar acentos y caracteres especiales -->
+
+    <!-- Define la codificación de caracteres -->
     <meta charset="UTF-8">
-    <!-- viewport: adapta la página a cualquier tamaño de pantalla -->
+    <!-- Permite usar correctamente:
+         á, é, í, ó, ú, ñ, símbolos, emojis, etc. -->
+
+    <!-- Hace que la página sea responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Conecta con el CSS compartido que da estilo a todo el sitio -->
+    <!-- Sin esto, la página se vería mal en celulares -->
+
+    <!-- Conecta el archivo CSS externo -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Título que aparece en la pestaña del navegador -->
+    <!-- Aquí es donde vive TODO el diseño visual:
+         colores, márgenes, fuentes, etc. -->
+
+    <!-- Título de la pestaña del navegador -->
     <title>Tablas</title>
+
 </head>
 
-<!-- body: todo el contenido visible de la página -->
+
+<!-- =========================================================================
+     BODY (CONTENIDO VISIBLE)
+     =========================================================================
+
+     Todo lo que está dentro de <body> es lo que el usuario ve en pantalla.
+     ========================================================================= -->
 <body>
 
-    <!-- header: zona superior con el menú de navegación.
-         El nav se coloca dentro del header para seguir la misma estructura
-         que el resto de las páginas del sitio (coherencia estructural) -->
+
+    <!-- =====================================================================
+         HEADER (ENCABEZADO DEL SITIO)
+         =====================================================================
+
+         Se usa para agrupar la parte superior de la página.
+         Generalmente contiene:
+         - logo
+         - navegación
+         - título del sitio
+         ===================================================================== -->
     <header>
-        <!-- nav: menú de navegación con enlaces a todas las páginas del sitio -->
+
+        <!-- ===============================================================
+             NAV (MENÚ DE NAVEGACIÓN)
+             ===============================================================
+
+             Permite moverse entre las diferentes páginas del sitio.
+             Es clave para la experiencia del usuario.
+             =============================================================== -->
         <nav>
-            <!-- ul: lista sin orden para los ítems del menú -->
+
+            <!-- Lista no ordenada (unordered list) -->
             <ul>
-                <!-- Cada li tiene un enlace <a> que lleva a otra página al hacer clic -->
+
+                <!-- Cada <li> representa un botón/enlace del menú -->
+
                 <li><a href="index.html">Inicio</a></li>
+                <!-- Página principal -->
+
                 <li><a href="listas.html">Listas</a></li>
+                <!-- Página de listas HTML -->
+
                 <li><a href="peliculas.html">Películas</a></li>
+                <!-- Página temática de películas -->
+
                 <li><a href="series.html">Series</a></li>
+                <!-- Página temática de series -->
+
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <!-- Página personal -->
+
                 <li><a href="tablas.html">Tablas</a></li>
+                <!-- Página actual -->
+
                 <li><a href="formulario.php">Formulario</a></li>
+                <!-- Página con backend (PHP) para enviar datos -->
+
             </ul>
         </nav>
     </header>
 
-    <!-- main: contiene las tablas HTML de práctica -->
+
+    <!-- =====================================================================
+         MAIN (CONTENIDO PRINCIPAL)
+         =====================================================================
+
+         Aquí vive el contenido único de esta página.
+         Cada página cambia el <main>, pero mantiene header/footer iguales.
+         ===================================================================== -->
     <main>
 
-        <!-- h1: título principal de esta página -->
+        <!-- Título principal -->
         <h1>Tablas</h1>
-        <!-- table: estructura de datos en filas y columnas.
-             El atributo border="1" ya no es necesario porque el CSS aplica los bordes,
-             pero se mantiene aquí como referencia didáctica -->
+
+
+        <!-- ===============================================================
+             TABLA HTML
+             ===============================================================
+
+             Las tablas sirven para organizar datos en:
+             - filas (rows)
+             - columnas (columns)
+
+             Estructura base:
+             table
+               ├── thead (encabezado)
+               └── tbody (datos)
+             =============================================================== -->
         <table>
-            <!-- thead: agrupa las filas de encabezado de la tabla (separado visualmente del cuerpo) -->
+
+            <!-- ===========================================================
+                 THEAD (ENCABEZADO DE LA TABLA)
+                 ===========================================================
+
+                 Contiene los títulos de las columnas.
+                 =========================================================== -->
             <thead>
-                <!-- tr: fila de la tabla (table row) -->
+
+                <!-- Fila -->
                 <tr>
-                    <!-- th: celda de encabezado (table header); el navegador la pone en negrita por defecto -->
+
+                    <!-- Encabezados de columna -->
                     <th>Nombre</th>
                     <th>Edad</th>
                     <th>Ciudad</th>
+
                 </tr>
             </thead>
 
-            <!-- tbody: agrupa las filas de datos de la tabla -->
+
+            <!-- ===========================================================
+                 TBODY (CUERPO DE LA TABLA)
+                 ===========================================================
+
+                 Contiene los datos reales.
+                 =========================================================== -->
             <tbody>
-                <!-- tr: cada fila de datos -->
+
+                <!-- Fila de datos -->
                 <tr>
-                    <!-- td: celda de dato normal (table data) -->
+
+                    <!-- Cada celda representa un dato -->
                     <td>Felipe Smith</td>
                     <td>33</td>
                     <td>Chicago</td>
+
                 </tr>
+
             </tbody>
         </table>
+
     </main>
 
-    <!-- footer: pie de página con derechos, mismo texto que el resto del sitio para consistencia -->
+
+    <!-- =====================================================================
+         FOOTER (PIE DE PÁGINA)
+         =====================================================================
+
+         Se usa para:
+         - derechos de autor
+         - información legal
+         - contacto
+         - branding
+
+         Se mantiene consistente en todas las páginas.
+         ===================================================================== -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
 
+
+</body>
+</html>
 </body>
 </html>
