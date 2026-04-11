@@ -1,91 +1,228 @@
-<!-- Le dice al navegador que este documento está en HTML5 -->
+<!-- =========================================================================
+     DOCUMENTO HTML - PÁGINA "SOBRE MÍ"
+     =========================================================================
+
+     ¿Qué es esta página?
+     Es una página informativa/personal dentro del sitio web.
+
+
+     Tipo de página:
+     → Página estática (no cambia dinámicamente)
+     → Enfocada en contenido (texto)
+     ========================================================================= -->
+
+
+<!-- Indica al navegador que usamos HTML5 -->
 <!DOCTYPE html>
 
-<!-- lang="es": el contenido está en español -->
+<!-- =========================================================================
+     ETIQUETA RAÍZ
+     =========================================================================
+
+     lang="es":
+     Define que el idioma principal del contenido es español.
+
+     Beneficios:
+     - Mejora accesibilidad
+     - Mejora SEO
+     - Ayuda a lectores de pantalla
+     ========================================================================= -->
 <html lang="es">
 
-<!-- head: configuración de la página -->
+
+<!-- =========================================================================
+     HEAD (CONFIGURACIÓN INTERNA)
+     =========================================================================
+
+     Contiene:
+     - configuración técnica
+     - metadatos
+     - enlaces a recursos (CSS)
+     - título de la página
+
+     No es visible directamente para el usuario.
+     ========================================================================= -->
 <head>
-    <!-- UTF-8: permite usar acentos y caracteres especiales -->
+
+    <!-- Define codificación de caracteres -->
     <meta charset="UTF-8">
+    <!-- Permite:
+         á, é, í, ó, ú, ñ, símbolos y emojis -->
 
-    <!-- viewport: adapta la página a cualquier tamaño de pantalla -->
+    <!-- Hace la página responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Permite que la página se adapte a celular, tablet y desktop -->
 
-    <!-- CSS general del sitio -->
+    <!-- Conexión con el CSS global -->
     <link rel="stylesheet" href="assets/style/style.css">
+    <!-- Este archivo controla:
+         - colores
+         - tipografías
+         - márgenes
+         - diseño general del sitio -->
 
-    <!-- Título de la pestaña -->
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Sobre mí</title>
+
 </head>
 
-<!-- body con clase exclusiva para estilos personalizados -->
+
+<!-- =========================================================================
+     BODY (CONTENIDO VISIBLE)
+     =========================================================================
+
+     class="sobre-mi":
+     Se asigna una clase específica al body para aplicar estilos exclusivos
+     solo a esta página.
+
+     ¿Por qué es importante?
+     Permite que esta página tenga un diseño diferente sin afectar a las demás.
+     ========================================================================= -->
 <body class="sobre-mi">
 
-    <!-- header con navegación -->
+
+    <!-- =====================================================================
+         HEADER (ENCABEZADO GLOBAL)
+         =====================================================================
+
+         Se mantiene igual en todas las páginas del sitio para:
+         - consistencia visual
+         - navegación uniforme
+         - mejor experiencia de usuario
+         ===================================================================== -->
     <header>
+
+        <!-- ===============================================================
+             NAV (NAVEGACIÓN PRINCIPAL)
+             ===============================================================
+
+             Permite moverse entre páginas del sitio.
+
+             Importante:
+             Este menú es reutilizable → aparece en todas las páginas.
+             =============================================================== -->
         <nav>
+
+            <!-- Lista de navegación -->
             <ul>
+
+                <!-- Cada elemento es un enlace a otra sección del sitio -->
+
                 <li><a href="index.html">Inicio</a></li>
+
                 <li><a href="listas.html">Listas</a></li>
+
                 <li><a href="peliculas.html">Películas</a></li>
+
                 <li><a href="series.html">Series</a></li>
+
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <!-- Página actual -->
+
                 <li><a href="tablas.html">Tablas</a></li>
+
                 <li><a href="formulario.php">Formulario</a></li>
+                <!-- Página con backend -->
+
             </ul>
         </nav>
     </header>
 
-    <!-- main: contenido principal -->
+
+    <!-- =====================================================================
+         MAIN (CONTENIDO PRINCIPAL)
+         =====================================================================
+
+         Aquí vive el contenido único de esta página.
+         A diferencia del header/footer, este cambia en cada sección.
+         ===================================================================== -->
     <main>
 
-        <!-- Título principal -->
+        <!-- Título principal de la página -->
         <h1>Sobre mí</h1>
 
-        <!-- Sección de contenido personal -->
+
+        <!-- ===============================================================
+             SECCIÓN DE CONTENIDO PERSONAL
+             ===============================================================
+
+             class="contenido-sobre-mi":
+             Permite aplicar estilos específicos desde CSS.
+
+             Ejemplo:
+             - ancho del texto
+             - alineación
+             - tipografía
+             =============================================================== -->
         <section class="contenido-sobre-mi">
+
+            <!-- ===========================================================
+                 PÁRRAFOS DE PRESENTACIÓN
+                 =========================================================== -->
 
             <p>
                 Hola, mi nombre es <strong>Carlos Sanchez Gonzalez</strong>. Tengo 33 años y actualmente estudio 
                 Ingeniería en Sistemas Computacionales.
             </p>
+            <!-- <strong> resalta visualmente el nombre (importancia semántica) -->
+
 
             <p>
                 Trabajo como Manager de Operaciones en la industria de gestión inmobiliaria, donde me enfoco en 
                 optimizar procesos, liderar equipos y asegurar que las operaciones funcionen de manera eficiente.
             </p>
+            <!-- Este párrafo establece credibilidad profesional -->
+
 
             <p>
                 Nací en Fresno, California, Estados Unidos. Es una región donde el clima suele ser cálido la mayor 
                 parte del año, lo cual forma parte de mis raíces.
             </p>
+            <!-- Contexto personal / origen -->
+
 
             <p>
                 Me apasiona crear software y páginas web, ya que me permiten expresarme, construir soluciones y 
                 poner a prueba mis conocimientos. Disfruto desarrollar sistemas que no solo funcionan, sino que 
                 también me ayudan a organizar y mejorar las operaciones en mi entorno profesional.
             </p>
+            <!-- Aquí defines tu enfoque técnico y mentalidad de creador -->
+
 
             <p>
                 También tengo un gran interés por la historia de la humanidad. Me gusta leer libros, historias y 
                 relatos que me permitan entender mejor el mundo, las personas y las decisiones que han dado forma 
                 a nuestra realidad.
             </p>
+            <!-- Muestra profundidad intelectual / intereses -->
+
 
             <p>
                 Me considero un <strong>vaquero tecnológico</strong>: alguien que combina disciplina, carácter y visión 
                 con herramientas modernas para construir, resolver problemas y avanzar constantemente.
             </p>
+            <!-- Aquí defines tu identidad personal (muy fuerte este concepto 👀🔥) -->
 
         </section>
 
     </main>
 
-    <!-- footer -->
+
+    <!-- =====================================================================
+         FOOTER (PIE DE PÁGINA)
+         =====================================================================
+
+         Elemento consistente en todo el sitio.
+
+         Sirve para:
+         - branding
+         - derechos de autor
+         - cierre visual
+         ===================================================================== -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
+
 
 </body>
 </html>
