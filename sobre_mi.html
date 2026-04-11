@@ -1,231 +1,61 @@
-<!-- =========================================================================
-     DOCUMENTO HTML - PÁGINA DE SERIES
-     =========================================================================
-
-     Descripción:
-     Este archivo representa una página web estática que muestra una lista
-     ordenada de series, organizadas cronológicamente por año.
-
-     Objetivos de la página:
-     - Demostrar el uso de listas ordenadas (<ol>)
-     - Aplicar etiquetas semánticas de HTML (header, nav, main, footer)
-     - Mantener consistencia estructural con el resto del sitio
-     ========================================================================= -->
-
-
-<!-- Define el tipo de documento como HTML5 -->
 <!DOCTYPE html>
-
-<!-- =========================================================================
-     ELEMENTO RAÍZ
-     =========================================================================
-
-     lang="es":
-     Indica que el idioma del contenido es español.
-     Mejora accesibilidad, SEO y compatibilidad con lectores de pantalla.
-     ========================================================================= -->
 <html lang="es">
 
-
-<!-- =========================================================================
-     HEAD (CONFIGURACIÓN DEL DOCUMENTO)
-     =========================================================================
-
-     Contiene metadatos y enlaces a recursos externos.
-     No es visible directamente en la página.
-     ========================================================================= -->
 <head>
-
-    <!-- Define codificación de caracteres -->
     <meta charset="UTF-8">
-    <!-- Permite mostrar correctamente caracteres especiales como:
-         á, é, í, ó, ú, ñ -->
-
-    <!-- Configuración responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Hace que la página se adapte a dispositivos móviles -->
-
-    <!-- Enlace al archivo CSS global -->
     <link rel="stylesheet" href="assets/style/style.css">
-    <!-- Este archivo define estilos como:
-         colores, fuentes, márgenes, diseño general -->
-
-    <!-- Título de la pestaña del navegador -->
-    <title>Series</title>
-
+    <title>Sobre mí</title>
 </head>
 
+<!-- La clase "sobre-mi" activa el fondo de imagen definido en style.css -->
+<body class="sobre-mi">
 
-<!-- =========================================================================
-     BODY (CONTENIDO VISIBLE)
-     =========================================================================
-
-     Contiene todos los elementos que el usuario ve en pantalla.
-     ========================================================================= -->
-<body>
-
-
-    <!-- =====================================================================
-         HEADER (ENCABEZADO)
-         =====================================================================
-
-         Sección superior de la página.
-         Incluye el menú de navegación común a todo el sitio.
-         ===================================================================== -->
     <header>
-
-        <!-- Navegación principal -->
         <nav>
-
-            <!-- Lista de enlaces -->
             <ul>
-
-                <!-- Cada elemento representa un enlace a otra página -->
-
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
-                <li><a href="sobre_mi.html">Sobre mí</a></li>
+                <li><a href="sobre_mi.html" class="active">Sobre mí</a></li>
                 <li><a href="tablas.html">Tablas</a></li>
                 <li><a href="formulario.php">Formulario</a></li>
-
             </ul>
         </nav>
     </header>
 
-
-    <!-- =====================================================================
-         MAIN (CONTENIDO PRINCIPAL)
-         =====================================================================
-
-         Contiene el contenido específico de esta página.
-         ===================================================================== -->
     <main>
 
-        <!-- Título principal -->
-        <h1>Series Favoritas (Ordenadas por Año)</h1>
+        <h1>Sobre mí</h1>
 
-        <!-- ===============================================================
-             LISTA ORDENADA
-             ===============================================================
+        <section class="datos">
+            <h2>¿Quién soy?</h2>
+            <p>Me llamo <strong>Carlos Sánchez González</strong> y soy estudiante de desarrollo web.
+               Este sitio es parte de un proyecto escolar donde practico HTML y CSS.</p>
+        </section>
 
-             <ol> (ordered list):
-             Representa una lista con orden numérico automático.
+        <section class="datos">
+            <h2>Intereses</h2>
+            <ul>
+                <li>Tecnología y programación web</li>
+                <li>Series y películas</li>
+                <li>Fútbol americano</li>
+                <li>Videojuegos</li>
+            </ul>
+        </section>
 
-             En este caso:
-             Las series están organizadas cronológicamente.
-             =============================================================== -->
-        <ol>
-
-            <!-- Cada <li> representa un elemento de la lista -->
-             <!-- <strong> resalta el nombre de la serie y le da importancia semántica.
-         Además de verse en negrita, indica que este texto es clave dentro del contenido -->
-
-            <li>
-                <strong>Reading Rainbow (1983)</strong> – Programa educativo que fomenta la lectura en niños.
-            </li>
-
-            <li>
-                <strong>Matlock (1986)</strong> – Abogado inteligente que resuelve casos complejos.
-            </li>
-
-            <li>
-                <strong>The Simpsons (1989)</strong> – Serie animada con crítica social.
-            </li>
-
-            <li>
-                <strong>Family Matters (1989)</strong> – Comedia familiar centrada en la familia Winslow.
-            </li>
-
-            <li>
-                <strong>Fresh Prince of Bel-Air (1990)</strong> – Serie sobre adaptación social y familia.
-            </li>
-
-            <li>
-                <strong>X-Men (1992)</strong> – Historia de mutantes enfrentando discriminación.
-            </li>
-
-            <li>
-                <strong>The Magic School Bus (1994)</strong> – Serie educativa sobre ciencia.
-            </li>
-
-            <li>
-                <strong>Arthur (1996)</strong> – Vida cotidiana con enseñanzas sociales.
-            </li>
-
-            <li>
-                <strong>Pokémon (1997)</strong> – Aventuras de entrenadores y criaturas.
-            </li>
-
-            <li>
-                <strong>Recess (1997)</strong> – Dinámicas sociales en el recreo escolar.
-            </li>
-
-            <li>
-                <strong>Dragon Tales (1999)</strong> – Mundo fantástico con enfoque infantil.
-            </li>
-
-            <li>
-                <strong>Ed, Edd y Eddy (1999)</strong> – Comedia sobre planes absurdos.
-            </li>
-
-            <li>
-                <strong>Digimon (1999)</strong> – Mundo digital y evolución de criaturas.
-            </li>
-
-            <li>
-                <strong>Between the Lions (2000)</strong> – Serie educativa de lectura.
-            </li>
-
-            <li>
-                <strong>Yu-Gi-Oh! (2000)</strong> – Estrategia y duelos de cartas.
-            </li>
-
-            <li>
-                <strong>The Grim Adventures of Billy & Mandy (2001)</strong> – Humor oscuro y fantasía.
-            </li>
-
-            <li>
-                <strong>Lost (2004)</strong> – Misterio y supervivencia en una isla.
-            </li>
-
-            <li>
-                <strong>Breaking Bad (2008)</strong> – Transformación moral de un personaje.
-            </li>
-
-            <li>
-                <strong>The Walking Dead (2010)</strong> – Supervivencia en un mundo postapocalíptico.
-            </li>
-
-            <li>
-                <strong>Game of Thrones (2011)</strong> – Conflictos políticos y poder.
-            </li>
-
-            <li>
-                <strong>Vikings (2013)</strong> – Exploración y conquista.
-            </li>
-
-            <li>
-                <strong>Better Call Saul (2015)</strong> – Desarrollo de personaje previo a otra serie.
-            </li>
-
-        </ol>
+        <section class="datos">
+            <h2>¿Por qué aprender HTML?</h2>
+            <p>Porque es la base de todo lo que se ve en internet. Aprender HTML me permite
+               entender cómo funcionan las páginas web y construir mis propias ideas desde cero.</p>
+        </section>
 
     </main>
 
-
-    <!-- =====================================================================
-         FOOTER (PIE DE PÁGINA)
-         =====================================================================
-
-         Elemento consistente en todas las páginas del sitio.
-         Contiene información de derechos o identificación del sitio.
-         ===================================================================== -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
-
 
 </body>
 </html>
