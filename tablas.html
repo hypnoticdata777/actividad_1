@@ -3,56 +3,305 @@
      PÁGINA: Tablas | tablas.html
      ================================================================
      Qué ve el usuario:
-     Una tabla con encabezados en azul oscuro y datos organizados
-     en filas. Las filas pares tienen fondo amarillo suave (zebra
-     striping) para facilitar la lectura. Al pasar el mouse sobre
-     una fila, el fondo cambia a azul translúcido.
+     Tabla CRUD completa. Permite agregar, editar y eliminar registros
+     de Películas o Series, asignados a Mariana, Eduardo Rafael o Carlos.
+     Los datos se guardan en localStorage del navegador.
 
      Estructura:
        <header>  → barra de navegación superior
-       <main>    → título y tabla de datos con encabezados y filas
+       <main>    → formulario de alta + tabla CRUD con acciones
        <footer>  → pie de página con derechos
      ================================================================ -->
 <html lang="es">
-<!-- lang="es": indica al navegador y motores de búsqueda que el
-     contenido está en español. Mejora accesibilidad y SEO. -->
 
 <head>
     <meta charset="UTF-8">
-    <!-- charset UTF-8: debe ser lo primero en <head>. Permite usar
-         acentos, ñ y caracteres especiales sin que aparezcan rotos. -->
-
-    <!-- viewport: adapta la página al tamaño de la pantalla del dispositivo.
-         Sin esto, en celular la página se vería pequeñísima. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- link: conecta este HTML con el CSS compartido de todo el sitio.
-         style.css controla colores, fuentes, espaciados y diseño visual. -->
     <link rel="stylesheet" href="assets/style/style.css">
-
-    <!-- title: texto que aparece en la pestaña del navegador. -->
     <title>Tablas</title>
+
+    <!-- ================================================================
+         ESTILOS ESPECÍFICOS DE ESTA PÁGINA
+         Solo afectan a tablas.html. No modifican style.css global.
+         Se usan variables del sitio (:root) para mantener consistencia.
+         ================================================================ -->
+    <style>
+        /* La tabla CRUD necesita más columnas que la original,
+           por eso expandimos el max-width solo en esta página */
+        main table {
+            max-width: 100%;
+        }
+
+        /* ── Sección del formulario de alta ─────────────────────── */
+        .crud-form-section {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-grey-mid);
+            border-left: 5px solid var(--color-blue);
+            border-radius: 6px;
+            padding: 20px 24px;
+            max-width: 560px;
+            margin: 20px 0 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .crud-form-section h2 {
+            margin: 0 0 14px 0;
+            font-size: 1.1em;
+            color: var(--color-blue);
+            letter-spacing: 0.5px;
+        }
+
+        /* Fila de controles del formulario de alta en línea */
+        .crud-form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .crud-form-row label {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.82em;
+            font-weight: bold;
+            color: var(--color-dark-mid);
+            gap: 4px;
+        }
+
+        /* Inputs y selects del formulario de alta:
+           reutilizan el estilo base de form input de style.css */
+        .crud-form-row input,
+        .crud-form-row select {
+            padding: 8px 10px;
+            border: 1px solid var(--color-grey-mid);
+            border-radius: 4px;
+            font-size: 0.95em;
+            background-color: var(--color-white);
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .crud-form-row input:focus,
+        .crud-form-row select:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            box-shadow: 0 0 5px rgba(240, 192, 64, 0.5);
+        }
+
+        .crud-form-row input[name="titulo"] {
+            min-width: 200px;
+        }
+
+        /* ── Botones de acción ───────────────────────────────────── */
+
+        /* Botón Agregar (verde, igual al submit del formulario) */
+        .btn-agregar {
+            padding: 9px 18px;
+            background: linear-gradient(90deg, var(--color-green) 0%, var(--color-green-dark) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            letter-spacing: 0.4px;
+            transition: background 0.25s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 6px rgba(39, 174, 96, 0.35);
+        }
+
+        .btn-agregar:hover {
+            background: linear-gradient(90deg, var(--color-green-dark) 0%, var(--color-green) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.45);
+        }
+
+        .btn-agregar:active {
+            transform: translateY(0);
+        }
+
+        /* Botón Editar (azul del sitio) */
+        .btn-editar {
+            padding: 6px 12px;
+            background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-blue-light) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.82em;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-editar:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* Botón Eliminar (rojo del sitio) */
+        .btn-eliminar {
+            padding: 6px 12px;
+            background: linear-gradient(90deg, var(--color-red) 0%, var(--color-red-hover) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.82em;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-eliminar:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* Botón Guardar cambios (dorado del sitio) */
+        .btn-guardar {
+            padding: 6px 12px;
+            background: linear-gradient(90deg, var(--color-gold-dark) 0%, var(--color-gold) 100%);
+            color: var(--color-dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.82em;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-guardar:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* Botón Cancelar edición (gris neutro) */
+        .btn-cancelar {
+            padding: 6px 12px;
+            background-color: var(--color-grey-mid);
+            color: var(--color-dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.82em;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-cancelar:hover {
+            background-color: var(--color-silver);
+        }
+
+        /* Grupo de botones en la celda de acciones */
+        .acciones-grupo {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        /* Inputs inline dentro de la fila en modo edición */
+        .fila-edit-input,
+        .fila-edit-select {
+            padding: 5px 8px;
+            border: 1px solid var(--color-gold);
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: inherit;
+            background-color: var(--color-white);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .fila-edit-input:focus,
+        .fila-edit-select:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(240, 192, 64, 0.5);
+        }
+
+        /* Badge visual para la categoría */
+        .badge {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-peliculas {
+            background-color: var(--color-blue-glow);
+            color: var(--color-blue);
+            border: 1px solid var(--color-blue);
+        }
+
+        .badge-series {
+            background-color: var(--color-gold-glow);
+            color: var(--color-gold-dark);
+            border: 1px solid var(--color-gold-dark);
+        }
+
+        /* Mensaje cuando la tabla está vacía */
+        .tabla-vacia {
+            text-align: center;
+            color: var(--color-silver);
+            font-style: italic;
+            padding: 20px 0;
+        }
+
+        /* Toast de confirmación flotante */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-dark);
+            color: var(--color-gold);
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        #toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsivo: en celular los controles del form se apilan */
+        @media (max-width: 600px) {
+            .crud-form-row {
+                flex-direction: column;
+            }
+
+            .crud-form-row input[name="titulo"] {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .acciones-grupo {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- ── HEADER ──────────────────────────────────────────────────────
          Barra de navegación superior, idéntica en todas las páginas.
-         El CSS la pinta de negro con gradiente azul y línea dorada inferior.
-         "Tablas" lleva class="active" → el CSS lo subraya en dorado
-         para indicar visualmente que esta es la página actual.
+         "Tablas" lleva class="active" para el subrayado dorado.
          ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
-            <!-- ul: lista de ítems del menú. El CSS elimina las viñetas
-                 y los muestra en fila horizontal con display:flex. -->
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
-                <!-- class="active" → el CSS subraya este enlace en dorado -->
                 <li><a href="tablas.html" class="active">Tablas</a></li>
                 <li><a href="formulario.php">Formulario</a></li>
             </ul>
@@ -60,56 +309,75 @@
     </header>
 
     <!-- ── MAIN ────────────────────────────────────────────────────────
-         Contenido principal de esta página.
-         El <main> cambia en cada página; el header y el footer se repiten.
-
-         Lo que ve el usuario aquí:
-           Un título y una tabla con tres columnas (Nombre, Edad, Ciudad)
-           y una fila de datos. Los encabezados tienen fondo azul oscuro
-           con texto blanco en mayúsculas. Las filas pares se ven en
-           amarillo suave y cambian a azul al pasar el mouse.
+         Contenido principal:
+           1. Formulario de alta para agregar nuevos registros.
+           2. Tabla CRUD con columnas: #, Título, Categoría,
+              Asignado a, Acciones (Editar / Eliminar).
+         Los datos persisten en localStorage del navegador.
          ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- h1: título principal de la página, el más grande.
-             Solo hay un <h1> por página (buena práctica de SEO y accesibilidad). -->
         <h1>Tablas</h1>
 
-        <!-- table: elemento que organiza datos en filas y columnas.
-             El CSS elimina el doble borde (border-collapse: collapse),
-             limita el ancho máximo, agrega sombra y bordes redondeados.
+        <!-- ── Formulario de alta ──────────────────────────────────── -->
+        <!-- Permite agregar un nuevo registro a la tabla.
+             No usa <form> con action porque el submit lo maneja JS. -->
+        <div class="crud-form-section">
+            <h2>Agregar nuevo registro</h2>
+            <div class="crud-form-row">
 
-             Estructura interna:
-               <thead> → fila de encabezados (títulos de columna)
-               <tbody> → filas de datos reales -->
-        <table>
+                <!-- Campo título: texto libre para el nombre de la película o serie -->
+                <label>
+                    Título
+                    <input type="text" name="titulo" id="input-titulo" placeholder="Ej: Breaking Bad" maxlength="80">
+                </label>
 
-            <!-- thead: agrupa la fila de encabezados de la tabla.
-                 El CSS le aplica fondo con gradiente azul oscuro, texto
-                 blanco en mayúsculas y letra espaciada para que destaque
-                 visualmente sobre las filas de datos. -->
+                <!-- Categoría: Películas o Series -->
+                <label>
+                    Categoría
+                    <select name="categoria" id="input-categoria">
+                        <option value="">Selecciona...</option>
+                        <option value="Películas">Películas</option>
+                        <option value="Series">Series</option>
+                    </select>
+                </label>
+
+                <!-- Asignado a: los tres integrantes del equipo -->
+                <label>
+                    Asignado a
+                    <select name="asignado" id="input-asignado">
+                        <option value="">Selecciona...</option>
+                        <option value="Mariana">Mariana</option>
+                        <option value="Eduardo Rafael">Eduardo Rafael</option>
+                        <option value="Carlos">Carlos</option>
+                    </select>
+                </label>
+
+                <!-- Botón para ejecutar el alta -->
+                <button class="btn-agregar" onclick="agregarRegistro()">+ Agregar</button>
+
+            </div>
+        </div>
+
+        <!-- ── Tabla CRUD ───────────────────────────────────────────── -->
+        <!-- table: reutiliza los estilos de style.css (zebra, hover, th azul).
+             El max-width se sobreescribe en el <style> de esta página. -->
+        <table id="tabla-crud">
+
             <thead>
                 <tr>
-                    <!-- th: celda de encabezado. El navegador la pone en negrita
-                         por defecto; el CSS agrega el color azul y las mayúsculas. -->
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Ciudad</th>
+                    <!-- th: encabezados con gradiente azul del CSS global -->
+                    <th>#</th>
+                    <th>Título</th>
+                    <th>Categoría</th>
+                    <th>Asignado a</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
 
-            <!-- tbody: agrupa todas las filas de datos de la tabla.
-                 El CSS aplica zebra striping (tr:nth-child(even)) para que
-                 las filas pares tengan fondo amarillo suave, facilitando la
-                 lectura horizontal. Al pasar el mouse, la fila se resalta en azul. -->
-            <tbody>
-                <tr>
-                    <!-- td: celda de dato regular. El CSS le aplica borde y padding
-                         para que el contenido no quede pegado a los bordes. -->
-                    <td>Felipe Smith</td>
-                    <td>33</td>
-                    <td>Chicago</td>
-                </tr>
+            <!-- tbody: las filas las genera el JavaScript dinámicamente -->
+            <tbody id="tabla-body">
+                <!-- Las filas se renderizan aquí por renderTabla() -->
             </tbody>
 
         </table>
@@ -118,11 +386,295 @@
 
     <!-- ── FOOTER ──────────────────────────────────────────────────────
          Pie de página idéntico en todas las páginas del sitio.
-         El CSS le aplica fondo negro y línea azul superior.
          ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
 
+    <!-- Toast de notificación: aparece brevemente al hacer una acción -->
+    <div id="toast"></div>
+
+    <!-- ================================================================
+         LÓGICA CRUD EN JAVASCRIPT
+         ================================================================
+         Flujo general:
+           1. Al cargar la página, se leen los datos de localStorage.
+           2. renderTabla() dibuja todas las filas en el <tbody>.
+           3. agregarRegistro() valida y añade una fila nueva.
+           4. editarFila(id) convierte la fila en inputs editables.
+           5. guardarEdicion(id) aplica los cambios y vuelve a render.
+           6. cancelarEdicion() descarta cambios sin guardar.
+           7. eliminarRegistro(id) borra el registro tras confirmación.
+           8. Cada cambio llama a guardarEnStorage() para persistir.
+         ================================================================ -->
+    <script>
+
+        /* ── Clave de localStorage ──────────────────────────────────── */
+        /* Usamos una clave específica para no colisionar con otras páginas */
+        const STORAGE_KEY = 'tablas_crud_registros';
+
+        /* ── Estado en memoria ──────────────────────────────────────── */
+        /* registros: array de objetos { id, titulo, categoria, asignado }
+           idCounter: contador para generar IDs únicos sin repetir */
+        let registros  = [];
+        let idCounter  = 1;
+
+        /* ── Inicialización ─────────────────────────────────────────── */
+        /* Se ejecuta cuando el DOM está listo.
+           Carga datos de localStorage si existen; si no, carga datos demo. */
+        document.addEventListener('DOMContentLoaded', function () {
+            cargarDeStorage();
+            renderTabla();
+        });
+
+        /* ── cargarDeStorage ────────────────────────────────────────── */
+        /* Lee el JSON guardado en localStorage y restaura el estado.
+           Si no hay nada guardado, inserta tres registros de ejemplo. */
+        function cargarDeStorage() {
+            const datos = localStorage.getItem(STORAGE_KEY);
+            if (datos) {
+                const parsed = JSON.parse(datos);
+                registros  = parsed.registros  || [];
+                idCounter  = parsed.idCounter  || 1;
+            } else {
+                /* Datos de ejemplo para que la tabla no aparezca vacía */
+                registros = [
+                    { id: 1, titulo: 'Breaking Bad',  categoria: 'Series',     asignado: 'Carlos'         },
+                    { id: 2, titulo: 'The Matrix',    categoria: 'Películas',   asignado: 'Mariana'        },
+                    { id: 3, titulo: 'Game of Thrones', categoria: 'Series',   asignado: 'Eduardo Rafael'  }
+                ];
+                idCounter = 4;
+                guardarEnStorage();
+            }
+        }
+
+        /* ── guardarEnStorage ───────────────────────────────────────── */
+        /* Serializa el estado actual a JSON y lo persiste en localStorage. */
+        function guardarEnStorage() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ registros, idCounter }));
+        }
+
+        /* ── renderTabla ────────────────────────────────────────────── */
+        /* Limpia el tbody y redibuja todas las filas desde el array registros.
+           Muestra un mensaje si el array está vacío. */
+        function renderTabla() {
+            const tbody = document.getElementById('tabla-body');
+            tbody.innerHTML = '';
+
+            if (registros.length === 0) {
+                /* Fila vacía con mensaje centrado */
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td colspan="5" class="tabla-vacia">No hay registros. Agrega uno arriba.</td>';
+                tbody.appendChild(tr);
+                return;
+            }
+
+            registros.forEach(function (reg, index) {
+                const tr = document.createElement('tr');
+
+                /* Badge visual según categoría */
+                const badgeClass = reg.categoria === 'Películas' ? 'badge-peliculas' : 'badge-series';
+                const badgeHtml  = `<span class="badge ${badgeClass}">${reg.categoria}</span>`;
+
+                /* Número de fila (posición en el array + 1, no el ID) */
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${escapeHtml(reg.titulo)}</td>
+                    <td>${badgeHtml}</td>
+                    <td>${escapeHtml(reg.asignado)}</td>
+                    <td>
+                        <div class="acciones-grupo">
+                            <button class="btn-editar"   onclick="editarFila(${reg.id})">Editar</button>
+                            <button class="btn-eliminar" onclick="eliminarRegistro(${reg.id})">Eliminar</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ── agregarRegistro ────────────────────────────────────────── */
+        /* Lee los tres inputs del formulario de alta, valida que no estén
+           vacíos, crea un nuevo objeto registro y lo añade al array. */
+        function agregarRegistro() {
+            const titulo    = document.getElementById('input-titulo').value.trim();
+            const categoria = document.getElementById('input-categoria').value;
+            const asignado  = document.getElementById('input-asignado').value;
+
+            /* Validación básica: todos los campos son obligatorios */
+            if (!titulo || !categoria || !asignado) {
+                mostrarToast('Por favor completa todos los campos.');
+                return;
+            }
+
+            /* Crea el nuevo registro con un ID único */
+            registros.push({ id: idCounter, titulo, categoria, asignado });
+            idCounter++;
+
+            /* Persiste y redibuja */
+            guardarEnStorage();
+            renderTabla();
+
+            /* Limpia el formulario de alta para el siguiente registro */
+            document.getElementById('input-titulo').value    = '';
+            document.getElementById('input-categoria').value = '';
+            document.getElementById('input-asignado').value  = '';
+            document.getElementById('input-titulo').focus();
+
+            mostrarToast('Registro agregado correctamente.');
+        }
+
+        /* ── editarFila ─────────────────────────────────────────────── */
+        /* Localiza la <tr> correspondiente al id y reemplaza las celdas
+           de texto con inputs/selects editables en línea. */
+        function editarFila(id) {
+            const reg = registros.find(r => r.id === id);
+            if (!reg) return;
+
+            /* Encuentra la fila en el DOM buscando el botón "Editar" con ese id */
+            const tbody = document.getElementById('tabla-body');
+            const filas  = tbody.querySelectorAll('tr');
+            let filaTarget = null;
+
+            filas.forEach(function (tr) {
+                const btn = tr.querySelector('.btn-editar');
+                if (btn && btn.getAttribute('onclick') === `editarFila(${id})`) {
+                    filaTarget = tr;
+                }
+            });
+
+            if (!filaTarget) return;
+
+            /* Obtén el número de fila actual (primera celda) */
+            const numFila = filaTarget.cells[0].textContent;
+
+            /* Reemplaza el contenido de la fila con inputs editables.
+               Los valores actuales del registro se precargan en los inputs. */
+            filaTarget.innerHTML = `
+                <td>${numFila}</td>
+
+                <td>
+                    <input
+                        class="fila-edit-input"
+                        id="edit-titulo-${id}"
+                        type="text"
+                        value="${escapeHtml(reg.titulo)}"
+                        maxlength="80"
+                    >
+                </td>
+
+                <td>
+                    <select class="fila-edit-select" id="edit-categoria-${id}">
+                        <option value="Películas" ${reg.categoria === 'Películas' ? 'selected' : ''}>Películas</option>
+                        <option value="Series"    ${reg.categoria === 'Series'    ? 'selected' : ''}>Series</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select class="fila-edit-select" id="edit-asignado-${id}">
+                        <option value="Mariana"       ${reg.asignado === 'Mariana'       ? 'selected' : ''}>Mariana</option>
+                        <option value="Eduardo Rafael" ${reg.asignado === 'Eduardo Rafael' ? 'selected' : ''}>Eduardo Rafael</option>
+                        <option value="Carlos"        ${reg.asignado === 'Carlos'        ? 'selected' : ''}>Carlos</option>
+                    </select>
+                </td>
+
+                <td>
+                    <div class="acciones-grupo">
+                        <button class="btn-guardar"  onclick="guardarEdicion(${id})">Guardar</button>
+                        <button class="btn-cancelar" onclick="cancelarEdicion()">Cancelar</button>
+                    </div>
+                </td>
+            `;
+
+            /* Pone el foco en el input de título para editar de inmediato */
+            document.getElementById(`edit-titulo-${id}`).focus();
+        }
+
+        /* ── guardarEdicion ─────────────────────────────────────────── */
+        /* Lee los valores de los inputs inline de la fila en edición,
+           valida que no estén vacíos, actualiza el objeto en el array y
+           vuelve a renderizar la tabla en modo lectura. */
+        function guardarEdicion(id) {
+            const nuevoTitulo    = document.getElementById(`edit-titulo-${id}`).value.trim();
+            const nuevaCategoria = document.getElementById(`edit-categoria-${id}`).value;
+            const nuevoAsignado  = document.getElementById(`edit-asignado-${id}`).value;
+
+            if (!nuevoTitulo) {
+                mostrarToast('El título no puede estar vacío.');
+                return;
+            }
+
+            /* Actualiza el registro en el array */
+            const reg = registros.find(r => r.id === id);
+            if (reg) {
+                reg.titulo    = nuevoTitulo;
+                reg.categoria = nuevaCategoria;
+                reg.asignado  = nuevoAsignado;
+            }
+
+            guardarEnStorage();
+            renderTabla();
+            mostrarToast('Registro actualizado correctamente.');
+        }
+
+        /* ── cancelarEdicion ────────────────────────────────────────── */
+        /* Descarta los cambios sin modificar el array y redibuja la tabla
+           en modo lectura desde el estado actual de localStorage. */
+        function cancelarEdicion() {
+            renderTabla();
+        }
+
+        /* ── eliminarRegistro ───────────────────────────────────────── */
+        /* Pide confirmación al usuario antes de borrar el registro.
+           Si confirma, filtra el elemento del array y redibuja. */
+        function eliminarRegistro(id) {
+            const reg = registros.find(r => r.id === id);
+            if (!reg) return;
+
+            const confirmado = confirm(`¿Eliminar "${reg.titulo}"? Esta acción no se puede deshacer.`);
+            if (!confirmado) return;
+
+            /* Filtra el registro eliminado del array */
+            registros = registros.filter(r => r.id !== id);
+
+            guardarEnStorage();
+            renderTabla();
+            mostrarToast('Registro eliminado.');
+        }
+
+        /* ── mostrarToast ───────────────────────────────────────────── */
+        /* Muestra un mensaje flotante en la esquina inferior derecha
+           que desaparece automáticamente después de 2.5 segundos. */
+        function mostrarToast(mensaje) {
+            const toast = document.getElementById('toast');
+            toast.textContent = mensaje;
+            toast.classList.add('visible');
+            setTimeout(function () {
+                toast.classList.remove('visible');
+            }, 2500);
+        }
+
+        /* ── escapeHtml ─────────────────────────────────────────────── */
+        /* Convierte caracteres especiales en entidades HTML para evitar
+           XSS al insertar texto del usuario dentro del DOM con innerHTML. */
+        function escapeHtml(texto) {
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(texto));
+            return div.innerHTML;
+        }
+
+        /* ── Soporte Enter en el campo título ───────────────────────── */
+        /* Permite agregar un registro presionando Enter en el input de título,
+           sin necesidad de hacer clic en el botón. */
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('input-titulo').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') agregarRegistro();
+            });
+        });
+
+    </script>
+
+</body>
+</html>
 </body>
 </html>
