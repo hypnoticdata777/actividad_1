@@ -93,5 +93,29 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
         Derechos Reservados Producciones h777
     </footer>
 
+    <!-- ── Tabla de referencia de etiquetas ────────────────────────────
+         Sidebar fija a la derecha. Solo visible en pantallas ≥ 1024px.
+         ─────────────────────────────────────────────────────────────── -->
+    <aside class="char-ref">
+        <h3>Etiquetas usadas</h3>
+        <table>
+            <thead>
+                <tr><th>Tag / Concepto</th><th>Función</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>&lt;?php ?&gt;</td><td>Bloque de código PHP (ejecutado en el servidor)</td></tr>
+                <tr><td>$_POST[]</td><td>Recibe datos enviados por el formulario</td></tr>
+                <tr><td>htmlspecialchars()</td><td>Convierte &lt; &gt; " &amp; para prevenir XSS</td></tr>
+                <tr><td>isset()</td><td>Verifica que una variable exista</td></tr>
+                <tr><td>die()</td><td>Detiene la ejecución si hay un error</td></tr>
+                <tr><td>echo</td><td>Imprime el valor PHP en el HTML</td></tr>
+                <tr><td>&lt;dl&gt;</td><td>Lista de definiciones (pares clave-valor)</td></tr>
+                <tr><td>&lt;dt&gt;</td><td>Término o etiqueta de la definición</td></tr>
+                <tr><td>&lt;dd&gt;</td><td>Valor correspondiente al término</td></tr>
+                <tr><td>&lt;a class="btn-volver"&gt;</td><td>Enlace estilizado como botón para regresar</td></tr>
+            </tbody>
+        </table>
+    </aside>
+
 </body>
 </html>

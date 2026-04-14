@@ -78,5 +78,33 @@
         Derechos Reservados Producciones h777
     </footer>
 
+    <!-- ── Tabla de referencia de etiquetas ────────────────────────────
+         Sidebar fija a la derecha. Solo visible en pantallas ≥ 1024px.
+         ─────────────────────────────────────────────────────────────── -->
+    <aside class="char-ref">
+        <h3>Etiquetas usadas</h3>
+        <table>
+            <thead>
+                <tr><th>Tag / Atrib.</th><th>Función</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>&lt;form&gt;</td><td>Contenedor del formulario</td></tr>
+                <tr><td>action=</td><td>Archivo PHP que recibe los datos</td></tr>
+                <tr><td>method="post"</td><td>Datos en el cuerpo, no en la URL</td></tr>
+                <tr><td>&lt;label&gt;</td><td>Etiqueta asociada a un campo</td></tr>
+                <tr><td>for=</td><td>Conecta el label con su input por id</td></tr>
+                <tr><td>&lt;input type="text"&gt;</td><td>Campo de texto de una línea</td></tr>
+                <tr><td>&lt;input type="email"&gt;</td><td>Campo de email (valida formato)</td></tr>
+                <tr><td>&lt;input type="date"&gt;</td><td>Selector de fecha (calendario)</td></tr>
+                <tr><td>&lt;textarea&gt;</td><td>Área de texto multilínea</td></tr>
+                <tr><td>&lt;select&gt;</td><td>Lista desplegable de opciones</td></tr>
+                <tr><td>&lt;option&gt;</td><td>Opción dentro del select</td></tr>
+                <tr><td>&lt;button type="submit"&gt;</td><td>Envía el formulario</td></tr>
+                <tr><td>required</td><td>Campo obligatorio antes de enviar</td></tr>
+                <tr><td>placeholder=</td><td>Texto de ejemplo dentro del campo</td></tr>
+            </tbody>
+        </table>
+    </aside>
+
 </body>
 </html>
