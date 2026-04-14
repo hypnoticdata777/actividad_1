@@ -3,21 +3,43 @@
      ================================================================
      Etiqueta / Atrib.        Función
      ──────────────────────   ──────────────────────────────────────
+     <!DOCTYPE html>          Declara que el documento es HTML5
+     <html>                   Elemento raíz que envuelve todo el documento
+     lang=                    Idioma del contenido (es = español)
+     <head>                   Configuración del documento (no visible)
+     <meta charset>           UTF-8: permite acentos, ñ y caracteres especiales
+     <meta viewport>          Adapta la página al ancho del dispositivo
+     content=                 Valor del meta tag
+     <link rel>               Conecta el HTML con un archivo externo (CSS)
+     href=                    Ruta del archivo CSS o página de destino
+     <title>                  Texto que aparece en la pestaña del navegador
+     <body>                   Todo el contenido visible de la página
+     <header>                 Cabecera con la barra de navegación
+     <nav>                    Bloque semántico de navegación
+     <ul>                     Lista sin orden (usada como menú)
+     <li>                     Ítem de lista
+     <a>                      Enlace a otra página
+     class="active"           Subraya en dorado el enlace de la página actual
+     <main>                   Área de contenido principal
+     <h1>                     Título principal (solo uno por página)
      <form>                   Contenedor del formulario
      action=                  Archivo PHP que recibe los datos al enviar
-     method="post"            Los datos viajan en el cuerpo de la
-                              solicitud, no visibles en la URL
+     method="post"            Los datos van en el cuerpo, no visibles en la URL
      <label>                  Etiqueta visual asociada a un campo
      for=                     Conecta el <label> con su <input> por id
      <input type="text">      Campo de texto de una sola línea
-     <input type="email">     Campo de email (el navegador valida formato)
+     <input type="email">     Campo de email (el navegador valida el formato)
      <input type="date">      Selector de fecha con calendario visual
+     id=                      Identificador único del campo
+     name=                    Nombre del campo; PHP lo usa para leer el valor
+     placeholder=             Texto de ejemplo dentro del campo vacío
+     required                 El navegador bloquea el envío si está vacío
      <textarea>               Área de texto de múltiples líneas
      <select>                 Lista desplegable de opciones
      <option>                 Una opción dentro del <select>
+     value=                   Valor interno del option enviado al servidor
      <button type="submit">   Envía el formulario al archivo en action=
-     required                 El navegador bloquea el envío si está vacío
-     placeholder=             Texto de ejemplo dentro del campo
+     <footer>                 Pie de página
      ================================================================ -->
 <!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>

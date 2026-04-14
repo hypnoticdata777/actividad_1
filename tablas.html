@@ -4,23 +4,46 @@
      ================================================================
      Etiqueta / Atrib.    Función
      ──────────────────   ──────────────────────────────────────────
-     <style>              Bloque de CSS local solo para esta página
+     <!DOCTYPE html>      Declara que el documento es HTML5
+     <html>               Elemento raíz que envuelve todo el documento
+     lang=                Idioma del contenido (es = español)
+     <head>               Configuración del documento (no visible)
+     <meta charset>       UTF-8: permite acentos, ñ y caracteres especiales
+     <meta viewport>      Adapta la página al ancho del dispositivo
+     content=             Valor del meta tag
+     <link rel>           Conecta el HTML con un archivo externo (CSS)
+     href=                Ruta del archivo CSS o página de destino
+     <title>              Texto que aparece en la pestaña del navegador
+     <style>              Bloque de CSS local exclusivo para esta página
+     <body>               Todo el contenido visible de la página
+     <header>             Cabecera con la barra de navegación
+     <nav>                Bloque semántico de navegación
+     <ul>                 Lista sin orden (usada como menú)
+     <li>                 Ítem de lista
+     <a>                  Enlace a otra página
+     class="active"       Subraya en dorado el enlace de la página actual
+     <main>               Área de contenido principal
      <div>                Contenedor genérico sin semántica propia
      <input>              Campo de texto editable
+     type=                Tipo de campo (text, email, date, etc.)
+     name=                Nombre del campo; PHP lo usa para leer el valor
+     id=                  Identificador único; JS lo usa para encontrar el elemento
+     placeholder=         Texto de ejemplo dentro del campo vacío
+     maxlength=           Límite máximo de caracteres permitidos
      <select>             Lista desplegable de opciones
      <option>             Una opción dentro del <select>
+     value=               Valor interno del option enviado al servidor
      <button>             Botón interactivo
      onclick=             Llama una función JavaScript al hacer clic
-     maxlength=           Límite máximo de caracteres en el input
-     id=                  Identificador único; JS lo usa para
-                          encontrar y manipular el elemento
      <table>              Tabla de datos
      <thead>              Sección de encabezados de la tabla
-     <tbody>              Sección del cuerpo de la tabla (filas de datos)
+     <tbody>              Sección del cuerpo (filas de datos, generadas por JS)
      <tr>                 Fila de la tabla
      <th>                 Celda de encabezado (fondo azul en CSS)
      <td>                 Celda de dato
+     colspan=             Cuántas columnas ocupa una celda (usado en JS)
      <script>             Bloque de código JavaScript de la página
+     <footer>             Pie de página
      ================================================================ -->
 <!-- ================================================================
      PÁGINA: Tablas | tablas.html
