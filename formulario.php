@@ -32,6 +32,7 @@
                 <li><a href="series.html">Series</a></li>
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
                 <li><a href="tablas.html">Tablas</a></li>
+                <li><a href="formulario.php" class="active">Formulario</a></li>
             </ul>
         </nav>
     </header>
