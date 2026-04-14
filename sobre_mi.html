@@ -6,7 +6,6 @@
      Una página de presentación personal con tres tarjetas informativas.
      Cada tarjeta tiene fondo amarillo claro, una franja roja a la
      izquierda y un efecto hover que cambia el fondo a dorado.
-     Las tarjetas responden al cursor para invitar la interacción.
 
      Estructura:
        <header>  → barra de navegación superior
@@ -14,44 +13,27 @@
        <footer>  → pie de página con derechos
      ================================================================ -->
 <html lang="es">
-<!-- lang="es": indica al navegador y motores de búsqueda que el
-     contenido está en español. Mejora accesibilidad y SEO. -->
 
 <head>
     <meta charset="UTF-8">
-    <!-- charset UTF-8: debe ser lo primero en <head>. Permite usar
-         acentos, ñ y caracteres especiales sin que aparezcan rotos. -->
-
-    <!-- viewport: adapta la página al tamaño de la pantalla del dispositivo.
-         Sin esto, en celular la página se vería pequeñísima. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- link: conecta este HTML con el CSS compartido de todo el sitio.
-         style.css controla colores, fuentes, espaciados y diseño visual. -->
     <link rel="stylesheet" href="assets/style/style.css">
-
-    <!-- title: texto que aparece en la pestaña del navegador. -->
     <title>Sobre mí</title>
 </head>
 
 <body>
 
     <!-- ── HEADER ──────────────────────────────────────────────────────
-         Barra de navegación superior, idéntica en todas las páginas.
-         El CSS la pinta de negro con gradiente azul y línea dorada inferior.
-         "Sobre mí" lleva class="active" → el CSS lo subraya en dorado
-         para indicar visualmente que esta es la página actual.
+         Barra de navegación del sitio. class="active" en "Sobre mí"
+         lo subraya en dorado para indicar la página actual.
          ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
-            <!-- ul: lista de ítems del menú. El CSS elimina las viñetas
-                 y los muestra en fila horizontal con display:flex. -->
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
-                <!-- class="active" → el CSS subraya este enlace en dorado -->
                 <li><a href="sobre_mi.html" class="active">Sobre mí</a></li>
                 <li><a href="tablas.html">Tablas</a></li>
                 <li><a href="formulario.php">Formulario</a></li>
@@ -60,26 +42,15 @@
     </header>
 
     <!-- ── MAIN ────────────────────────────────────────────────────────
-         Contenido principal de esta página.
-         El <main> cambia en cada página; el header y el footer se repiten.
-
-         Lo que ve el usuario aquí:
-           Tres tarjetas apiladas verticalmente. Cada una tiene un título
-           en h2, contenido de texto o lista, fondo amarillo y borde rojo
-           izquierdo. Al pasar el mouse el fondo cambia a dorado.
+         Tres tarjetas apiladas verticalmente. Cada una tiene fondo
+         amarillo y borde rojo izquierdo. Al pasar el mouse el fondo
+         cambia a dorado (efecto hover definido en style.css).
          ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- h1: título principal de la página, el más grande.
-             Solo hay un <h1> por página (buena práctica de SEO y accesibilidad). -->
         <h1>Sobre mí</h1>
 
-        <!-- section.datos: primera tarjeta — identidad del autor.
-             class="datos" activa el estilo en style.css que aplica:
-               - fondo amarillo claro con borde izquierdo rojo
-               - sombra suave para dar sensación de profundidad
-               - transición suave al dorado cuando el usuario pasa el mouse -->
-        <!-- section.datos: primera tarjeta — identidad del autor. -->
+        <!-- ── Tarjeta 1: Identidad ────────────────────────────────── -->
         <section class="datos">
             <h2>Sobre mí</h2>
 
@@ -92,7 +63,7 @@
             <p>Me considero un vaquero tecnológico: alguien que combina disciplina, carácter y visión con herramientas modernas para construir, resolver problemas y avanzar constantemente.</p>
         </section>
 
-        <!-- section.datos: segunda tarjeta — intereses y pasiones. -->
+        <!-- ── Tarjeta 2: Intereses ────────────────────────────────── -->
         <section class="datos">
             <h2>Intereses</h2>
 
@@ -101,17 +72,17 @@
             <p>También tengo un gran interés por la historia de la humanidad. Me gusta leer libros, historias y relatos que me permitan entender mejor el mundo, las personas y las decisiones que han dado forma a nuestra realidad.</p>
         </section>
 
-        <!-- section.datos: tercera tarjeta — motivación y visión. -->
+        <!-- ── Tarjeta 3: Motivación ───────────────────────────────── -->
         <section class="datos">
             <h2>Motivación</h2>
 
             <p>Estudio Ingeniería en Sistemas porque creo que la tecnología es la herramienta más poderosa para resolver problemas reales. Mi objetivo es combinar lo que aprendo en la carrera con la experiencia que tengo en operaciones para construir soluciones que impacten el día a día de las personas.</p>
         </section>
+
     </main>
 
     <!-- ── FOOTER ──────────────────────────────────────────────────────
          Pie de página idéntico en todas las páginas del sitio.
-         El CSS le aplica fondo negro y línea azul superior.
          ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777

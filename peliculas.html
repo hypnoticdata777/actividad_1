@@ -5,8 +5,7 @@
      Qué ve el usuario:
      Una lista de tres películas favoritas del autor, cada una con
      su título en negrita azul, seguido de una descripción personal
-     que explica por qué le gusta. El CSS las separa con espacio
-     generoso y una línea azul a la izquierda de cada ítem.
+     que explica por qué le gusta.
 
      Estructura:
        <header>  → barra de navegación superior
@@ -14,42 +13,25 @@
        <footer>  → pie de página con derechos
      ================================================================ -->
 <html lang="es">
-<!-- lang="es": indica al navegador y motores de búsqueda que el
-     contenido está en español. Mejora accesibilidad y SEO. -->
 
 <head>
     <meta charset="UTF-8">
-    <!-- charset UTF-8: debe ser lo primero en <head>. Permite usar
-         acentos, ñ y caracteres especiales sin que aparezcan rotos. -->
-
-    <!-- viewport: adapta la página al tamaño de la pantalla del dispositivo.
-         Sin esto, en celular la página se vería pequeñísima. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- link: conecta este HTML con el CSS compartido de todo el sitio.
-         style.css controla colores, fuentes, espaciados y diseño visual. -->
     <link rel="stylesheet" href="assets/style/style.css">
-
-    <!-- title: texto que aparece en la pestaña del navegador. -->
     <title>Películas</title>
 </head>
 
 <body>
 
     <!-- ── HEADER ──────────────────────────────────────────────────────
-         Barra de navegación superior, idéntica en todas las páginas.
-         El CSS la pinta de negro con gradiente azul y línea dorada inferior.
-         "Películas" lleva class="active" → el CSS lo subraya en dorado
-         para indicar visualmente que esta es la página actual.
+         Barra de navegación del sitio. class="active" en "Películas"
+         lo subraya en dorado para indicar la página actual.
          ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
-            <!-- ul: lista de ítems del menú. El CSS elimina las viñetas
-                 y los muestra en fila horizontal con display:flex. -->
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="listas.html">Listas</a></li>
-                <!-- class="active" → el CSS subraya este enlace en dorado -->
                 <li><a href="peliculas.html" class="active">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
                 <li><a href="sobre_mi.html">Sobre mí</a></li>
@@ -61,40 +43,22 @@
 
     <!-- ── MAIN ────────────────────────────────────────────────────────
          Contenido principal de esta página.
-         El <main> cambia en cada página; el header y el footer se repiten.
-
-         Lo que ve el usuario aquí:
-           Una sección con fondo blanco, texto grande y tres películas
-           favoritas separadas por espacio. Cada película muestra su
-           título en azul y negrita, seguido de una descripción personal.
          ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- section.peliculas: contenedor principal del contenido.
-             class="peliculas" activa el estilo en style.css que aplica:
-               - padding generoso para dar aire al contenido
-               - font-size más grande para facilitar la lectura
-               - display:flex en la lista para separar cada película con espacio
-               - línea azul a la izquierda de cada <li> como acento visual -->
+        <!-- ── Lista de películas ───────────────────────────────────────
+             class="peliculas" activa en style.css:
+               - Padding generoso y font-size grande para lectura cómoda
+               - display:flex en <ol> para separar cada película con espacio
+               - Línea azul a la izquierda de cada <li> como acento visual
+               - <strong> del título en azul y como bloque sobre la descripción
+             ─────────────────────────────────────────────────────────── -->
         <section class="peliculas">
 
-            <!-- h1: título principal de la página, el más grande.
-                 Solo hay un <h1> por página (buena práctica de SEO y accesibilidad). -->
             <h1>Películas</h1>
-
-            <!-- p: subtítulo descriptivo debajo del h1. -->
             <p>Peliculas favoritas</p>
 
-            <!-- ol: lista ordenada de películas.
-                 El CSS convierte esta lista en una columna vertical con
-                 espacio (gap) entre cada ítem, en lugar de los números por defecto. -->
             <ol>
-
-                <!-- Cada <li> es una película.
-                     El CSS le aplica una línea azul a la izquierda (border-left)
-                     y padding para separar el texto de esa línea.
-                     <strong> pone el título en negrita; el CSS lo colorea de azul
-                     y lo muestra como bloque separado encima de la descripción. -->
                 <li>
                     <strong>Duelo de Titanes (Remember the Titans):</strong> Es una película deportiva ambientada en 1971 que cuenta la historia real del entrenador Herman Boone y la integración racial de un equipo de fútbol americano en una escuela de Virginia.
                     Me gusta porque muestra cómo el liderazgo, la disciplina y el trabajo en equipo pueden superar prejuicios y conflictos sociales.
@@ -112,7 +76,6 @@
                     Me gusta porque combina acción con ideas profundas, inspiradas en conceptos filosóficos como la alegoría de la cueva de Platón, las dudas de Descartes sobre la realidad y la idea de una simulación.
                     Básicamente, te hace preguntarte: ¿qué tan real es lo que estás viviendo?
                 </li>
-
             </ol>
 
         </section>
@@ -121,7 +84,6 @@
 
     <!-- ── FOOTER ──────────────────────────────────────────────────────
          Pie de página idéntico en todas las páginas del sitio.
-         El CSS le aplica fondo negro y línea azul superior.
          ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777

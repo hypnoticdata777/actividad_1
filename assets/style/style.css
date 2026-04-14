@@ -37,7 +37,10 @@
    ESTILOS BASE
    ============================================= */
 
-/* body: estilos base para toda la página */
+/* ── body ──────────────────────────────────────
+   Fuente, fondo degradado y color de texto base
+   para todas las páginas del sitio.
+   ─────────────────────────────────────────── */
 body {
     font-family: "Georgia", serif;
     background: linear-gradient(135deg, var(--color-grey-light) 0%, #e4e4e4 100%);

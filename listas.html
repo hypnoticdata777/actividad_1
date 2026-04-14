@@ -15,41 +15,24 @@
        <footer>  → pie de página con derechos
      ================================================================ -->
 <html lang="es">
-<!-- lang="es": indica al navegador y motores de búsqueda que el
-     contenido está en español. Mejora accesibilidad y SEO. -->
 
 <head>
     <meta charset="UTF-8">
-    <!-- charset UTF-8: debe ser lo primero en <head>. Permite usar
-         acentos, ñ y caracteres especiales sin que aparezcan rotos. -->
-
-    <!-- viewport: adapta la página al tamaño de la pantalla del dispositivo.
-         Sin esto, en celular la página se vería pequeñísima. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- link: conecta este HTML con el CSS compartido de todo el sitio.
-         style.css controla colores, fuentes, espaciados y diseño visual. -->
     <link rel="stylesheet" href="assets/style/style.css">
-
-    <!-- title: texto que aparece en la pestaña del navegador. -->
     <title>Listas</title>
 </head>
 
 <body>
 
     <!-- ── HEADER ──────────────────────────────────────────────────────
-         Barra de navegación superior, idéntica en todas las páginas.
-         El CSS la pinta de negro con gradiente azul y línea dorada inferior.
-         "Listas" lleva class="active" → el CSS lo subraya en dorado
-         para indicar visualmente que esta es la página actual.
+         Barra de navegación del sitio. class="active" en "Listas"
+         lo subraya en dorado para indicar la página actual.
          ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
-            <!-- ul: lista de ítems del menú. El CSS elimina las viñetas
-                 y los muestra en fila horizontal con display:flex. -->
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <!-- class="active" → el CSS subraya este enlace en dorado -->
                 <li><a href="listas.html" class="active">Listas</a></li>
                 <li><a href="peliculas.html">Películas</a></li>
                 <li><a href="series.html">Series</a></li>
@@ -61,41 +44,27 @@
     </header>
 
     <!-- ── MAIN ────────────────────────────────────────────────────────
-         Contenido educativo sobre listas HTML.
-         Organizado en secciones con <section> y encabezados <h2>/<h3>
-         para crear una jerarquía visual clara de temas y subtemas.
+         Contenido educativo sobre listas HTML, organizado en secciones
+         con jerarquía visual clara usando h2 y h3.
          ─────────────────────────────────────────────────────────────── -->
     <main>
 
-        <!-- h1: título principal de la página, el más grande.
-             Solo hay un <h1> por página (buena práctica de accesibilidad y SEO). -->
         <h1>Listas</h1>
 
-        <!-- ── SECCIÓN 1: Introducción ──────────────────────────────────
-             El usuario ve tres párrafos que introducen el concepto de
-             listas HTML y explican cuándo y por qué usarlas.
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 1: Introducción ─────────────────────────────── -->
         <section>
             <h2>¿Qué son las listas en HTML?</h2>
-
-            <!-- p: cada <p> es un bloque de texto separado visualmente
-                 por un espacio del párrafo anterior y del siguiente. -->
             <p>
                 Las listas en HTML sirven para organizar información de forma clara y ordenada.
                 En vez de aventar un bloque gigante de texto que nadie quiere leer, HTML permite
                 separar elementos relacionados para que todo sea más fácil de entender.
             </p>
-
             <p>
-                <!-- <strong>: pone el texto en negrita.
-                     &lt; y &gt; son entidades HTML para mostrar los símbolos < y >
-                     sin que el navegador los interprete como etiquetas reales. -->
                 Básicamente, existen dos tipos principales: las listas ordenadas
                 <strong>&lt;ol&gt;</strong>, que se usan cuando el orden importa, y las listas no
                 ordenadas <strong>&lt;ul&gt;</strong>, que se usan cuando el orden no importa tanto.
                 En ambos casos, cada elemento se escribe con <strong>&lt;li&gt;</strong>.
             </p>
-
             <p>
                 En otras palabras: si quieres que algo se vea limpio, lógico y entendible, usas listas.
                 Porque seamos honestos, el cerebro humano coopera más cuando ve puntos y números
@@ -103,15 +72,9 @@
             </p>
         </section>
 
-        <!-- ── SECCIÓN 2: Utilidad ──────────────────────────────────────
-             El usuario ve una lista con viñetas que enumera los
-             beneficios de usar listas en HTML.
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 2: Utilidad ─────────────────────────────────── -->
         <section>
             <h2>¿Por qué las listas son útiles?</h2>
-
-            <!-- ul: lista no ordenada. El navegador muestra viñetas (•) por defecto.
-                 Se usa aquí porque el orden de los puntos no es relevante. -->
             <ul>
                 <li>Hacen la información más fácil de leer.</li>
                 <li>Permiten organizar ideas sin hacer un desastre visual.</li>
@@ -120,11 +83,11 @@
             </ul>
         </section>
 
-        <!-- ── SECCIÓN 3: Listas ordenadas ─────────────────────────────
-             El usuario ve ejemplos de <ol> con tres estilos distintos:
-             números arábigos (por defecto), letras (A, B, C)
-             y números romanos (I, II, III).
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 3: Listas ordenadas ─────────────────────────────
+             Se usan cuando el orden importa (recetas, pasos, instrucciones).
+             Tres estilos disponibles: números (1,2,3), letras (A,B,C)
+             y números romanos (I,II,III), controlados con el atributo type.
+             ─────────────────────────────────────────────────────────── -->
         <section>
             <h2>Listas ordenadas</h2>
             <p>
@@ -133,11 +96,7 @@
                 Si cambias el orden, probablemente arruinas el resultado.
             </p>
 
-            <!-- h3: tercer nivel de jerarquía, título de un ejemplo concreto. -->
             <h3>Ejemplo 1: Cómo preparar un café</h3>
-
-            <!-- ol: lista ordenada. El navegador numera los <li> automáticamente
-                 (1, 2, 3...). Los números se actualizan solos si agregas o quitas elementos. -->
             <ol>
                 <li>Hervir agua.</li>
                 <li>Agregar café a la taza o cafetera.</li>
@@ -149,36 +108,33 @@
             <h3>Ejemplo 2: Tipos de listas ordenadas</h3>
             <p>Las listas ordenadas pueden mostrarse con distintos estilos.</p>
 
-            <!-- h4: cuarto nivel de jerarquía, subtítulo dentro de un ejemplo. -->
             <h4>Con números</h4>
-            <!-- ol sin atributo type → usa números arábigos por defecto: 1, 2, 3... -->
-            <ol>
+            <ol><!-- type por defecto → 1, 2, 3... -->
                 <li>Primer paso</li>
                 <li>Segundo paso</li>
                 <li>Tercer paso</li>
             </ol>
 
             <h4>Con letras</h4>
-            <!-- type="A" → el navegador numera con letras mayúsculas: A, B, C... -->
-            <ol type="A">
+            <ol type="A"><!-- type="A" → A, B, C... -->
                 <li>Opción A</li>
                 <li>Opción B</li>
                 <li>Opción C</li>
             </ol>
 
             <h4>Con números romanos</h4>
-            <!-- type="I" → el navegador numera con números romanos: I, II, III... -->
-            <ol type="I">
+            <ol type="I"><!-- type="I" → I, II, III... -->
                 <li>Introducción</li>
                 <li>Desarrollo</li>
                 <li>Conclusión</li>
             </ol>
         </section>
 
-        <!-- ── SECCIÓN 4: Listas no ordenadas ──────────────────────────
-             El usuario ve ejemplos de <ul> con tres estilos de viñeta:
-             disc (●), circle (○) y square (■).
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 4: Listas no ordenadas ──────────────────────────
+             Se usan cuando el orden no importa. Tres estilos de viñeta
+             controlados por clases CSS definidas en style.css:
+             .viñeta-disc (●), .viñeta-circle (○), .viñeta-square (■).
+             ─────────────────────────────────────────────────────────── -->
         <section>
             <h2>Listas no ordenadas</h2>
             <p>
@@ -188,7 +144,6 @@
             </p>
 
             <h3>Ejemplo 1: Cosas que llevo a la escuela o al trabajo</h3>
-            <!-- ul sin atributo → usa viñetas de disco (●) por defecto. -->
             <ul>
                 <li>Mochila</li>
                 <li>Cuaderno</li>
@@ -200,52 +155,40 @@
             <h3>Ejemplo 2: Tipos de viñetas</h3>
 
             <h4>Disc</h4>
-            <!-- Cada <ul> usa una clase definida en style.css que aplica
-                 un tipo de viñeta distinto. Así se evitan estilos inline
-                 y todo el diseño queda centralizado en el archivo CSS. -->
-
-            <!-- .viñeta-disc → list-style-type: disc → viñeta círculo sólido ● -->
-            <ul class="viñeta-disc">
+            <ul class="viñeta-disc"><!-- ● viñeta círculo sólido -->
                 <li>Elemento uno</li>
                 <li>Elemento dos</li>
                 <li>Elemento tres</li>
             </ul>
 
             <h4>Circle</h4>
-            <!-- .viñeta-circle → list-style-type: circle → viñeta círculo hueco ○ -->
-            <ul class="viñeta-circle">
+            <ul class="viñeta-circle"><!-- ○ viñeta círculo hueco -->
                 <li>Elemento uno</li>
                 <li>Elemento dos</li>
                 <li>Elemento tres</li>
             </ul>
 
             <h4>Square</h4>
-            <!-- .viñeta-square → list-style-type: square → viñeta cuadrado sólido ■ -->
-            <ul class="viñeta-square">
+            <ul class="viñeta-square"><!-- ■ viñeta cuadrado sólido -->
                 <li>Elemento uno</li>
                 <li>Elemento dos</li>
                 <li>Elemento tres</li>
             </ul>
         </section>
 
-        <!-- ── SECCIÓN 5: Listas anidadas ───────────────────────────────
-             El usuario ve una lista que contiene otras listas adentro.
-             Esto crea una jerarquía visual de categorías y subcategorías.
-             El navegador indenta automáticamente las listas internas.
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 5: Listas anidadas ───────────────────────────────
+             Una lista puede contener otras listas dentro de sus <li>.
+             El navegador indenta automáticamente las listas internas
+             para mostrar la jerarquía de categorías y subcategorías.
+             ─────────────────────────────────────────────────────────── -->
         <section>
             <h2>Ejemplo más completo: lista anidada</h2>
             <p>
                 También existen listas dentro de listas. Esto sirve para organizar categorías y
                 subcategorías. Es como decir: "aquí está el tema principal, y aquí lo que contiene".
             </p>
-
-            <!-- ul exterior: tres categorías principales como ítems de nivel 1. -->
             <ul>
                 <li>Tecnología
-                    <!-- ul interior: subcategorías de Tecnología.
-                         El navegador las indenta hacia la derecha para mostrar
-                         que son hijos de "Tecnología", no ítems del mismo nivel. -->
                     <ul>
                         <li>Laptops</li>
                         <li>Celulares</li>
@@ -269,10 +212,7 @@
             </ul>
         </section>
 
-        <!-- ── SECCIÓN 6: Analogía ──────────────────────────────────────
-             El usuario ve una metáfora del mundo real que explica
-             cuándo usar listas ordenadas vs. listas no ordenadas.
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 6: Analogía ─────────────────────────────────── -->
         <section>
             <h2>Una analogía sencilla</h2>
             <p>
@@ -282,16 +222,13 @@
                 En cambio, una lista no ordenada sería como ver las cosas que tienes en el cuarto:
                 silla, lámpara, libros, mochila. Están relacionadas, pero no necesitan un orden exacto.
             </p>
-
             <p>
                 Así funciona HTML. No solo muestra contenido: también lo acomoda de forma lógica
                 para que la persona que entra a la página no sienta que está peleando con ella.
             </p>
         </section>
 
-        <!-- ── SECCIÓN 7: Conclusión ────────────────────────────────────
-             Cierre del tema con un resumen de lo aprendido en la página.
-             ──────────────────────────────────────────────────────────── -->
+        <!-- ── Sección 7: Conclusión ───────────────────────────────── -->
         <section>
             <h2>Conclusión</h2>
             <p>
@@ -300,7 +237,6 @@
                 Ya sea para mostrar pasos, agrupar elementos o crear subcategorías, las listas
                 permiten que el contenido se vea mucho más claro y profesional.
             </p>
-
             <p>
                 Y sí, al final no es magia. Es simplemente entender algo básico pero importante:
                 cuando la información está bien acomodada, todo funciona mejor.
@@ -311,7 +247,6 @@
 
     <!-- ── FOOTER ──────────────────────────────────────────────────────
          Pie de página idéntico en todas las páginas del sitio.
-         El CSS le aplica fondo negro y línea azul superior.
          ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777

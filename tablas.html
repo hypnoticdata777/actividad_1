@@ -291,8 +291,8 @@
 <body>
 
     <!-- ── HEADER ──────────────────────────────────────────────────────
-         Barra de navegación superior, idéntica en todas las páginas.
-         "Tablas" lleva class="active" para el subrayado dorado.
+         Barra de navegación del sitio. class="active" en "Tablas"
+         lo subraya en dorado para indicar la página actual.
          ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
@@ -319,20 +319,19 @@
 
         <h1>Tablas</h1>
 
-        <!-- ── Formulario de alta ──────────────────────────────────── -->
-        <!-- Permite agregar un nuevo registro a la tabla.
-             No usa <form> con action porque el submit lo maneja JS. -->
+        <!-- ── Formulario de alta ───────────────────────────────────────
+             Permite agregar un nuevo registro a la tabla.
+             No usa <form action> porque el submit lo maneja JavaScript.
+             Los tres campos (título, categoría, asignado) son requeridos;
+             la validación ocurre en agregarRegistro() antes de insertar.
+             ─────────────────────────────────────────────────────────── -->
         <div class="crud-form-section">
             <h2>Agregar nuevo registro</h2>
             <div class="crud-form-row">
-
-                <!-- Campo título: texto libre para el nombre de la película o serie -->
                 <label>
                     Título
                     <input type="text" name="titulo" id="input-titulo" placeholder="Ej: Breaking Bad" maxlength="80">
                 </label>
-
-                <!-- Categoría: Películas o Series -->
                 <label>
                     Categoría
                     <select name="categoria" id="input-categoria">
@@ -341,8 +340,6 @@
                         <option value="Series">Series</option>
                     </select>
                 </label>
-
-                <!-- Asignado a: los tres integrantes del equipo -->
                 <label>
                     Asignado a
                     <select name="asignado" id="input-asignado">
@@ -352,21 +349,18 @@
                         <option value="Carlos">Carlos</option>
                     </select>
                 </label>
-
-                <!-- Botón para ejecutar el alta -->
                 <button class="btn-agregar" onclick="agregarRegistro()">+ Agregar</button>
-
             </div>
         </div>
 
-        <!-- ── Tabla CRUD ───────────────────────────────────────────── -->
-        <!-- table: reutiliza los estilos de style.css (zebra, hover, th azul).
-             El max-width se sobreescribe en el <style> de esta página. -->
+        <!-- ── Tabla CRUD ───────────────────────────────────────────────
+             Reutiliza los estilos de style.css (zebra, hover, th azul).
+             El max-width se sobreescribe en el <style> de esta página.
+             El <tbody> se llena dinámicamente por renderTabla() en JS.
+             ─────────────────────────────────────────────────────────── -->
         <table id="tabla-crud">
-
             <thead>
                 <tr>
-                    <!-- th: encabezados con gradiente azul del CSS global -->
                     <th>#</th>
                     <th>Título</th>
                     <th>Categoría</th>
@@ -374,12 +368,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-
-            <!-- tbody: las filas las genera el JavaScript dinámicamente -->
-            <tbody id="tabla-body">
-                <!-- Las filas se renderizan aquí por renderTabla() -->
-            </tbody>
-
+            <tbody id="tabla-body"></tbody>
         </table>
 
     </main>

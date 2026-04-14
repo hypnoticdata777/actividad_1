@@ -32,7 +32,10 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
 </head>
 <body>
 
-    <!-- header con nav: barra de navegación para volver a cualquier sección del sitio -->
+    <!-- ── HEADER ──────────────────────────────────────────────────────
+         Barra de navegación para volver a cualquier sección del sitio.
+         Esta página es de resultado, por eso ningún enlace lleva active.
+         ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
             <ul>
@@ -47,9 +50,15 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
         </nav>
     </header>
 
-    <!-- main: muestra el resumen de los datos que el usuario acaba de enviar -->
+    <!-- ── MAIN ────────────────────────────────────────────────────────
+         Muestra el resumen de los datos que el usuario acaba de enviar.
+         ─────────────────────────────────────────────────────────────── -->
     <main>
-        <!-- Caja de confirmación: le indica al usuario que el formulario se recibió bien -->
+        <!-- ── Caja de confirmación ─────────────────────────────────────
+             Usa <dl> (lista de definiciones) para mostrar los pares
+             clave-valor de cada campo enviado: <dt> es la etiqueta
+             y <dd> es el valor correspondiente.
+             ─────────────────────────────────────────────────────────── -->
         <div class="confirmacion">
             <h1>¡Formulario enviado!</h1>
             <p>Estos son los datos que recibimos:</p>
@@ -77,7 +86,9 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
         </div>
     </main>
 
-    <!-- footer: pie de página con el mismo estilo que el resto del sitio -->
+    <!-- ── FOOTER ──────────────────────────────────────────────────────
+         Pie de página idéntico en todas las páginas del sitio.
+         ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
