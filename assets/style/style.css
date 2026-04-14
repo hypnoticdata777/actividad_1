@@ -33,15 +33,6 @@
 }
 
 
-/* ─── Decorative Background Layer ───────────────────────────────────────── */
-/* .bg is the fixed full-screen backdrop that sits behind all page content */
-.bg {
-    position: fixed;     /* Stays in place while the user scrolls */
-    inset: 0;            /* Fills the entire viewport */
-    z-index: -2;         /* Sits behind everything else */
-    overflow: hidden;    /* Clips children that extend beyond the viewport */
-}
-
 /* =============================================
    ESTILOS BASE
    ============================================= */
