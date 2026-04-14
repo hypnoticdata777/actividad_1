@@ -22,10 +22,11 @@
      <a>                  Enlace a otra página
      class="active"       Subraya en dorado el enlace de la página actual
      <main>               Área de contenido principal
-     <h1>                 Título principal (solo uno por página)
+     <h1>                 Título principal (color azul via main h1 en style.css)
+     class="peliculas"    Comparte el estilo de peliculas.html: línea azul lateral + strong en azul
      <ol>                 Lista ordenada cronológicamente (1983 → 2015)
      <li>                 Una serie en la lista
-     <strong>             Título y año de la serie en negrita
+     <strong>             Título y año de la serie en negrita/azul
      <footer>             Pie de página
      ================================================================ -->
 <!-- ================================================================
@@ -76,14 +77,16 @@
          ─────────────────────────────────────────────────────────────── -->
     <main>
 
+        <!-- ── Lista cronológica de series ─────────────────────────────
+             class="peliculas" activa en style.css el mismo estilo que
+             las películas favoritas: línea azul lateral en cada <li>
+             y título (<strong>) en azul y bloque separado.
+             Se usa <ol> porque el orden cronológico es parte del contenido.
+             ─────────────────────────────────────────────────────────── -->
+        <section class="peliculas">
+
         <h1>Series Favoritas (Ordenadas por Año)</h1>
 
-        <!-- ── Lista cronológica de series ─────────────────────────────
-             Se usa <ol> porque el orden cronológico es parte del contenido:
-             la numeración refleja la progresión del tiempo (1983 → 2015).
-             Cada <li> usa <strong> para resaltar el título y año,
-             separándolos visualmente de la descripción en texto normal.
-             ─────────────────────────────────────────────────────────── -->
         <ol>
             <li><strong>Reading Rainbow (1983)</strong> – Programa educativo que fomenta la lectura en niños.</li>
             <li><strong>Matlock (1986)</strong> – Abogado inteligente que resuelve casos complejos y demuestra la inocencia de sus clientes.</li>
@@ -108,6 +111,8 @@
             <li><strong>Vikings (2013)</strong> – Guerreros vikingos exploran y conquistan nuevas tierras.</li>
             <li><strong>Better Call Saul (2015)</strong> – Historia del origen de un abogado antes de Breaking Bad.</li>
         </ol>
+
+        </section>
 
     </main>
 
