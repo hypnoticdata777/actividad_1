@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <!-- ================================================================
+     TABLA DE ETIQUETAS USADAS EN ESTA PÁGINA
+     ================================================================
+     Etiqueta / Atrib.    Función
+     ──────────────────   ──────────────────────────────────────────
+     <style>              Bloque de CSS local solo para esta página
+     <div>                Contenedor genérico sin semántica propia
+     <input>              Campo de texto editable
+     <select>             Lista desplegable de opciones
+     <option>             Una opción dentro del <select>
+     <button>             Botón interactivo
+     onclick=             Llama una función JavaScript al hacer clic
+     maxlength=           Límite máximo de caracteres en el input
+     id=                  Identificador único; JS lo usa para
+                          encontrar y manipular el elemento
+     <table>              Tabla de datos
+     <thead>              Sección de encabezados de la tabla
+     <tbody>              Sección del cuerpo de la tabla (filas de datos)
+     <tr>                 Fila de la tabla
+     <th>                 Celda de encabezado (fondo azul en CSS)
+     <td>                 Celda de dato
+     <script>             Bloque de código JavaScript de la página
+     ================================================================ -->
+<!-- ================================================================
      PÁGINA: Tablas | tablas.html
      ================================================================
      Qué ve el usuario:
@@ -383,35 +406,6 @@
     <!-- Toast de notificación: aparece brevemente al hacer una acción -->
     <div id="toast"></div>
 
-    <!-- ── Tabla de referencia de etiquetas ────────────────────────────
-         Sidebar fija a la derecha. Solo visible en pantallas ≥ 1024px.
-         ─────────────────────────────────────────────────────────────── -->
-    <aside class="char-ref">
-        <h3>Etiquetas usadas</h3>
-        <table>
-            <thead>
-                <tr><th>Tag / Atrib.</th><th>Función</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>&lt;style&gt;</td><td>Estilos CSS locales de esta página</td></tr>
-                <tr><td>&lt;div&gt;</td><td>Contenedor genérico sin semántica</td></tr>
-                <tr><td>&lt;input&gt;</td><td>Campo de texto editable</td></tr>
-                <tr><td>&lt;select&gt;</td><td>Lista desplegable</td></tr>
-                <tr><td>&lt;option&gt;</td><td>Opción dentro del select</td></tr>
-                <tr><td>&lt;button&gt;</td><td>Botón interactivo</td></tr>
-                <tr><td>&lt;table&gt;</td><td>Tabla de datos</td></tr>
-                <tr><td>&lt;thead&gt;</td><td>Cabecera de la tabla</td></tr>
-                <tr><td>&lt;tbody&gt;</td><td>Cuerpo (filas de datos)</td></tr>
-                <tr><td>&lt;tr&gt;</td><td>Fila de la tabla</td></tr>
-                <tr><td>&lt;th&gt;</td><td>Celda de encabezado</td></tr>
-                <tr><td>&lt;td&gt;</td><td>Celda de dato</td></tr>
-                <tr><td>&lt;script&gt;</td><td>Código JavaScript de la página</td></tr>
-                <tr><td>id=</td><td>Identificador único; JS lo usa para encontrar el elemento</td></tr>
-                <tr><td>onclick=</td><td>Llama una función JS al hacer clic</td></tr>
-                <tr><td>maxlength=</td><td>Límite de caracteres en el input</td></tr>
-            </tbody>
-        </table>
-    </aside>
 
     <!-- ================================================================
          LÓGICA CRUD EN JAVASCRIPT

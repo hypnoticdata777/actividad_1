@@ -1,4 +1,22 @@
 <?php
+/* ================================================================
+   TABLA DE ETIQUETAS Y CONCEPTOS USADOS EN ESTE ARCHIVO
+   ================================================================
+   Etiqueta / Concepto      Función
+   ──────────────────────   ──────────────────────────────────────
+   <?php ?>                 Bloque de código ejecutado en el servidor
+   $_POST[]                 Array global que recibe los datos del form
+   isset()                  Verifica que una variable exista y no sea null
+   die()                    Detiene la ejecución y muestra un mensaje
+   htmlspecialchars()       Convierte < > " & en entidades HTML para
+                            prevenir ataques XSS (cross-site scripting)
+   ENT_QUOTES               Parámetro que protege también comillas simples
+   echo                     Imprime el valor de una variable PHP en el HTML
+   <dl>                     Lista de definiciones (pares clave-valor)
+   <dt>                     Término o nombre del campo
+   <dd>                     Valor correspondiente al término
+   <a class="btn-volver">   Enlace estilizado como botón para regresar
+   ================================================================ */
 /* =============================================
    ARCHIVO: php/logica.php
    Procesa los datos enviados desde formulario.php
@@ -92,30 +110,6 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
     <footer>
         Derechos Reservados Producciones h777
     </footer>
-
-    <!-- ── Tabla de referencia de etiquetas ────────────────────────────
-         Sidebar fija a la derecha. Solo visible en pantallas ≥ 1024px.
-         ─────────────────────────────────────────────────────────────── -->
-    <aside class="char-ref">
-        <h3>Etiquetas usadas</h3>
-        <table>
-            <thead>
-                <tr><th>Tag / Concepto</th><th>Función</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>&lt;?php ?&gt;</td><td>Bloque de código PHP (ejecutado en el servidor)</td></tr>
-                <tr><td>$_POST[]</td><td>Recibe datos enviados por el formulario</td></tr>
-                <tr><td>htmlspecialchars()</td><td>Convierte &lt; &gt; " &amp; para prevenir XSS</td></tr>
-                <tr><td>isset()</td><td>Verifica que una variable exista</td></tr>
-                <tr><td>die()</td><td>Detiene la ejecución si hay un error</td></tr>
-                <tr><td>echo</td><td>Imprime el valor PHP en el HTML</td></tr>
-                <tr><td>&lt;dl&gt;</td><td>Lista de definiciones (pares clave-valor)</td></tr>
-                <tr><td>&lt;dt&gt;</td><td>Término o etiqueta de la definición</td></tr>
-                <tr><td>&lt;dd&gt;</td><td>Valor correspondiente al término</td></tr>
-                <tr><td>&lt;a class="btn-volver"&gt;</td><td>Enlace estilizado como botón para regresar</td></tr>
-            </tbody>
-        </table>
-    </aside>
 
 </body>
 </html>

@@ -132,10 +132,9 @@ nav a.active {
    MAIN Y FOOTER
    ============================================= */
 
-/* main: área de contenido principal.
-   El padding derecho de 240px reserva espacio para la sidebar .char-ref. */
+/* main: área de contenido principal */
 main {
-    padding: 20px 240px 20px 20px;
+    padding: 20px;
 }
 
 /* footer: pie de página con línea azul superior, simétrico al header dorado */
@@ -346,87 +345,6 @@ table tr:hover {
 }
 
 /* =============================================
-   TABLA DE REFERENCIA DE ETIQUETAS (.char-ref)
-   -----------------------------------------------
-   Sidebar fija a la derecha que muestra todas las
-   etiquetas HTML usadas en la página actual y su
-   función. Se oculta en pantallas menores a 1024px.
-   ============================================= */
-
-/* Contenedor fijo pegado al lado derecho de la pantalla */
-.char-ref {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 225px;
-    background-color: var(--color-dark);
-    border-left: 3px solid var(--color-gold);
-    padding: 12px 10px;
-    overflow-y: auto;
-    z-index: 200;
-    font-size: 0.76em;
-    font-family: monospace;
-    color: var(--color-silver);
-}
-
-/* Título de la sidebar */
-.char-ref h3 {
-    color: var(--color-gold);
-    font-size: 1em;
-    margin: 0 0 10px 0;
-    text-align: center;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--color-gold-dark);
-    padding-bottom: 6px;
-    font-family: "Georgia", serif;
-}
-
-/* Tabla interna: sobreescribe los estilos globales de table */
-.char-ref table {
-    width: 100%;
-    border-collapse: collapse;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    overflow: visible;
-    box-shadow: none;
-}
-
-.char-ref table th {
-    background: var(--color-dark-mid);
-    color: var(--color-gold);
-    font-size: 0.85em;
-    padding: 4px 5px;
-    text-transform: none;
-    letter-spacing: 0;
-}
-
-.char-ref table td {
-    padding: 4px 5px;
-    border: 1px solid #444;
-    vertical-align: top;
-    color: var(--color-silver);
-    line-height: 1.35;
-}
-
-/* Primera columna: el tag en dorado */
-.char-ref table td:first-child {
-    color: var(--color-gold);
-    white-space: nowrap;
-    font-weight: bold;
-}
-
-/* Sobreescribe el zebra-striping y hover globales de table */
-.char-ref table tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.04);
-}
-
-.char-ref table tr:hover {
-    background-color: rgba(240, 192, 64, 0.08);
-}
-
-/* =============================================
    PÁGINA DE CONFIRMACIÓN (.confirmacion)
    ============================================= */
 
@@ -491,20 +409,6 @@ table tr:hover {
    funciona bien en celular, tablet y escritorio,
    sin necesidad de páginas separadas.
    ============================================= */
-
-/* --------------------------------------------------
-   TABLET — oculta la sidebar de referencia cuando
-   no hay espacio suficiente para mostrarla.
-   -------------------------------------------------- */
-@media (max-width: 1024px) {
-    .char-ref {
-        display: none;
-    }
-
-    main {
-        padding-right: 20px;
-    }
-}
 
 /* --------------------------------------------------
    CELULAR — pantallas de hasta 600px de ancho
