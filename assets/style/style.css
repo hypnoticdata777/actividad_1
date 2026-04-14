@@ -1,3 +1,29 @@
+/* ================================================================
+   TABLA DE PROPIEDADES Y CONCEPTOS USADOS EN ESTE ARCHIVO
+   ================================================================
+   Propiedad / Concepto     Función
+   ──────────────────────   ──────────────────────────────────────
+   :root                    Define variables globales de color y
+                            valores reutilizables en todo el CSS
+   var()                    Llama a una variable definida en :root
+   display: flex            Activa el modelo de caja flexible para
+                            alinear elementos en fila o columna
+   position: fixed          Fija el elemento en pantalla (no se mueve
+                            al hacer scroll)
+   transition               Anima cambios de propiedad suavemente
+   box-shadow               Sombra exterior de un elemento
+   border-radius            Esquinas redondeadas
+   border-left              Borde solo en el lado izquierdo (franja)
+   linear-gradient()        Degradado de un color a otro
+   :hover                   Aplica estilos al pasar el mouse
+   :focus                   Aplica estilos al enfocar un campo
+   :nth-child(even)         Selecciona filas pares (zebra striping)
+   @media (max-width: Npx)  Aplica estilos solo si la pantalla es
+                            menor a N píxeles (diseño responsivo)
+   letter-spacing           Espaciado entre letras
+   text-transform           Transforma texto (uppercase = mayúsculas)
+   ================================================================ */
+
 /* =============================================
    ARCHIVO DE ESTILOS - style.css
    Este archivo controla cómo se ve visualmente
