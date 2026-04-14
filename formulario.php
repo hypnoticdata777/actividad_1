@@ -79,38 +79,47 @@
 
         <h1>Formulario</h1>
 
-        <!-- ── Formulario de contacto ───────────────────────────────────
+        <!-- ── Sección del formulario de contacto ───────────────────────
+             Envuelve el formulario en <section> igual que el resto de
+             páginas del sitio. El form tiene su propio centrado y layout
+             definidos en style.css (max-width, flex-column, gap).
              action="php/logica.php" → envía los datos a ese archivo PHP.
              method="post"           → los datos viajan en el cuerpo de la
              solicitud, no en la URL (más seguro que method="get").
              required en cada campo  → el navegador bloquea el envío si
              algún campo está vacío.
              ─────────────────────────────────────────────────────────── -->
-        <form action="php/logica.php" method="post">
+        <section>
 
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej: María García" required>
+            <h2>Contacto</h2>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Ej: correo@ejemplo.com" required>
+            <form action="php/logica.php" method="post">
 
-            <label for="date">Fecha</label>
-            <input type="date" name="date" id="date" required>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: María García" required>
 
-            <label for="mensaje">Mensaje</label>
-            <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Ej: correo@ejemplo.com" required>
 
-            <label for="opciones">Opciones</label>
-            <select name="opciones" id="opciones" required>
-                <option value="">Selecciona una opción</option>
-                <option value="opcion 1">Opción 1</option>
-                <option value="opcion 2">Opción 2</option>
-                <option value="opcion 3">Opción 3</option>
-            </select>
+                <label for="date">Fecha</label>
+                <input type="date" name="date" id="date" required>
 
-            <button type="submit">Enviar</button>
+                <label for="mensaje">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
 
-        </form>
+                <label for="opciones">Opciones</label>
+                <select name="opciones" id="opciones" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="opcion 1">Opción 1</option>
+                    <option value="opcion 2">Opción 2</option>
+                    <option value="opcion 3">Opción 3</option>
+                </select>
+
+                <button type="submit">Enviar</button>
+
+            </form>
+
+        </section>
 
     </main>
 
