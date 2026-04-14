@@ -72,13 +72,18 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
          Muestra el resumen de los datos que el usuario acaba de enviar.
          ─────────────────────────────────────────────────────────────── -->
     <main>
-        <!-- ── Caja de confirmación ─────────────────────────────────────
+
+        <h1>Formulario</h1>
+
+        <!-- ── Sección de confirmación ──────────────────────────────────
+             Mismo patrón de <section> que el resto del sitio.
              Usa <dl> (lista de definiciones) para mostrar los pares
              clave-valor de cada campo enviado: <dt> es la etiqueta
              y <dd> es el valor correspondiente.
              ─────────────────────────────────────────────────────────── -->
+        <section>
         <div class="confirmacion">
-            <h1>¡Formulario enviado!</h1>
+            <h2>¡Formulario enviado!</h2>
             <p>Estos son los datos que recibimos:</p>
 
             <!-- dl: lista de definiciones; ideal para mostrar pares clave-valor -->
@@ -102,6 +107,8 @@ $opcion  = htmlspecialchars($_POST['opciones'],ENT_QUOTES, 'UTF-8');
             <!-- Enlace para volver al formulario sin tener que usar el botón "atrás" del navegador -->
             <a class="btn-volver" href="../formulario.php">← Volver al formulario</a>
         </div>
+        </section>
+
     </main>
 
     <!-- ── FOOTER ──────────────────────────────────────────────────────
