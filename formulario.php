@@ -39,7 +39,17 @@
      <option>                 Una opción dentro del <select>
      value=                   Valor interno del option enviado al servidor
      <button type="submit">   Envía el formulario al archivo en action=
+     <section>                Agrupa el formulario para mantener estructura consistente con el sitio
+     <h2>                     Subtítulo de sección (color azul via main section h2 en style.css)
      <footer>                 Pie de página
+     <script>                 Bloque de JavaScript ejecutado en el navegador (cliente)
+     addEventListener         Escucha un evento (submit) y ejecuta una función al dispararse
+     e.preventDefault()       Cancela el comportamiento por defecto (detiene el envío del form)
+     .trim()                  Elimina espacios en blanco al inicio y al final de un string
+     .length                  Propiedad que devuelve el número de caracteres de un string
+     RegExp / regex           Expresión regular para validar el formato de un email
+     .test()                  Método que verifica si un string cumple el patrón de la regex
+     new Date()               Crea un objeto de fecha con la fecha y hora actual
      ================================================================ -->
 <!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>
@@ -130,7 +140,12 @@
         Derechos Reservados Producciones h777
     </footer>
 
-<script>
+    <!-- ── SCRIPT DE VALIDACIÓN ──────────────────────────────────────────
+         Se ejecuta en el navegador antes de enviar el formulario.
+         Intercepta el evento submit y valida cada campo manualmente
+         para dar mensajes de error más claros que los del navegador.
+         ─────────────────────────────────────────────────────────────── -->
+    <script>
     /* ================================================================
        VALIDACIÓN DEL FORMULARIO CON JAVASCRIPT
        Intercepta el submit antes de enviarlo al servidor.
