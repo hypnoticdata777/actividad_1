@@ -1,9 +1,60 @@
 <?php
 /* ================================================================
-   ARCHIVO: crud.php
-   Demuestra el uso de PHP para generar contenido dinámico.
-   Usa un array asociativo como fuente de datos y construye
-   una tabla HTML en el servidor antes de enviarla al navegador.
+   TABLA DE ETIQUETAS Y CONCEPTOS USADOS EN ESTE ARCHIVO
+   ================================================================
+   Etiqueta / Concepto      Función
+   ──────────────────────   ──────────────────────────────────────
+   <?php ?>                 Bloque de código ejecutado en el servidor
+                            antes de enviar la página al navegador
+   $variable                Variable PHP; el $ identifica que es una variable
+   array asociativo []      Lista de pares clave => valor (como un objeto)
+   count()                  Función PHP que cuenta los elementos de un array
+   foreach                  Ciclo que itera sobre cada elemento del array
+   $reg['clave']            Accede al valor de una clave en el array asociativo
+   htmlspecialchars()       Convierte < > " & en entidades HTML para prevenir XSS
+   ENT_QUOTES               Parámetro que protege también comillas simples y dobles
+   echo                     Imprime el valor de una variable o expresión en el HTML
+   <!DOCTYPE html>          Declara que el documento es HTML5
+   <html>                   Elemento raíz que envuelve todo el documento
+   lang=                    Idioma del contenido (es = español)
+   <head>                   Configuración del documento (no visible)
+   <meta charset>           UTF-8: permite acentos, ñ y caracteres especiales
+   <meta viewport>          Adapta la página al ancho del dispositivo
+   <link rel>               Conecta el HTML con un archivo externo (CSS)
+   href=                    Ruta del archivo CSS o página de destino
+   <title>                  Texto que aparece en la pestaña del navegador
+   <body>                   Todo el contenido visible de la página
+   <header>                 Cabecera con la barra de navegación
+   <nav>                    Bloque semántico de navegación
+   <ul>                     Lista sin orden (usada como menú)
+   <li>                     Ítem de lista
+   <a>                      Enlace a otra página
+   <main>                   Área de contenido principal
+   <h1>                     Título principal (solo uno por página)
+   <section>                Agrupa el contenido principal de la página
+   <p>                      Párrafo de texto
+   <strong>                 Texto en negrita / énfasis fuerte
+   <table>                  Tabla de datos
+   <thead>                  Sección de encabezados de la tabla
+   <tbody>                  Sección del cuerpo generada dinámicamente con PHP
+   <tr>                     Fila de la tabla
+   <th>                     Celda de encabezado (fondo azul en CSS)
+   <td>                     Celda de dato
+   <footer>                 Pie de página
+   ================================================================
+
+   PÁGINA: CRUD PHP | crud.php
+   ================================================================
+   Qué ve el usuario:
+   Una tabla generada completamente en el servidor con PHP.
+   Muestra registros de películas y series con su categoría
+   y la persona asignada. Demuestra el ciclo foreach de PHP
+   y el uso de htmlspecialchars() para salida segura.
+
+   Estructura:
+     <header>  → barra de navegación superior
+     <main>    → contador de registros + tabla generada con PHP
+     <footer>  → pie de página con derechos
    ================================================================ */
 
 // Array de datos — simula una fuente de datos del servidor
@@ -29,6 +80,10 @@ $total = count($registros);
 </head>
 <body>
 
+    <!-- ── HEADER ──────────────────────────────────────────────────────
+         Barra de navegación del sitio. crud.php no está en el menú
+         principal, por eso ningún enlace lleva class="active".
+         ─────────────────────────────────────────────────────────────── -->
     <header>
         <nav>
             <ul>
@@ -43,9 +98,18 @@ $total = count($registros);
         </nav>
     </header>
 
+    <!-- ── MAIN ────────────────────────────────────────────────────────
+         Contenido principal: contador de registros y tabla generada
+         dinámicamente con PHP a partir del array $registros.
+         ─────────────────────────────────────────────────────────────── -->
     <main>
         <h1>Tabla generada con PHP</h1>
 
+        <!-- ── Sección de tabla dinámica ────────────────────────────────
+             PHP recorre el array $registros con foreach y genera una
+             <tr> por cada elemento. htmlspecialchars() protege cada
+             valor contra XSS antes de imprimirlo en el HTML.
+             ─────────────────────────────────────────────────────────── -->
         <section>
             <!-- PHP imprime el total de registros dinámicamente -->
             <p>Total de registros: <strong><?php echo $total; ?></strong></p>
@@ -74,6 +138,9 @@ $total = count($registros);
         </section>
     </main>
 
+    <!-- ── FOOTER ──────────────────────────────────────────────────────
+         Pie de página idéntico en todas las páginas del sitio.
+         ─────────────────────────────────────────────────────────────── -->
     <footer>
         Derechos Reservados Producciones h777
     </footer>
