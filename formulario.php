@@ -130,5 +130,61 @@
         Derechos Reservados Producciones h777
     </footer>
 
+<script>
+    /* ================================================================
+       VALIDACIÓN DEL FORMULARIO CON JAVASCRIPT
+       Intercepta el submit antes de enviarlo al servidor.
+       Valida que los campos no estén vacíos o mal formados
+       y muestra mensajes de error personalizados al usuario.
+       ================================================================ */
+    document.querySelector('form').addEventListener('submit', function (e) {
+
+        // Obtiene los valores de cada campo
+        const nombre  = document.getElementById('nombre').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const fecha   = document.getElementById('date').value;
+        const mensaje = document.getElementById('mensaje').value.trim();
+        const opcion  = document.getElementById('opciones').value;
+
+        // Validación: ningún campo puede estar vacío
+        if (!nombre || !email || !fecha || !mensaje || !opcion) {
+            e.preventDefault(); // detiene el envío del formulario
+            alert('Por favor completa todos los campos antes de enviar.');
+            return;
+        }
+
+        // Validación: el nombre debe tener al menos 2 caracteres
+        if (nombre.length < 2) {
+            e.preventDefault();
+            alert('El nombre debe tener al menos 2 caracteres.');
+            return;
+        }
+
+        // Validación: formato básico de email (debe contener @ y .)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            e.preventDefault();
+            alert('Por favor ingresa un email válido.');
+            return;
+        }
+
+        // Validación: la fecha no puede ser en el futuro
+        const hoy        = new Date();
+        const fechaInput = new Date(fecha);
+        if (fechaInput > hoy) {
+            e.preventDefault();
+            alert('La fecha no puede ser en el futuro.');
+            return;
+        }
+
+        // Validación: el mensaje debe tener al menos 10 caracteres
+        if (mensaje.length < 10) {
+            e.preventDefault();
+            alert('El mensaje debe tener al menos 10 caracteres.');
+            return;
+        }
+    });
+</script>
+     
 </body>
 </html>
