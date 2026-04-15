@@ -50,7 +50,7 @@
      ================================================================
      Qué ve el usuario:
      Tabla CRUD completa. Permite agregar, editar y eliminar registros
-     de Películas o Series, asignados a Mariana, Eduardo Rafael o Carlos.
+     de Películas o Series, asignados a Mariana, Eduardo, Rafael o Carlos.
      Los datos se guardan en localStorage del navegador.
 
      Estructura:
@@ -134,7 +134,7 @@
             box-shadow: 0 0 5px rgba(240, 192, 64, 0.5);
         }
 
-        .crud-form-row input[name="titulo"] {
+        .crud-form-row select#input-titulo {
             min-width: 200px;
         }
 
@@ -376,7 +376,38 @@
             <div class="crud-form-row">
                 <label>
                     Título
-                    <input type="text" name="titulo" id="input-titulo" placeholder="Ej: Breaking Bad" maxlength="80">
+                    <select name="titulo" id="input-titulo">
+                        <option value="">Selecciona un título...</option>
+                        <optgroup label="── Películas ──">
+                            <option value="Duelo de Titanes">Duelo de Titanes</option>
+                            <option value="Talladega Nights">Talladega Nights</option>
+                            <option value="The Matrix">The Matrix</option>
+                        </optgroup>
+                        <optgroup label="── Series ──">
+                            <option value="Reading Rainbow">Reading Rainbow</option>
+                            <option value="Matlock">Matlock</option>
+                            <option value="The Simpsons">The Simpsons</option>
+                            <option value="Family Matters">Family Matters</option>
+                            <option value="Fresh Prince of Bel-Air">Fresh Prince of Bel-Air</option>
+                            <option value="X-Men">X-Men</option>
+                            <option value="The Magic School Bus">The Magic School Bus</option>
+                            <option value="Arthur">Arthur</option>
+                            <option value="Pokémon">Pokémon</option>
+                            <option value="Recess">Recess</option>
+                            <option value="Dragon Tales">Dragon Tales</option>
+                            <option value="Ed, Edd y Eddy">Ed, Edd y Eddy</option>
+                            <option value="Digimon">Digimon</option>
+                            <option value="Between the Lions">Between the Lions</option>
+                            <option value="Yu-Gi-Oh!">Yu-Gi-Oh!</option>
+                            <option value="The Grim Adventures of Billy &amp; Mandy">The Grim Adventures of Billy &amp; Mandy</option>
+                            <option value="Lost">Lost</option>
+                            <option value="Breaking Bad">Breaking Bad</option>
+                            <option value="The Walking Dead">The Walking Dead</option>
+                            <option value="Game of Thrones">Game of Thrones</option>
+                            <option value="Vikings">Vikings</option>
+                            <option value="Better Call Saul">Better Call Saul</option>
+                        </optgroup>
+                    </select>
                 </label>
                 <label>
                     Categoría
@@ -391,7 +422,8 @@
                     <select name="asignado" id="input-asignado">
                         <option value="">Selecciona...</option>
                         <option value="Mariana">Mariana</option>
-                        <option value="Eduardo Rafael">Eduardo Rafael</option>
+                        <option value="Eduardo">Eduardo</option>
+                        <option value="Rafael">Rafael</option>
                         <option value="Carlos">Carlos</option>
                     </select>
                 </label>
@@ -472,12 +504,23 @@
                 const parsed = JSON.parse(datos);
                 registros  = parsed.registros  || [];
                 idCounter  = parsed.idCounter  || 1;
+
+                /* Migración: "Eduardo Rafael" era una sola persona en datos antiguos.
+                   Ahora son dos personas distintas; los registros viejos se reasignan a Eduardo. */
+                let migrado = false;
+                registros.forEach(function (r) {
+                    if (r.asignado === 'Eduardo Rafael') {
+                        r.asignado = 'Eduardo';
+                        migrado = true;
+                    }
+                });
+                if (migrado) guardarEnStorage();
             } else {
                 /* Datos de ejemplo para que la tabla no aparezca vacía */
                 registros = [
                     { id: 1, titulo: 'Breaking Bad',  categoria: 'Series',     asignado: 'Carlos'         },
                     { id: 2, titulo: 'The Matrix',    categoria: 'Películas',   asignado: 'Mariana'        },
-                    { id: 3, titulo: 'Game of Thrones', categoria: 'Series',   asignado: 'Eduardo Rafael'  }
+                    { id: 3, titulo: 'Game of Thrones', categoria: 'Series',   asignado: 'Eduardo'         }
                 ];
                 idCounter = 4;
                 guardarEnStorage();
@@ -560,6 +603,30 @@
             mostrarToast('Registro agregado correctamente.');
         }
 
+        /* ── titulosOptions ─────────────────────────────────────────── */
+        /* Genera el HTML de los <option> para el select de título,
+           marcando como selected el valor actualmente guardado. */
+        function titulosOptions(selected) {
+            const titulos = [
+                { group: '── Películas ──', items: ['Duelo de Titanes', 'Talladega Nights', 'The Matrix'] },
+                { group: '── Series ──',    items: ['Reading Rainbow', 'Matlock', 'The Simpsons', 'Family Matters',
+                    'Fresh Prince of Bel-Air', 'X-Men', 'The Magic School Bus', 'Arthur', 'Pokémon', 'Recess',
+                    'Dragon Tales', 'Ed, Edd y Eddy', 'Digimon', 'Between the Lions', 'Yu-Gi-Oh!',
+                    'The Grim Adventures of Billy & Mandy', 'Lost', 'Breaking Bad',
+                    'The Walking Dead', 'Game of Thrones', 'Vikings', 'Better Call Saul'] }
+            ];
+            let html = '<option value="">Selecciona un título...</option>';
+            titulos.forEach(function (group) {
+                html += `<optgroup label="${group.group}">`;
+                group.items.forEach(function (t) {
+                    const sel = t === selected ? 'selected' : '';
+                    html += `<option value="${escapeHtml(t)}" ${sel}>${escapeHtml(t)}</option>`;
+                });
+                html += '</optgroup>';
+            });
+            return html;
+        }
+
         /* ── editarFila ─────────────────────────────────────────────── */
         /* Localiza la <tr> correspondiente al id y reemplaza las celdas
            de texto con inputs/selects editables en línea. */
@@ -590,13 +657,9 @@
                 <td>${numFila}</td>
 
                 <td>
-                    <input
-                        class="fila-edit-input"
-                        id="edit-titulo-${id}"
-                        type="text"
-                        value="${escapeHtml(reg.titulo)}"
-                        maxlength="80"
-                    >
+                    <select class="fila-edit-select" id="edit-titulo-${id}">
+                        ${titulosOptions(reg.titulo)}
+                    </select>
                 </td>
 
                 <td>
@@ -608,9 +671,10 @@
 
                 <td>
                     <select class="fila-edit-select" id="edit-asignado-${id}">
-                        <option value="Mariana"       ${reg.asignado === 'Mariana'       ? 'selected' : ''}>Mariana</option>
-                        <option value="Eduardo Rafael" ${reg.asignado === 'Eduardo Rafael' ? 'selected' : ''}>Eduardo Rafael</option>
-                        <option value="Carlos"        ${reg.asignado === 'Carlos'        ? 'selected' : ''}>Carlos</option>
+                        <option value="Mariana"  ${reg.asignado === 'Mariana'  ? 'selected' : ''}>Mariana</option>
+                        <option value="Eduardo"  ${reg.asignado === 'Eduardo'  ? 'selected' : ''}>Eduardo</option>
+                        <option value="Rafael"   ${reg.asignado === 'Rafael'   ? 'selected' : ''}>Rafael</option>
+                        <option value="Carlos"   ${reg.asignado === 'Carlos'   ? 'selected' : ''}>Carlos</option>
                     </select>
                 </td>
 
@@ -699,14 +763,6 @@
             return div.innerHTML;
         }
 
-        /* ── Soporte Enter en el campo título ───────────────────────── */
-        /* Permite agregar un registro presionando Enter en el input de título,
-           sin necesidad de hacer clic en el botón. */
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('input-titulo').addEventListener('keydown', function (e) {
-                if (e.key === 'Enter') agregarRegistro();
-            });
-        });
 
     </script>
 
