@@ -43,13 +43,17 @@
      <h2>                     Subtítulo de sección (color azul via main section h2 en style.css)
      <footer>                 Pie de página
      <script>                 Bloque de JavaScript ejecutado en el navegador (cliente)
+     document.querySelector() Busca y devuelve el primer elemento que coincida con el selector CSS dado
      addEventListener         Escucha un evento (submit) y ejecuta una función al dispararse
-     e.preventDefault()       Cancela el comportamiento por defecto (detiene el envío del form)
-     .trim()                  Elimina espacios en blanco al inicio y al final de un string
+     e.preventDefault()       Cancela el comportamiento por defecto del evento (detiene el envío del form)
+     document.getElementById() Busca y devuelve el elemento HTML que tenga ese id
+     .value                   Lee el texto actual escrito dentro de un input o seleccionado en un select
+     .trim()                  Elimina los espacios en blanco al inicio y al final de un string
      .length                  Propiedad que devuelve el número de caracteres de un string
-     RegExp / regex           Expresión regular para validar el formato de un email
-     .test()                  Método que verifica si un string cumple el patrón de la regex
-     new Date()               Crea un objeto de fecha con la fecha y hora actual
+     alert()                  Muestra un cuadro emergente con un mensaje; el usuario debe cerrarlo
+     RegExp / regex           Expresión regular: patrón de texto para validar un formato (ej: email)
+     .test()                  Verifica si un string cumple el patrón de la expresión regular; devuelve true/false
+     new Date()               Crea un objeto de fecha con la fecha y hora actual del sistema
      ================================================================ -->
 <!-- Le dice al navegador que este documento está en HTML5 -->
 <!DOCTYPE html>

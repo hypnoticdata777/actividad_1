@@ -9,7 +9,10 @@
    $variable                Variable PHP; el $ identifica que es una variable
    array asociativo []      Lista de pares clave => valor (como un objeto)
    count()                  Función PHP que cuenta los elementos de un array
-   foreach                  Ciclo que itera sobre cada elemento del array
+   foreach                  Ciclo que recorre cada elemento del array uno por uno
+   foreach ... as $reg      La parte "as $reg" toma cada elemento y lo guarda en $reg
+   foreach ... :            Sintaxis alternativa de foreach; en vez de { } usa : y endforeach
+   endforeach               Cierra el bloque foreach cuando se usó la sintaxis con :
    $reg['clave']            Accede al valor de una clave en el array asociativo
    htmlspecialchars()       Convierte < > " & en entidades HTML para prevenir XSS
    ENT_QUOTES               Parámetro que protege también comillas simples y dobles
