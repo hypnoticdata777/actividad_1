@@ -24,26 +24,52 @@
      class="active"       Subraya en dorado el enlace de la página actual
      <main>               Área de contenido principal
      <div>                Contenedor genérico sin semántica propia
-     <input>              Campo de texto editable
-     type=                Tipo de campo (text, email, date, etc.)
-     name=                Nombre del campo; PHP lo usa para leer el valor
+     <input>              Campo de texto; en esta página se genera por JS al editar una fila
+     type=                Tipo de campo (text, number, etc.)
+     name=                Nombre del campo; sirve para identificarlo al enviar datos
      id=                  Identificador único; JS lo usa para encontrar el elemento
-     placeholder=         Texto de ejemplo dentro del campo vacío
-     maxlength=           Límite máximo de caracteres permitidos
+     placeholder=         Texto de ejemplo que aparece dentro del campo vacío
      <select>             Lista desplegable de opciones
+     <optgroup>           Agrupa opciones relacionadas dentro de un <select> con un encabezado
+     label=               Texto del encabezado del grupo en <optgroup> (no es seleccionable)
      <option>             Una opción dentro del <select>
-     value=               Valor interno del option enviado al servidor
-     <button>             Botón interactivo
-     onclick=             Llama una función JavaScript al hacer clic
-     <table>              Tabla de datos
-     <thead>              Sección de encabezados de la tabla
-     <tbody>              Sección del cuerpo (filas de datos, generadas por JS)
-     <tr>                 Fila de la tabla
-     <th>                 Celda de encabezado (fondo azul en CSS)
-     <td>                 Celda de dato
-     colspan=             Cuántas columnas ocupa una celda (usado en JS)
-     <script>             Bloque de código JavaScript de la página
-     <footer>             Pie de página
+     value=               Valor que se envía cuando se elige esa opción
+     <button>             Botón interactivo que el usuario puede pulsar
+     onclick=             Llama una función JavaScript cuando el usuario hace clic
+     <table>              Tabla de datos con filas y columnas
+     <thead>              Sección de encabezados de la tabla (fila con títulos de columna)
+     <tbody>              Sección del cuerpo de la tabla; JS llena sus filas dinámicamente
+     <tr>                 Fila de la tabla (table row)
+     <th>                 Celda de encabezado; el CSS la muestra con fondo azul
+     <td>                 Celda de dato normal dentro de una fila
+     colspan=             Indica cuántas columnas debe ocupar una celda (para mensajes centrados)
+     <script>             Bloque de código JavaScript que se ejecuta en el navegador
+     <footer>             Pie de página que aparece al final de la pantalla
+     ── JavaScript ───────────────────────────────────────────────────
+     let                  Declara una variable cuyo valor puede cambiar después
+     async function       Función que puede pausarse para esperar la respuesta del servidor
+     await                Pausa la función hasta que el servidor responde; la página no se congela
+     fetch()              Envía una petición HTTP al servidor (api.php) y espera la respuesta
+     FormData             Objeto que empaqueta campos y valores para enviarlos al servidor
+     .append()            Agrega un campo con su valor al objeto FormData antes de enviarlo
+     document.addEventListener()  Espera a que la página termine de cargar para ejecutar código
+     document.getElementById()    Busca y devuelve el elemento HTML que tenga ese id
+     document.createElement()     Crea un nuevo elemento HTML en memoria (todavía no es visible)
+     .appendChild()       Inserta el elemento creado al final de otro elemento del DOM
+     .innerHTML           Lee o reemplaza el contenido HTML interno de un elemento
+     .textContent         Lee el texto puro de un elemento sin interpretar etiquetas HTML
+     .forEach()           Recorre cada elemento del array y ejecuta una función por cada uno
+     .find()              Busca el primer elemento del array que cumpla la condición dada
+     .querySelectorAll()  Busca todos los elementos que coincidan con un selector CSS
+     .getAttribute()      Lee el valor de un atributo HTML de un elemento (ej: el onclick=)
+     .value               Lee el valor actual escrito dentro de un input o seleccionado en un select
+     .trim()              Elimina los espacios en blanco al inicio y al final de un texto
+     .focus()             Mueve el cursor al campo para que el usuario pueda escribir de inmediato
+     confirm()            Muestra un diálogo con "Aceptar" y "Cancelar"; devuelve true o false
+     setTimeout()         Espera N milisegundos y luego ejecuta una función (ocultar el toast)
+     .classList.add()     Agrega una clase CSS a un elemento para cambiar su apariencia
+     .classList.remove()  Quita una clase CSS de un elemento (ej: oculta el toast)
+     Template literal (`) Texto que puede incluir variables incrustadas: `Hola ${nombre}`
      ================================================================ -->
 <!-- ================================================================
      PÁGINA: Tablas | tablas.html
@@ -51,7 +77,7 @@
      Qué ve el usuario:
      Tabla CRUD completa. Permite agregar, editar y eliminar registros
      de Películas o Series, asignados a Mariana, Eduardo, Rafael o Carlos.
-     Los datos se guardan en localStorage del navegador.
+     Los datos se guardan en una base de datos MySQL a través de api.php.
 
      Estructura:
        <header>  → barra de navegación superior
@@ -466,82 +492,62 @@
          LÓGICA CRUD EN JAVASCRIPT
          ================================================================
          Flujo general:
-           1. Al cargar la página, se leen los datos de localStorage.
+           1. Al cargar la página, cargarRegistros() hace fetch a api.php
+              para leer todos los registros desde MySQL y llenar la tabla.
            2. renderTabla() dibuja todas las filas en el <tbody>.
-           3. agregarRegistro() valida y añade una fila nueva.
+           3. agregarRegistro() valida y hace POST a api.php (action=create).
            4. editarFila(id) convierte la fila en inputs editables.
-           5. guardarEdicion(id) aplica los cambios y vuelve a render.
-           6. cancelarEdicion() descarta cambios sin guardar.
-           7. eliminarRegistro(id) borra el registro tras confirmación.
-           8. Cada cambio llama a guardarEnStorage() para persistir.
+           5. guardarEdicion(id) hace POST a api.php (action=update) y recarga.
+           6. cancelarEdicion() descarta cambios sin tocar la base de datos.
+           7. eliminarRegistro(id) hace POST a api.php (action=delete) tras confirmación.
+           8. Cada operación exitosa vuelve a cargar desde MySQL para mostrar
+              siempre el estado real de la base de datos.
          ================================================================ -->
-    <script>
-
-        /* ── Clave de localStorage ──────────────────────────────────── */
-        /* Usamos una clave específica para no colisionar con otras páginas */
-        const STORAGE_KEY = 'tablas_crud_registros';
+ <script>
 
         /* ── Estado en memoria ──────────────────────────────────────── */
-        /* registros: array de objetos { id, titulo, categoria, asignado }
-           idCounter: contador para generar IDs únicos sin repetir */
-        let registros  = [];
-        let idCounter  = 1;
+        /* registros: copia local del array que viene de MySQL.
+           Se sincroniza con la base de datos en cada operacion CRUD. */
+        let registros = [];
 
-        /* ── Inicialización ─────────────────────────────────────────── */
-        /* Se ejecuta cuando el DOM está listo.
-           Carga datos de localStorage si existen; si no, carga datos demo. */
+        /* ── Inicializacion ─────────────────────────────────────────── */
+        /* Cuando el DOM esta listo, cargamos los registros desde MySQL
+           via fetch() a api.php con action=read. */
         document.addEventListener('DOMContentLoaded', function () {
-            cargarDeStorage();
-            renderTabla();
+            cargarRegistros();
         });
 
-        /* ── cargarDeStorage ────────────────────────────────────────── */
-        /* Lee el JSON guardado en localStorage y restaura el estado.
-           Si no hay nada guardado, inserta tres registros de ejemplo. */
-        function cargarDeStorage() {
-            const datos = localStorage.getItem(STORAGE_KEY);
-            if (datos) {
-                const parsed = JSON.parse(datos);
-                registros  = parsed.registros  || [];
-                idCounter  = parsed.idCounter  || 1;
+        /* ── cargarRegistros ────────────────────────────────────────── */
+        /* Hace POST a api.php con action=read.
+           PHP ejecuta SELECT * FROM registros y responde JSON.
+           JS recibe el array, lo guarda en memoria y redibuja la tabla. */
+        async function cargarRegistros() {
+            try {
+                const formData = new FormData();
+                formData.append('action', 'read');
 
-                /* Migración: "Eduardo Rafael" era una sola persona en datos antiguos.
-                   Ahora son dos personas distintas; los registros viejos se reasignan a Eduardo. */
-                let migrado = false;
-                registros.forEach(function (r) {
-                    if (r.asignado === 'Eduardo Rafael') {
-                        r.asignado = 'Eduardo';
-                        migrado = true;
-                    }
+                const respuesta = await fetch('api.php', {
+                    method: 'POST',
+                    body:   formData
                 });
-                if (migrado) guardarEnStorage();
-            } else {
-                /* Datos de ejemplo para que la tabla no aparezca vacía */
-                registros = [
-                    { id: 1, titulo: 'Breaking Bad',  categoria: 'Series',     asignado: 'Carlos'         },
-                    { id: 2, titulo: 'The Matrix',    categoria: 'Películas',   asignado: 'Mariana'        },
-                    { id: 3, titulo: 'Game of Thrones', categoria: 'Series',   asignado: 'Eduardo'         }
-                ];
-                idCounter = 4;
-                guardarEnStorage();
+
+                registros = await respuesta.json();
+                renderTabla();
+
+            } catch (error) {
+                mostrarToast('Error al conectar con el servidor.');
+                console.error('Error en cargarRegistros:', error);
             }
         }
 
-        /* ── guardarEnStorage ───────────────────────────────────────── */
-        /* Serializa el estado actual a JSON y lo persiste en localStorage. */
-        function guardarEnStorage() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({ registros, idCounter }));
-        }
-
         /* ── renderTabla ────────────────────────────────────────────── */
-        /* Limpia el tbody y redibuja todas las filas desde el array registros.
-           Muestra un mensaje si el array está vacío. */
+        /* Limpia el tbody y redibuja todas las filas desde el array.
+           Muestra un mensaje si el array esta vacio. */
         function renderTabla() {
             const tbody = document.getElementById('tabla-body');
             tbody.innerHTML = '';
 
             if (registros.length === 0) {
-                /* Fila vacía con mensaje centrado */
                 const tr = document.createElement('tr');
                 tr.innerHTML = '<td colspan="5" class="tabla-vacia">No hay registros. Agrega uno arriba.</td>';
                 tbody.appendChild(tr);
@@ -551,11 +557,9 @@
             registros.forEach(function (reg, index) {
                 const tr = document.createElement('tr');
 
-                /* Badge visual según categoría */
                 const badgeClass = reg.categoria === 'Películas' ? 'badge-peliculas' : 'badge-series';
-                const badgeHtml  = `<span class="badge ${badgeClass}">${reg.categoria}</span>`;
+                const badgeHtml  = `<span class="badge ${badgeClass}">${escapeHtml(reg.categoria)}</span>`;
 
-                /* Número de fila (posición en el array + 1, no el ID) */
                 tr.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${escapeHtml(reg.titulo)}</td>
@@ -573,39 +577,50 @@
         }
 
         /* ── agregarRegistro ────────────────────────────────────────── */
-        /* Lee los tres inputs del formulario de alta, valida que no estén
-           vacíos, crea un nuevo objeto registro y lo añade al array. */
-        function agregarRegistro() {
+        /* Valida los campos y hace POST a api.php con action=create.
+           PHP inserta el registro en MySQL y responde con el nuevo id. */
+        async function agregarRegistro() {
             const titulo    = document.getElementById('input-titulo').value.trim();
             const categoria = document.getElementById('input-categoria').value;
             const asignado  = document.getElementById('input-asignado').value;
 
-            /* Validación básica: todos los campos son obligatorios */
             if (!titulo || !categoria || !asignado) {
                 mostrarToast('Por favor completa todos los campos.');
                 return;
             }
 
-            /* Crea el nuevo registro con un ID único */
-            registros.push({ id: idCounter, titulo, categoria, asignado });
-            idCounter++;
+            try {
+                const formData = new FormData();
+                formData.append('action',    'create');
+                formData.append('titulo',    titulo);
+                formData.append('categoria', categoria);
+                formData.append('asignado',  asignado);
 
-            /* Persiste y redibuja */
-            guardarEnStorage();
-            renderTabla();
+                const respuesta = await fetch('api.php', { method: 'POST', body: formData });
+                const data      = await respuesta.json();
 
-            /* Limpia el formulario de alta para el siguiente registro */
-            document.getElementById('input-titulo').value    = '';
-            document.getElementById('input-categoria').value = '';
-            document.getElementById('input-asignado').value  = '';
-            document.getElementById('input-titulo').focus();
+                if (data.error) {
+                    mostrarToast(data.error);
+                    return;
+                }
 
-            mostrarToast('Registro agregado correctamente.');
+                document.getElementById('input-titulo').value    = '';
+                document.getElementById('input-categoria').value = '';
+                document.getElementById('input-asignado').value  = '';
+                document.getElementById('input-titulo').focus();
+
+                await cargarRegistros();
+                mostrarToast('Registro agregado correctamente.');
+
+            } catch (error) {
+                mostrarToast('Error al agregar el registro.');
+                console.error('Error en agregarRegistro:', error);
+            }
         }
 
         /* ── titulosOptions ─────────────────────────────────────────── */
-        /* Genera el HTML de los <option> para el select de título,
-           marcando como selected el valor actualmente guardado. */
+        /* Genera el HTML de los <option> para el select de titulo
+           en modo edicion inline, marcando el valor actual como selected. */
         function titulosOptions(selected) {
             const titulos = [
                 { group: '── Películas ──', items: ['Duelo de Titanes', 'Talladega Nights', 'The Matrix'] },
@@ -628,13 +643,12 @@
         }
 
         /* ── editarFila ─────────────────────────────────────────────── */
-        /* Localiza la <tr> correspondiente al id y reemplaza las celdas
-           de texto con inputs/selects editables en línea. */
+        /* Localiza la fila por id y reemplaza las celdas con inputs
+           editables precargados con los valores actuales del registro. */
         function editarFila(id) {
-            const reg = registros.find(r => r.id === id);
+            const reg = registros.find(r => r.id == id);
             if (!reg) return;
 
-            /* Encuentra la fila en el DOM buscando el botón "Editar" con ese id */
             const tbody = document.getElementById('tabla-body');
             const filas  = tbody.querySelectorAll('tr');
             let filaTarget = null;
@@ -648,27 +662,21 @@
 
             if (!filaTarget) return;
 
-            /* Obtén el número de fila actual (primera celda) */
             const numFila = filaTarget.cells[0].textContent;
 
-            /* Reemplaza el contenido de la fila con inputs editables.
-               Los valores actuales del registro se precargan en los inputs. */
             filaTarget.innerHTML = `
                 <td>${numFila}</td>
-
                 <td>
                     <select class="fila-edit-select" id="edit-titulo-${id}">
                         ${titulosOptions(reg.titulo)}
                     </select>
                 </td>
-
                 <td>
                     <select class="fila-edit-select" id="edit-categoria-${id}">
                         <option value="Películas" ${reg.categoria === 'Películas' ? 'selected' : ''}>Películas</option>
                         <option value="Series"    ${reg.categoria === 'Series'    ? 'selected' : ''}>Series</option>
                     </select>
                 </td>
-
                 <td>
                     <select class="fila-edit-select" id="edit-asignado-${id}">
                         <option value="Mariana"  ${reg.asignado === 'Mariana'  ? 'selected' : ''}>Mariana</option>
@@ -677,7 +685,6 @@
                         <option value="Carlos"   ${reg.asignado === 'Carlos'   ? 'selected' : ''}>Carlos</option>
                     </select>
                 </td>
-
                 <td>
                     <div class="acciones-grupo">
                         <button class="btn-guardar"  onclick="guardarEdicion(${id})">Guardar</button>
@@ -686,15 +693,13 @@
                 </td>
             `;
 
-            /* Pone el foco en el input de título para editar de inmediato */
             document.getElementById(`edit-titulo-${id}`).focus();
         }
 
         /* ── guardarEdicion ─────────────────────────────────────────── */
-        /* Lee los valores de los inputs inline de la fila en edición,
-           valida que no estén vacíos, actualiza el objeto en el array y
-           vuelve a renderizar la tabla en modo lectura. */
-        function guardarEdicion(id) {
+        /* Lee los inputs inline, valida, y hace POST a api.php
+           con action=update. PHP ejecuta UPDATE en MySQL. */
+        async function guardarEdicion(id) {
             const nuevoTitulo    = document.getElementById(`edit-titulo-${id}`).value.trim();
             const nuevaCategoria = document.getElementById(`edit-categoria-${id}`).value;
             const nuevoAsignado  = document.getElementById(`edit-asignado-${id}`).value;
@@ -704,47 +709,72 @@
                 return;
             }
 
-            /* Actualiza el registro en el array */
-            const reg = registros.find(r => r.id === id);
-            if (reg) {
-                reg.titulo    = nuevoTitulo;
-                reg.categoria = nuevaCategoria;
-                reg.asignado  = nuevoAsignado;
-            }
+            try {
+                const formData = new FormData();
+                formData.append('action',    'update');
+                formData.append('id',        id);
+                formData.append('titulo',    nuevoTitulo);
+                formData.append('categoria', nuevaCategoria);
+                formData.append('asignado',  nuevoAsignado);
 
-            guardarEnStorage();
-            renderTabla();
-            mostrarToast('Registro actualizado correctamente.');
+                const respuesta = await fetch('api.php', { method: 'POST', body: formData });
+                const data      = await respuesta.json();
+
+                if (data.error) {
+                    mostrarToast(data.error);
+                    return;
+                }
+
+                await cargarRegistros();
+                mostrarToast('Registro actualizado correctamente.');
+
+            } catch (error) {
+                mostrarToast('Error al actualizar el registro.');
+                console.error('Error en guardarEdicion:', error);
+            }
         }
 
         /* ── cancelarEdicion ────────────────────────────────────────── */
-        /* Descarta los cambios sin modificar el array y redibuja la tabla
-           en modo lectura desde el estado actual de localStorage. */
+        /* Descarta cambios y redibuja la tabla desde el array local.
+           No hace fetch porque no hubo ninguna modificacion en MySQL. */
         function cancelarEdicion() {
             renderTabla();
         }
 
         /* ── eliminarRegistro ───────────────────────────────────────── */
-        /* Pide confirmación al usuario antes de borrar el registro.
-           Si confirma, filtra el elemento del array y redibuja. */
-        function eliminarRegistro(id) {
-            const reg = registros.find(r => r.id === id);
+        /* Pide confirmacion y hace POST a api.php con action=delete.
+           PHP ejecuta DELETE en MySQL. */
+        async function eliminarRegistro(id) {
+            const reg = registros.find(r => r.id == id);
             if (!reg) return;
 
             const confirmado = confirm(`¿Eliminar "${reg.titulo}"? Esta acción no se puede deshacer.`);
             if (!confirmado) return;
 
-            /* Filtra el registro eliminado del array */
-            registros = registros.filter(r => r.id !== id);
+            try {
+                const formData = new FormData();
+                formData.append('action', 'delete');
+                formData.append('id',     id);
 
-            guardarEnStorage();
-            renderTabla();
-            mostrarToast('Registro eliminado.');
+                const respuesta = await fetch('api.php', { method: 'POST', body: formData });
+                const data      = await respuesta.json();
+
+                if (data.error) {
+                    mostrarToast(data.error);
+                    return;
+                }
+
+                await cargarRegistros();
+                mostrarToast('Registro eliminado.');
+
+            } catch (error) {
+                mostrarToast('Error al eliminar el registro.');
+                console.error('Error en eliminarRegistro:', error);
+            }
         }
 
         /* ── mostrarToast ───────────────────────────────────────────── */
-        /* Muestra un mensaje flotante en la esquina inferior derecha
-           que desaparece automáticamente después de 2.5 segundos. */
+        /* Mensaje flotante temporal en la esquina inferior derecha. */
         function mostrarToast(mensaje) {
             const toast = document.getElementById('toast');
             toast.textContent = mensaje;
@@ -756,13 +786,12 @@
 
         /* ── escapeHtml ─────────────────────────────────────────────── */
         /* Convierte caracteres especiales en entidades HTML para evitar
-           XSS al insertar texto del usuario dentro del DOM con innerHTML. */
+           XSS al insertar texto del usuario en el DOM con innerHTML. */
         function escapeHtml(texto) {
             const div = document.createElement('div');
             div.appendChild(document.createTextNode(texto));
             return div.innerHTML;
         }
-
 
     </script>
 
