@@ -3,6 +3,9 @@
 Sitio web personal hecho con HTML, CSS y PHP como parte de una actividad de desarrollo web.
 Corre localmente en XAMPP (Apache + MySQL).
 
+Video Explicativo: 
+https://www.loom.com/share/f0be0f68f1014eab8c24a338c830c42b
+
 ## Stack
 
 - **HTML5** — estructura semántica (`<header>`, `<main>`, `<section>`, `<footer>`)
